@@ -1,12 +1,41 @@
 <template>
-  <div v-if="unit" class="unit has-gear">
-    <!-- {{ unit }} -->
-    <figure class="image is-64x64 is-mask">
-      <img class="is-rounded" :src="unit.image" />
-    </figure>
-    <div class="expand">
-      <h2>{{ unit.name }}</h2>
-      <h2>{{ formatNumber(unit.gp) }}</h2>
+  <div v-if="unit" class="unit">
+    <div class="collection-char collection-char-dark-side">
+      <div
+        class="player-char-portrait char-portrait-full char-portrait-full-alignment-dark-side"
+        :class="`char-portrait-full-gear-t${unit.gear_level}`"
+      >
+        <a href="#" class="char-portrait-full-link" rel="nofollow">
+          <img
+            class="char-portrait-full-img initial loaded"
+            :src="unit.image"
+            :alt="unit.name"
+            width="80"
+            height="80"
+          />
+          <div class="char-portrait-full-gear"></div>
+          <template v-for="n in 7">
+            <div
+              class="star"
+              :key="n"
+              :class="`star${n} ${unit.rarity > n ? '' : 'star-inactive'}`"
+            ></div>
+          </template>
+          <div
+            class="char-portrait-full-zeta"
+            v-if="unit.zeta_abilities.length > 0"
+          >
+            {{ unit.zeta_abilities.length }}
+          </div>
+          <div class="char-portrait-full-relic" v-if="unit.gear > 12">7</div>
+          <div class="char-portrait-full-level">{{ unit.level }}</div>
+        </a>
+      </div>
+      <div class="collection-char-name">
+        <a class="collection-char-name-link" href="#">
+          {{ unit.name }}
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -15,29 +44,34 @@
 export default {
   props: {
     name: { default: "" },
-    id: { default: 0 }
-  },
-  data() {
-    return {
-      baseUnit: {},
-      playerUnit: {}
-    };
+    id: { default: 0 },
+    player: { default: 1 }
   },
   methods: {
     formatNumber(number) {
       return new Intl.NumberFormat().format(number);
     }
   },
-  mounted() {
-    if (this.name) {
-      this.baseUnit = this.$store.getters.getUnitByName(this.name);
-    } else if (this.id) {
-      this.baseUnit = this.$store.getters.getUnitById(this.id);
-    }
-  },
   computed: {
     unit() {
-      return this.baseUnit;
+      return {
+        ...this.baseUnit,
+        ...this.playerUnit
+      };
+    },
+    playerUnit() {
+      return this.$store.getters.getUnitFromPlayerById(
+        this.baseUnit.id,
+        this.player
+      );
+    },
+    baseUnit() {
+      if (this.name) {
+        return this.$store.getters.getUnitByName(this.name);
+      } else if (this.id) {
+        return this.$store.getters.getUnitById(this.id);
+      }
+      return {};
     }
   }
 };

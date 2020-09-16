@@ -6,6 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     players: [],
+    playerIndexAttack: 0,
+    playerIndexDefence: 1,
     teams: [],
     units: []
   },
@@ -14,9 +16,21 @@ export default new Vuex.Store({
       return state.units.find(unit => unit.id === id);
     },
     getUnitByName: state => name => {
-      console.log(name);
-      console.log(state.units.find(unit => unit.name === name));
       return state.units.find(unit => unit.name === name);
+    },
+    getUnitFromPlayerById: state => (id, player) => {
+      if (!player === undefined || !id) return {};
+      const unit = state.players[player].units.find(
+        unit => unit.data.base_id === id
+      );
+      if (!unit) return {};
+      return unit.data;
+    },
+    getPlayerAttack: state => {
+      return state.players[state.playerIndexAttack];
+    },
+    getPlayerDefence: state => {
+      return state.players[state.playerIndexDefence];
     }
   },
   mutations: {
@@ -57,9 +71,15 @@ export default new Vuex.Store({
     setTeams(state, payload) {
       state.teams = payload;
       console.log(payload);
+    },
+    setPlayer(state, payload) {
+      state.players.push(payload);
     }
   },
   actions: {
+    setPlayer(context, payload) {
+      context.commit("setPlayer", payload);
+    },
     setAbilities(context, payload) {
       context.commit("setAbilities", payload);
     },
