@@ -1,7 +1,8 @@
 <template>
-  <div v-if="unit" class="unit has-gear" :class="`is-gear-${unit.gear}`">
+  <div v-if="unit" class="unit has-gear">
+    <!-- {{ unit }} -->
     <figure class="image is-64x64 is-mask">
-      <img class="is-rounded" :src="unit.photo" />
+      <img class="is-rounded" :src="unit.image" />
     </figure>
     <div class="expand">
       <h2>{{ unit.name }}</h2>
@@ -12,10 +13,31 @@
 
 <script>
 export default {
-  props: ["unit"],
+  props: {
+    name: { default: "" },
+    id: { default: 0 }
+  },
+  data() {
+    return {
+      baseUnit: {},
+      playerUnit: {}
+    };
+  },
   methods: {
     formatNumber(number) {
       return new Intl.NumberFormat().format(number);
+    }
+  },
+  mounted() {
+    if (this.name) {
+      this.baseUnit = this.$store.getters.getUnitByName(this.name);
+    } else if (this.id) {
+      this.baseUnit = this.$store.getters.getUnitById(this.id);
+    }
+  },
+  computed: {
+    unit() {
+      return this.baseUnit;
     }
   }
 };
