@@ -2,8 +2,10 @@
   <div v-if="unit" class="unit">
     <div class="collection-char collection-char-dark-side">
       <div
-        class="player-char-portrait char-portrait-full char-portrait-full-alignment-dark-side"
-        :class="`char-portrait-full-gear-t${unit.gear_level}`"
+        class="player-char-portrait char-portrait-full"
+        :class="
+          `char-portrait-full-alignment-light-side char-portrait-full-gear-t${unit.gear_level}`
+        "
       >
         <a href="#" class="char-portrait-full-link" rel="nofollow">
           <img
@@ -18,7 +20,7 @@
             <div
               class="star"
               :key="n"
-              :class="`star${n} ${unit.rarity > n ? '' : 'star-inactive'}`"
+              :class="`star${n} ${unit.rarity >= n ? '' : 'star-inactive'}`"
             ></div>
           </template>
           <div
@@ -30,6 +32,24 @@
           <div class="char-portrait-full-relic" v-if="unit.gear > 12">7</div>
           <div class="char-portrait-full-level">{{ unit.level }}</div>
         </a>
+      </div>
+      <div
+        class="collection-char-gp"
+        data-toggle="tooltip"
+        data-container="body"
+        title=""
+        data-original-title="Power 37,209 / 37,504"
+      >
+        <div class="collection-char-gp-progress">
+          <div
+            class="collection-char-gp-progress-bar"
+            style="width: 99.2134%;"
+          ></div>
+        </div>
+        <div class="collection-char-gp-label">
+          <span class="collection-char-gp-label-value">99</span>
+          <span class="collection-char-gp-label-percent">%</span>
+        </div>
       </div>
       <div class="collection-char-name">
         <a class="collection-char-name-link" href="#">
