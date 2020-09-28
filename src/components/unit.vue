@@ -23,10 +23,7 @@
               :class="`star${n} ${unit.rarity >= n ? '' : 'star-inactive'}`"
             ></div>
           </template>
-          <div
-            class="char-portrait-full-zeta"
-            v-if="unit.zeta_abilities.length > 0"
-          >
+          <div class="char-portrait-full-zeta" v-if="hasZeta">
             {{ unit.zeta_abilities.length }}
           </div>
           <div class="char-portrait-full-relic" v-if="unit.gear > 12">7</div>
@@ -79,6 +76,9 @@ export default {
         ...this.playerUnit
       };
     },
+    hasZeta() {
+      return this.unit.zeta_abilities && this.unit.zeta_abilities.length > 0;
+    },
     playerUnit() {
       return this.$store.getters.getUnitFromPlayerById(
         this.baseUnit.id,
@@ -98,64 +98,6 @@ export default {
 </script>
 
 <style lang="scss">
-.has-gear {
-  .image:after {
-    position: absolute;
-    top: -0px;
-    left: -0px;
-    right: -0px;
-    bottom: -0px;
-    /* background: red; */
-    content: "";
-    display: block;
-  }
-  &.is-gear-1 .image:after {
-    background-image: url(../assets/units/gear-icon-g1.svg);
-  }
-  &.is-gear-2 .image:after {
-    background-image: url(../assets/units/gear-icon-g2.svg);
-  }
-  &.is-gear-3 .image:after {
-    background-image: url(../assets/units/gear-icon-g3.svg);
-  }
-  &.is-gear-4 .image:after {
-    background-image: url(../assets/units/gear-icon-g4.svg);
-  }
-  &.is-gear-5 .image:after {
-    background-image: url(../assets/units/gear-icon-g5.svg);
-  }
-  &.is-gear-6 .image:after {
-    background-image: url(../assets/units/gear-icon-g6.svg);
-  }
-  &.is-gear-7 .image:after {
-    background-image: url(../assets/units/gear-icon-g7.svg);
-  }
-  &.is-gear-8 .image:after {
-    background-image: url(../assets/units/gear-icon-g8.svg);
-  }
-  &.is-gear-9 .image:after {
-    background-image: url(../assets/units/gear-icon-g9.svg);
-  }
-  &.is-gear-10 .image:after {
-    background-image: url(../assets/units/gear-icon-g10.svg);
-  }
-  &.is-gear-11 .image:after {
-    background-image: url(../assets/units/gear-icon-g11.svg);
-  }
-  &.is-gear-12 .image:after {
-    background-image: url(../assets/units/gear-icon-g12.svg);
-  }
-  &.is-gear-13 .image:after {
-    background-image: url(../assets/units/gear-icon-g13.png);
-    background-size: 84px auto;
-    background-position-y: 5px;
-    background-position-x: 3px;
-    top: -12px;
-    left: -12px;
-    right: -12px;
-    bottom: -6px;
-  }
-}
 .unit {
   position: relative;
   .expand {
