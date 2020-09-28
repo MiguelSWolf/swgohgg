@@ -48,14 +48,14 @@
     <section class="section">
       <div class="container">
         <h1 class="title">Teams</h1>
-        <!-- <card-team :team="team" v-for="team in teams" :key="team.id" /> -->
+        <card-team :team="team" v-for="team in teams" :key="team.id" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-// import cardTeam from "../components/team";
+import cardTeam from "../components/team";
 import abilities from "../assets/baseData/abilities.json";
 import counters from "../assets/baseData/counters.json";
 import units from "../assets/baseData/characters.json";
@@ -67,7 +67,7 @@ import player884435532 from "../assets/884435532.json";
 export default {
   name: "Home",
   components: {
-    // cardTeam
+    cardTeam
   },
   data() {
     return {
@@ -90,17 +90,13 @@ export default {
     },
     getPlayers: function() {
       this.loading = true;
-      console.log("start first");
       this.$http
-        .get(`https://swgoh.gg/api/player/166159449/`)
+        .get(`player/${this.attackCode}/`)
         .then(responseAttack => {
-          console.log({ responseAttack: responseAttack });
           this.$store.dispatch("setPlayer", responseAttack);
-          console.log("start second");
           this.$http
-            .get(`https://swgoh.gg/api/player/${this.defenceCode}/`)
+            .get(`player/${this.defenceCode}/`)
             .then(responseDefence => {
-              console.log({ responseDefence: responseDefence });
               this.$store.dispatch("setPlayer", responseDefence);
               this.loading = false;
             })
@@ -139,11 +135,11 @@ export default {
       console.log("Versão prod");
     }
     this.getBaseInfos();
-    // if (Window.isDev) {
-    //   this.getPlayersTest();
-    // } else {
-    // this.getPlayers();
-    // }
+    if (Window.isDev) {
+      this.getPlayersTest();
+    } else {
+      this.getPlayers();
+    }
   }
 };
 </script>
