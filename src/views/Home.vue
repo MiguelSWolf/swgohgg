@@ -92,7 +92,7 @@ export default {
       this.loading = true;
       console.log("start first");
       this.$http
-        .get(`https://swgoh.gg/api/player/166159449`)
+        .get(`https://swgoh.gg/api/player/166159449/`)
         .then(responseAttack => {
           console.log({ responseAttack: responseAttack });
           this.$store.dispatch("setPlayer", responseAttack);
