@@ -118,6 +118,8 @@ export default {
 <style lang="scss">
 .unit {
   position: relative;
+  width: 104px;
+  padding: 10px;
   .expand {
     display: none;
     position: absolute;
