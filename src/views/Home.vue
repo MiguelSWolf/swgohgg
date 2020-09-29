@@ -7,7 +7,7 @@
             <div class="columns is-tablet">
               <div class="column is-3">
                 <div class="field">
-                  Your Code Ally
+                  Your Ally Code
                 </div>
                 <div class="field">
                   <input
@@ -27,7 +27,7 @@
               </div>
               <div class="column is-3">
                 <div class="field">
-                  Opponent Code Ally
+                  Opponent Ally Code
                 </div>
                 <div class="field">
                   <input
