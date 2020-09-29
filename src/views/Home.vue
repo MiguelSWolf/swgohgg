@@ -116,6 +116,8 @@ export default {
     },
     getPlayers: function() {
       this.loading = true;
+      this.showTeams = false;
+      this.$store.dispatch("clearPlayers");
       this.$http
         .get(`player/${this.attackCode}/`)
         .then(responseAttack => {

@@ -75,6 +75,9 @@ export default new Vuex.Store({
     },
     setPlayer(state, payload) {
       state.players.push(payload);
+    },
+    clearPlayers(state) {
+      state.players = [];
     }
   },
   actions: {
@@ -89,6 +92,9 @@ export default new Vuex.Store({
     },
     setUnits(context, payload) {
       context.commit("setUnits", payload);
+    },
+    clearPlayers(context) {
+      context.commit("clearPlayers");
     }
   },
   modules: {}
