@@ -24,7 +24,9 @@
           <div class="char-portrait-full-zeta" v-if="hasZeta">
             {{ unit.zeta_abilities.length }}
           </div>
-          <div class="char-portrait-full-relic" v-if="unit.gear > 12">7</div>
+          <div class="char-portrait-full-relic" v-if="unit.gear_level > 12">
+            {{ unit.relic_tier - 2 }}
+          </div>
           <div class="char-portrait-full-level">{{ unit.level }}</div>
         </a>
       </div>
