@@ -40,7 +40,7 @@ export default new Vuex.Store({
           const indexUnit = state.units.findIndex(
             unit => unit.id == abilitie.character_base_id
           );
-          if (indexUnit > 0) {
+          if (indexUnit >= 0) {
             const aux = {
               id: abilitie.base_id,
               name: abilitie.name,
@@ -51,7 +51,7 @@ export default new Vuex.Store({
             };
             state.units[indexUnit].abilities.push(aux);
           } else {
-            console.log(`Not found ${abilitie.character_base_id}`);
+            console.log(`Not found -${abilitie.character_base_id}-`);
           }
         }
       });
