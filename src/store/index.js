@@ -63,6 +63,8 @@ export default new Vuex.Store({
           name: unit.name,
           image: `https://swgoh.gg/${unit.image}`,
           url: unit.url,
+          isLight: unit.alignment == "Light Side",
+          isDark: unit.alignment == "Dark Side",
           abilities: []
         };
         state.units.push(aux);
@@ -70,7 +72,6 @@ export default new Vuex.Store({
     },
     setTeams(state, payload) {
       state.teams = payload;
-      console.log(payload);
     },
     setPlayer(state, payload) {
       state.players.push(payload);

@@ -3,9 +3,7 @@
     <div class="collection-char collection-char-dark-side">
       <div
         class="player-char-portrait char-portrait-full"
-        :class="
-          `char-portrait-full-alignment-light-side char-portrait-full-gear-t${unit.gear_level}`
-        "
+        :class="classComputed"
       >
         <a href="#" class="char-portrait-full-link" rel="nofollow">
           <img
@@ -30,7 +28,7 @@
           <div class="char-portrait-full-level">{{ unit.level }}</div>
         </a>
       </div>
-      <div
+      <!-- <div
         class="collection-char-gp"
         data-toggle="tooltip"
         data-container="body"
@@ -47,7 +45,7 @@
           <span class="collection-char-gp-label-value">99</span>
           <span class="collection-char-gp-label-percent">%</span>
         </div>
-      </div>
+      </div> -->
       <div class="collection-char-name">
         <a class="collection-char-name-link" href="#">
           {{ unit.name }}
@@ -58,11 +56,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   props: {
     name: { default: "" },
     id: { default: 0 },
-    player: { default: 1 }
+    isCounter: { default: false }
   },
   methods: {
     formatNumber(number) {
@@ -70,16 +69,25 @@ export default {
     }
   },
   computed: {
-    unit() {
-      return {
-        ...this.baseUnit,
-        ...this.playerUnit
+    classComputed() {
+      let classes = {
+        "char-portrait-full-alignment-light-side": this.unit.isLight,
+        "char-portrait-full-alignment-dark-side": this.unit.isDark
       };
+      classes[`char-portrait-full-gear-t${this.unit.gear_level}`] = true;
+      return classes;
+    },
+    player() {
+      if (this.isCounter) {
+        return this.attackPlayer;
+      }
+      return this.defencePlayer;
     },
     hasZeta() {
       return this.unit.zeta_abilities && this.unit.zeta_abilities.length > 0;
     },
     playerUnit() {
+      if (this.player === undefined) return {};
       return this.$store.getters.getUnitFromPlayerById(
         this.baseUnit.id,
         this.player
@@ -92,7 +100,17 @@ export default {
         return this.$store.getters.getUnitById(this.id);
       }
       return {};
-    }
+    },
+    unit() {
+      return {
+        ...this.baseUnit,
+        ...this.playerUnit
+      };
+    },
+    ...mapState({
+      attackPlayer: state => state.playerIndexAttack,
+      defencePlayer: state => state.playerIndexDefence
+    })
   }
 };
 </script>

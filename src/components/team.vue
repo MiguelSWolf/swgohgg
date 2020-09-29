@@ -15,14 +15,20 @@
           <div class="squad">
             <card-unit v-for="unit in team.squad" :name="unit" :key="unit" />
           </div>
-          <!-- <div
+          <p class="title is-2">Counters</p>
+          <div
             class="counters"
             v-for="(counter, index) in team.counters"
             :key="index"
           >
             <card-unit :name="counter.lead" />
-            <card-unit v-for="unit in counter.squad" :name="unit" :key="unit" />
-          </div> -->
+            <card-unit
+              v-for="unit in counter.squad"
+              :isCounter="true"
+              :name="unit"
+              :key="unit"
+            />
+          </div>
         </div>
       </div>
     </div>

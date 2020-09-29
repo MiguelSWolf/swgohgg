@@ -48,7 +48,8 @@
     <section class="section">
       <div class="container" v-if="showTeams">
         <h1 class="title">Teams</h1>
-        <card-team :team="team" v-for="team in teams" :key="team.id" />
+        <card-team :team="teams[0]" v-if="isDev" />
+        <card-team :team="team" v-for="team in teams" :key="team.id" v-else />
       </div>
     </section>
   </div>
@@ -125,17 +126,20 @@ export default {
       if (!aux) return false;
       return aux.data;
     },
+    isDev() {
+      return Window.isDev || false;
+    },
     ...mapState({
       teams: state => state.teams
     })
   },
   mounted() {
     this.getBaseInfos();
-    if (Window.isDev) {
-      console.log("Versão dev");
+    if (this.isDev) {
+      console.log("Version dev");
       this.getPlayersTest();
     } else {
-      console.log("Versão prod");
+      console.log("Version prod");
     }
   }
 };
