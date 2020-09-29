@@ -46,7 +46,7 @@
       </div>
     </section>
     <section class="section">
-      <div class="container">
+      <div class="container" v-if="showTeams">
         <h1 class="title">Teams</h1>
         <card-team :team="team" v-for="team in teams" :key="team.id" />
       </div>
@@ -73,7 +73,8 @@ export default {
     return {
       attackCode: "",
       defenceCode: "",
-      loading: false
+      loading: false,
+      showTeams: false
     };
   },
   methods: {
@@ -87,18 +88,20 @@ export default {
       this.attackCode = "166159449";
       this.$store.dispatch("setPlayer", player884435532);
       this.defenceCode = "884435532";
+      this.showTeams = true;
     },
     getPlayers: function() {
       this.loading = true;
       this.$http
         .get(`player/${this.attackCode}/`)
         .then(responseAttack => {
-          this.$store.dispatch("setPlayer", responseAttack);
+          this.$store.dispatch("setPlayer", responseAttack.body);
           this.$http
             .get(`player/${this.defenceCode}/`)
             .then(responseDefence => {
-              this.$store.dispatch("setPlayer", responseDefence);
+              this.$store.dispatch("setPlayer", responseDefence.body);
               this.loading = false;
+              this.showTeams = true;
             })
             .catch(err => {
               console.error(err);
@@ -127,18 +130,12 @@ export default {
     })
   },
   mounted() {
-    this.attackCode = "166159449";
-    this.defenceCode = "884435532";
-    if (Window.isDev) {
-      console.log("Versão dev");
-    } else {
-      console.log("Versão prod");
-    }
     this.getBaseInfos();
     if (Window.isDev) {
+      console.log("Versão dev");
       this.getPlayersTest();
     } else {
-      this.getPlayers();
+      console.log("Versão prod");
     }
   }
 };
