@@ -17,6 +17,7 @@
                 </div>
                 <div class="field">
                   {{ attack.name }}
+                  ({{ attack.last_updated }})
                 </div>
               </div>
               <div
@@ -37,6 +38,7 @@
                 </div>
                 <div class="field">
                   {{ defence.name }}
+                  ({{ defence.last_updated }})
                 </div>
               </div>
               <div class="column is-3">

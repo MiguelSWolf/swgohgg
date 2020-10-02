@@ -6,7 +6,13 @@
           <div class="media-left"></div>
           <div class="media-content" style="overflow-x: initial">
             <p class="title is-4">{{ team.title }}</p>
-            <p class="subtitle is-6">GP: 000</p>
+            <p class="subtitle is-5">
+              Total Power: {{ formatNumber(team.power) }}
+            </p>
+            <p class="subtitle is-5">AVG Power: {{ formatNumber(team.avg) }}</p>
+            <p class="subtitle is-5">
+              Count Units: {{ formatNumber(team.count) }}
+            </p>
           </div>
         </div>
         <div class="content">
@@ -29,6 +35,17 @@
                 v-for="(counter, index) in team.counters"
                 :key="index"
               >
+                <div class="counters-infos">
+                  <p class="title is-4">
+                    Total Power: {{ formatNumber(counter.power) }}
+                  </p>
+                  <p class="title is-4">
+                    AVG Power: {{ formatNumber(counter.avg) }}
+                  </p>
+                  <p class="title is-4">
+                    Count Units: {{ formatNumber(counter.count) }}
+                  </p>
+                </div>
                 <card-unit :name="counter.lead" :isCounter="true" />
                 <card-unit
                   v-for="unit in counter.squad"
@@ -51,7 +68,12 @@
 import cardUnit from "../components/unit";
 export default {
   props: ["team"],
-  components: { cardUnit }
+  components: { cardUnit },
+  methods: {
+    formatNumber(number) {
+      return new Intl.NumberFormat().format(number);
+    }
+  }
 };
 </script>
 <style lang="scss">

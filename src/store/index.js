@@ -26,11 +26,35 @@ export default new Vuex.Store({
       if (!unit) return {};
       return unit.data;
     },
+    getUnitFromPlayerByName: state => (name, player) => {
+      if (!player === undefined || !name) return {};
+      const unit = state.players[player].units.find(
+        unit => unit.data.name === name
+      );
+      if (!unit) return {};
+      return unit.data;
+    },
     getPlayerAttack: state => {
       return state.players[state.playerIndexAttack];
     },
     getPlayerDefence: state => {
       return state.players[state.playerIndexDefence];
+    },
+    calcTeamPower: (state, getters) => (team, index) => {
+      let lead = getters.getUnitFromPlayerByName(team.lead, index);
+      if (lead.name != null) {
+        team.power += lead.power;
+        team.squad.forEach(name => {
+          const unit = getters.getUnitFromPlayerByName(name, index);
+          if (unit.name != null) {
+            team.power += unit.power ?? 0;
+            team.count++;
+          }
+        });
+        team.avg = parseInt(team.power / team.count);
+      } else {
+        team.haveLead = false;
+      }
     }
   },
   mutations: {
@@ -63,6 +87,7 @@ export default new Vuex.Store({
           name: unit.name,
           image: `https://swgoh.gg/${unit.image}`,
           url: unit.url,
+          maxPower: unit.gp,
           isLight: unit.alignment == "Light Side",
           isDark: unit.alignment == "Dark Side",
           abilities: []
@@ -71,10 +96,31 @@ export default new Vuex.Store({
       });
     },
     setTeams(state, payload) {
-      state.teams = payload;
+      const defaultConfig = {
+        power: 0,
+        avg: 0,
+        count: 1,
+        haveLead: true
+      };
+      payload.forEach(team => {
+        team = { ...team, ...defaultConfig };
+        team.counters.forEach((counter, index) => {
+          team.counters[index] = { ...counter, ...defaultConfig };
+        });
+        state.teams.push(team);
+      });
     },
-    setPlayer(state, payload) {
+    setPlayer(state, { payload, getters }) {
       state.players.push(payload);
+      if (state.players.length == 2) {
+        console.log("Attack Team");
+        state.teams.forEach(team => {
+          getters.calcTeamPower(team, state.playerIndexAttack);
+          team.counters.forEach(counterTeam => {
+            getters.calcTeamPower(counterTeam, state.playerIndexDefence);
+          });
+        });
+      }
     },
     clearPlayers(state) {
       state.players = [];
@@ -82,7 +128,7 @@ export default new Vuex.Store({
   },
   actions: {
     setPlayer(context, payload) {
-      context.commit("setPlayer", payload);
+      context.commit("setPlayer", { payload, getters: context.getters });
     },
     setAbilities(context, payload) {
       context.commit("setAbilities", payload);
