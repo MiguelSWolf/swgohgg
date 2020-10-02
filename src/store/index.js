@@ -103,7 +103,7 @@ export default new Vuex.Store({
         haveLead: true
       };
       payload.forEach(team => {
-        team = { ...team, ...defaultConfig };
+        team = { ...team, ...defaultConfig, chosenCounter: undefined };
         team.counters.forEach((counter, index) => {
           team.counters[index] = { ...counter, ...defaultConfig };
         });

@@ -1,13 +1,17 @@
 <template>
-  <div v-if="unit" class="unit">
-    <div class="collection-char collection-char-dark-side">
+  <div
+    v-if="unit.name"
+    class="unit"
+    :class="{ 'is-counter': isCounter, 'is-full': showStats }"
+  >
+    <div class="collection-char">
       <div
         class="player-char-portrait char-portrait-full"
         :class="classComputed"
       >
         <a href="#" class="char-portrait-full-link" rel="nofollow">
           <img
-            class="char-portrait-full-img initial loaded"
+            class="char-portrait-full-img"
             :src="unit.image"
             :alt="unit.name"
             width="80"
@@ -54,6 +58,48 @@
         </a>
       </div>
     </div>
+    <div class="unit-stats" v-if="showStats == true">
+      <table
+        class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+      >
+        <tr>
+          <th>Power</th>
+          <td>{{ formatNumber(unit.power) }}</td>
+        </tr>
+        <tr>
+          <th>Speed</th>
+          <td>{{ formatNumber(unit.stats[5]) }}</td>
+        </tr>
+        <tr>
+          <th>Health</th>
+          <td>{{ formatNumber(unit.stats[1]) }}</td>
+        </tr>
+        <tr>
+          <th>Protection</th>
+          <td>{{ formatNumber(unit.stats[28]) }}</td>
+        </tr>
+        <tr>
+          <th>Potency</th>
+          <td>{{ formatNumber(unit.stats[17] * 100) }}%</td>
+        </tr>
+        <tr>
+          <th>Tenacity</th>
+          <td>{{ formatNumber(unit.stats[18] * 100) }}%</td>
+        </tr>
+        <tr>
+          <th>C. Chance</th>
+          <td>{{ formatNumber(unit.stats[14]) }}%</td>
+        </tr>
+        <tr>
+          <th>C. Damage</th>
+          <td>{{ formatNumber(unit.stats[16] * 100) }}%</td>
+        </tr>
+        <tr>
+          <th>Damage</th>
+          <td>{{ formatNumber(unit.stats[6]) }}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -63,7 +109,8 @@ export default {
   props: {
     name: { default: "" },
     id: { default: 0 },
-    isCounter: { default: false }
+    isCounter: { default: false },
+    showStats: { default: false }
   },
   methods: {
     formatNumber(number) {
@@ -104,6 +151,7 @@ export default {
       return {};
     },
     unit() {
+      console.log(this.playerUnit);
       return {
         ...this.baseUnit,
         ...this.playerUnit
@@ -118,21 +166,26 @@ export default {
 </script>
 
 <style lang="scss">
-.unit {
+.collection-char {
   position: relative;
   width: 104px;
   padding: 10px;
-  .expand {
-    display: none;
-    position: absolute;
-    bottom: 100%;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    z-index: 2;
+}
+.unit {
+  display: flex;
+  .unit-stats {
+    padding: 10px 0;
+    margin-left: 10px;
   }
-  &:hover .expand {
-    display: inline;
+  &.is-full {
+    justify-content: flex-end;
+  }
+  &.is-counter {
+    flex-direction: row-reverse;
+    .unit-stats {
+      margin-left: 0px;
+      margin-right: 10px;
+    }
   }
 }
 </style>
