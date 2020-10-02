@@ -27,7 +27,7 @@
               <p class="title is-2">Your Counters</p>
               <div class="pick-counters">
                 <div
-                  @click="team.chosenCounter = index"
+                  @click.prevent="team.chosenCounter = index"
                   v-for="(counter, index) in team.counters"
                   :key="index"
                 >
