@@ -16,8 +16,10 @@
                   />
                 </div>
                 <div class="field">
-                  {{ attack.name }}
-                  ({{ attack.last_updated }})
+                  {{ attack.name }}<br />
+                  GP: {{ formatNumber(attack.galactic_power) }}<br />
+                  Matchmaker: {{ formatNumber(attackMatchmaker) }}<br />
+                  Last update: ({{ attack.last_updated }})
                 </div>
               </div>
               <div
@@ -37,8 +39,10 @@
                   />
                 </div>
                 <div class="field">
-                  {{ defence.name }}
-                  ({{ defence.last_updated }})
+                  {{ defence.name }}<br />
+                  GP: {{ formatNumber(defence.galactic_power) }}<br />
+                  Matchmaker: {{ formatNumber(defenceMatchmaker) }}<br />
+                  Last update: ({{ defence.last_updated }})
                 </div>
               </div>
               <div class="column is-3">
@@ -104,6 +108,9 @@ export default {
     };
   },
   methods: {
+    formatNumber(number) {
+      return new Intl.NumberFormat().format(number);
+    },
     getBaseInfos: function() {
       this.$store.dispatch("setUnits", units);
       this.$store.dispatch("setAbilities", abilities);
@@ -153,6 +160,19 @@ export default {
       if (!aux) return false;
       return aux.data;
     },
+    attackMatchmaker() {
+      const aux = this.$store.getters.getMatchMaker(
+        this.$store.state.playerIndexAttack
+      );
+      return aux;
+    },
+    defenceMatchmaker() {
+      const aux = this.$store.getters.getMatchMaker(
+        this.$store.state.playerIndexDefence
+      );
+      return aux;
+    },
+
     isDev() {
       return Window.isDev || false;
     },

@@ -55,6 +55,19 @@ export default new Vuex.Store({
       } else {
         team.haveLead = false;
       }
+    },
+    getMatchMaker: state => index => {
+      let gpUnits = [];
+      if (!state.players[index]) return 0;
+      state.players[index].units.forEach(unit => {
+        gpUnits.push(unit.data.power);
+      });
+      gpUnits = gpUnits.sort(function(a, b) {
+        return a + b;
+      });
+      gpUnits = gpUnits.slice(0, 80);
+      gpUnits = gpUnits.reduce((a, b) => a + b, 0);
+      return gpUnits;
     }
   },
   mutations: {
@@ -113,7 +126,6 @@ export default new Vuex.Store({
     setPlayer(state, { payload, getters }) {
       state.players.push(payload);
       if (state.players.length == 2) {
-        console.log("Attack Team");
         state.teams.forEach(team => {
           getters.calcTeamPower(team, state.playerIndexAttack);
           team.counters.forEach(counterTeam => {

@@ -151,7 +151,6 @@ export default {
       return {};
     },
     unit() {
-      console.log(this.playerUnit);
       return {
         ...this.baseUnit,
         ...this.playerUnit
