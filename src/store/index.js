@@ -60,14 +60,14 @@ export default new Vuex.Store({
       let gpUnits = [];
       if (!state.players[index]) return 0;
       state.players[index].units.forEach(unit => {
-        gpUnits.push(unit.data.power);
+        if (unit.data.combat_type === 1) gpUnits.push(unit.data.power);
       });
-      gpUnits = gpUnits.sort(function(a, b) {
-        return a + b;
+      let gpUnitsSort = gpUnits.sort(function(a, b) {
+        return a - b;
       });
-      gpUnits = gpUnits.slice(0, 80);
-      gpUnits = gpUnits.reduce((a, b) => a + b, 0);
-      return gpUnits;
+      gpUnitsSort = gpUnitsSort.slice(gpUnitsSort.length - 80);
+      let total = gpUnitsSort.reduce((a, b) => a + b, 0);
+      return total;
     }
   },
   mutations: {
