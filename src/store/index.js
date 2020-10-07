@@ -56,7 +56,7 @@ export default new Vuex.Store({
         team.haveLead = false;
       }
     },
-    getMatchMaker: state => index => {
+    getMatchMakerCalc: state => index => {
       let gpUnits = [];
       if (!state.players[index]) return 0;
       state.players[index].units.forEach(unit => {
@@ -68,6 +68,66 @@ export default new Vuex.Store({
       gpUnitsSort = gpUnitsSort.slice(gpUnitsSort.length - 80);
       let total = gpUnitsSort.reduce((a, b) => a + b, 0);
       return total;
+    },
+    getMatchMakerUnits: state => {
+      if (!state.players[1]) return {};
+      let yourMatchMakerUnits = [];
+      state.players[0].units.forEach(unit => {
+        if (unit.data.combat_type === 1)
+          yourMatchMakerUnits.push({
+            name: unit.data.name,
+            power: unit.data.power
+          });
+      });
+      let yourGpUnitsSort = yourMatchMakerUnits.sort(function(a, b) {
+        return a.power - b.power;
+      });
+      yourGpUnitsSort = yourGpUnitsSort.reverse();
+      yourGpUnitsSort = yourGpUnitsSort.slice(0, 80);
+
+      let opponentMatchMakerUnits = [];
+      state.players[1].units.forEach(unit => {
+        if (unit.data.combat_type === 1)
+          opponentMatchMakerUnits.push({
+            name: unit.data.name,
+            power: unit.data.power
+          });
+      });
+      let opponentGpUnitsSort = opponentMatchMakerUnits.sort(function(a, b) {
+        return a.power - b.power;
+      });
+      opponentGpUnitsSort = opponentGpUnitsSort.reverse();
+      opponentGpUnitsSort = opponentGpUnitsSort.slice(0, 80);
+
+      let matchMakerUnits = [];
+      yourGpUnitsSort.forEach(unit => {
+        matchMakerUnits.push({
+          name: unit.name,
+          yourPower: unit.power,
+          opponentPower: 0
+        });
+      });
+      opponentGpUnitsSort.forEach(unit => {
+        let index = matchMakerUnits.findIndex(row => {
+          if (unit.name == row.name) return true;
+        });
+        if (index >= 0) {
+          matchMakerUnits[index].opponentPower = unit.power;
+        } else {
+          matchMakerUnits.push({
+            name: unit.name,
+            yourPower: 0,
+            opponentPower: unit.power
+          });
+        }
+      });
+
+      let unitsSort = matchMakerUnits.sort(function(a, b) {
+        return a.yourPower - b.yourPower;
+      });
+      unitsSort = unitsSort.reverse();
+      console.log(unitsSort);
+      return unitsSort;
     }
   },
   mutations: {

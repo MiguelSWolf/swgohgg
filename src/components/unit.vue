@@ -53,12 +53,18 @@
         </div>
       </div> -->
       <div class="collection-char-name">
-        <a class="collection-char-name-link" href="#">
+        <a class="collection-char-name-link" href="#" v-if="!showPower">
           {{ unit.name }}
         </a>
       </div>
     </div>
-    <div class="unit-stats" v-if="showStats == true">
+    <div class="unit-stats" v-if="showPower">
+      <div class="title is-3">Power: {{ formatNumber(unit.power) }}</div>
+      <div class="title is-4" v-if="unit.stats">
+        Speed: {{ formatNumber(unit.stats[5]) }}
+      </div>
+    </div>
+    <div class="unit-stats" v-if="showStats">
       <table
         class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
       >
@@ -70,7 +76,7 @@
           <th>Speed</th>
           <td>{{ formatNumber(unit.stats[5]) }}</td>
         </tr>
-        <tr>
+        <!-- <tr>
           <th>Health</th>
           <td>{{ formatNumber(unit.stats[1]) }}</td>
         </tr>
@@ -97,7 +103,7 @@
         <tr>
           <th>Damage</th>
           <td>{{ formatNumber(unit.stats[6]) }}</td>
-        </tr>
+        </tr> -->
       </table>
     </div>
   </div>
@@ -110,7 +116,8 @@ export default {
     name: { default: "" },
     id: { default: 0 },
     isCounter: { default: false },
-    showStats: { default: false }
+    showStats: { default: false },
+    showPower: { default: false }
   },
   methods: {
     formatNumber(number) {
@@ -175,6 +182,10 @@ export default {
   .unit-stats {
     padding: 10px 0;
     margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
   }
   &.is-full {
     justify-content: flex-end;
@@ -182,6 +193,7 @@ export default {
   &.is-counter {
     flex-direction: row-reverse;
     .unit-stats {
+      align-items: flex-end;
       margin-left: 0px;
       margin-right: 10px;
     }

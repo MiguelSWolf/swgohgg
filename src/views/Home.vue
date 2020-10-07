@@ -59,7 +59,20 @@
       </div>
     </section>
     <section class="section">
-      <div class="container" v-if="showTeams">
+      <div class="tabs is-large">
+        <ul>
+          <li :class="{ 'is-active': !showTabMatchmaker }">
+            <a @click.prevent="showTabMatchmaker = false">Counters</a>
+          </li>
+          <li :class="{ 'is-active': showTabMatchmaker }">
+            <a @click.prevent="showTabMatchmaker = true">MatchMaker</a>
+          </li>
+        </ul>
+      </div>
+      <div class="container" v-if="showTeams && showTabMatchmaker">
+        <card-matchmaker />
+      </div>
+      <div class="container" v-if="showTeams && !showTabMatchmaker">
         <h1 class="title">Teams</h1>
         <card-team :team="teams[0]" v-if="isDev" />
         <card-team :team="team" v-for="team in teams" :key="team.id" v-else />
@@ -86,6 +99,7 @@
 
 <script>
 import cardTeam from "../components/team";
+import cardMatchmaker from "../components/matchmaker";
 import abilities from "../assets/baseData/abilities.json";
 import counters from "../assets/baseData/counters.json";
 import units from "../assets/baseData/characters.json";
@@ -97,13 +111,15 @@ import player884435532 from "../assets/884435532.json";
 export default {
   name: "Home",
   components: {
-    cardTeam
+    cardTeam,
+    cardMatchmaker
   },
   data() {
     return {
       attackCode: "",
       defenceCode: "",
       loading: false,
+      showTabMatchmaker: false,
       showTeams: false
     };
   },
@@ -161,13 +177,13 @@ export default {
       return aux.data;
     },
     attackMatchmaker() {
-      const aux = this.$store.getters.getMatchMaker(
+      const aux = this.$store.getters.getMatchMakerCalc(
         this.$store.state.playerIndexAttack
       );
       return aux;
     },
     defenceMatchmaker() {
-      const aux = this.$store.getters.getMatchMaker(
+      const aux = this.$store.getters.getMatchMakerCalc(
         this.$store.state.playerIndexDefence
       );
       return aux;
