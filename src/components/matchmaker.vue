@@ -1,23 +1,31 @@
 <template>
   <div class="matchmaker">
-    <div class="columns is-mobile is-multiline">
-      <div class="column is-6">
+    <div class="columns is-mobile is-multiline is-vcentered">
+      <div
+        class="column is-6-mobile is-4-tablet is-offset-4-tablet is-3-desktop is-offset-6-desktop"
+      >
         <div class="title is-1" style="text-align: center">
           Your units
         </div>
       </div>
-      <div class="column is-6">
+      <div class="column is-6-mobile is-4-tablet is-3-desktop">
         <div class="title is-1" style="text-align: center">
           Opponent units
         </div>
       </div>
       <template v-for="unit in MatchmakerUnits">
-        <div class="column is-12" :key="unit.name">
+        <div
+          class="column is-12-mobile is-4-tablet is-6-desktop"
+          :key="unit.name"
+        >
           <div class="title is-2" style="text-align: center">
             {{ unit.name }}
           </div>
         </div>
-        <div class="column is-6" :key="`${unit.name}-your`">
+        <div
+          class="column is-6-mobile is-4-tablet is-3-desktop"
+          :key="`${unit.name}-your`"
+        >
           <div
             class="is-matchmaker"
             :class="{ 'is-deleted': unit.yourPower == 0 }"
@@ -25,7 +33,10 @@
             <card-unit :isCounter="true" :name="unit.name" :showPower="true" />
           </div>
         </div>
-        <div class="column is-6" :key="`${unit.name}-counter`">
+        <div
+          class="column is-6-mobile is-4-tablet is-3-desktop"
+          :key="`${unit.name}-counter`"
+        >
           <div
             class="is-matchmaker"
             :class="{ 'is-deleted': unit.opponentPower == 0 }"
