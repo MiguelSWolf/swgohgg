@@ -50,6 +50,7 @@
                 <input
                   class="button is-info is-large is-fullwidth"
                   value="Search"
+                  type="submit"
                   @click="getPlayers"
                 />
               </div>
