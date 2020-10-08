@@ -123,7 +123,13 @@ export default new Vuex.Store({
       });
 
       let unitsSort = matchMakerUnits.sort(function(a, b) {
-        return a.yourPower - b.yourPower;
+        let aPower = null;
+        let bPower = null;
+        if (a.yourPower > a.opponentPower) aPower = a.yourPower;
+        else aPower = a.opponentPower;
+        if (b.yourPower > b.opponentPower) bPower = b.yourPower;
+        else bPower = b.opponentPower;
+        return aPower - bPower;
       });
       unitsSort = unitsSort.reverse();
       console.log(unitsSort);
