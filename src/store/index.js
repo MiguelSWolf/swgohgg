@@ -132,7 +132,6 @@ export default new Vuex.Store({
         return aPower - bPower;
       });
       unitsSort = unitsSort.reverse();
-      console.log(unitsSort);
       return unitsSort;
     }
   },
@@ -166,10 +165,10 @@ export default new Vuex.Store({
           name: unit.name,
           image: `https://swgoh.gg/${unit.image}`,
           url: unit.url,
-          maxPower: unit.gp,
+          // maxPower: unit.gp,
           isLight: unit.alignment == "Light Side",
-          isDark: unit.alignment == "Dark Side",
-          abilities: []
+          isDark: unit.alignment == "Dark Side"
+          // abilities: []
         };
         state.units.push(aux);
       });

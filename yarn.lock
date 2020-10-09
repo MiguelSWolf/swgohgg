@@ -2057,6 +2057,11 @@ brorand@^1.0.1:
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
+browser-downloads@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/browser-downloads/-/browser-downloads-0.2.0.tgz#f5444558f9da511b0bc7bf66619ea5ff12eade75"
+  integrity sha512-0tQntpixIPo8ZuOufMjPbZIp2jZMvCUz00rCiaf/T3LzLxcbt6j0r6Ef8Ao3lNP3bYh/ibLoWVoLCJ7SCvxrSA==
+
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
@@ -8728,6 +8733,13 @@ vue-eslint-parser@^7.0.0:
     espree "^6.2.1"
     esquery "^1.0.1"
     lodash "^4.17.15"
+
+vue-excel-export@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/vue-excel-export/-/vue-excel-export-0.1.3.tgz#d895afdc958022ddbb7ae67b17b8f6a63546bb13"
+  integrity sha512-vjCKrVocZ9Q4Y1BJsuDiLR9E9x97vHY+ew7oSigxg7WDh6AsTbH5v4TFpCD65WwYy2jt1tQU6fsAIpKjVOXibw==
+  dependencies:
+    browser-downloads "^0.2.0"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

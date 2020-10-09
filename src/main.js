@@ -3,8 +3,11 @@ import VueResource from "vue-resource";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import VueExcel from "vue-excel-export";
 
 Vue.use(VueResource);
+Vue.use(VueExcel);
+
 Vue.http.options.root =
   "https://cors-anywhere.herokuapp.com/https://swgoh.gg/api/";
 Vue.http.headers.common["Access-Control-Allow-Origin"] = "*";
