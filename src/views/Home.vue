@@ -101,7 +101,7 @@
 <script>
 import cardTeam from "../components/team";
 import cardMatchmaker from "../components/matchmaker";
-import abilities from "../assets/baseData/abilities.json";
+// import abilities from "../assets/baseData/abilities.json";
 import counters from "../assets/baseData/counters.json";
 import units from "../assets/baseData/characters.json";
 import { mapState } from "vuex";
@@ -130,7 +130,7 @@ export default {
     },
     getBaseInfos: function() {
       this.$store.dispatch("setUnits", units);
-      this.$store.dispatch("setAbilities", abilities);
+      // this.$store.dispatch("setAbilities", abilities);
       this.$store.dispatch("setTeams", counters);
     },
     getPlayersTest: function() {
