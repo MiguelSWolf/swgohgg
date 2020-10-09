@@ -120,7 +120,7 @@ import cardUnit from "../components/unit";
 export default {
   data() {
     return {
-      simpleView: true
+      simpleView: false
     };
   },
   components: { cardUnit },
