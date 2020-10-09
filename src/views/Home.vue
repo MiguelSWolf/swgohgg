@@ -12,7 +12,7 @@
                 <div class="field">
                   <input
                     class="input is-fullwidth is-large"
-                    v-model="attackCode"
+                    v-model.trim="attackCode"
                   />
                 </div>
                 <div class="field">
@@ -35,7 +35,7 @@
                 <div class="field">
                   <input
                     class="input is-fullwidth is-large"
-                    v-model="defenceCode"
+                    v-model.trim="defenceCode"
                   />
                 </div>
                 <div class="field">
