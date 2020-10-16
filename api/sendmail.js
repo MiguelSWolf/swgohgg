@@ -1,5 +1,6 @@
 const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const key = process.env.SENDGRID_API_KEY;
+sgMail.setApiKey(key);
 const msg = {
   to: "soulmiguel@gmail.com",
   from: "soulmiguel@gmail.com", // Use the email address or domain you verified above
@@ -37,7 +38,9 @@ const handler = async function(request, response) {
       console.error();
       response.statusCode = 500;
       response.setHeader("Content-Type", `application/json`);
-      response.end(JSON.stringify({ message: "error!", error: error }));
+      response.end(
+        JSON.stringify({ message: "error!", error: error, debug: { key: key } })
+      );
     });
 };
 
