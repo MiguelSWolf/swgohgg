@@ -70,12 +70,21 @@
             </div>
             <div class="field-body">
               <div class="control">
-                <input
-                  class="input is-large"
-                  v-model="formPoints.value"
-                  type="number"
-                  placeholder="Text input"
-                />
+                <div class="field has-addons">
+                  <div class="control">
+                    <input
+                      class="input is-large"
+                      v-model="formPoints.value"
+                      type="number"
+                      placeholder="Text input"
+                    />
+                  </div>
+                  <div class="control">
+                    <a class="button is-large is-static">
+                      000.000
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -103,6 +112,12 @@
             :pointsMade="pointsMade"
             :name="`phase${n}.${zone}`"
           />
+          <div class="text">
+            <p v-for="(points, index) in tb['phase' + n][zone]" :key="points">
+              {{ formatNumber(points) }} to
+              <span v-for="n in index + 1" :key="n">*</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -155,6 +170,9 @@ export default {
       this.pointsMade = JSON.parse(localStorage.getItem("pointsMadeLS"));
   },
   methods: {
+    formatNumber(number) {
+      return new Intl.NumberFormat().format(number);
+    },
     cancelModal: function() {
       this.formPoints.show = false;
     },
@@ -191,7 +209,9 @@ export default {
       width: 24vw;
       padding: 5px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
       &:last-child {
         border-bottom: none;
       }
