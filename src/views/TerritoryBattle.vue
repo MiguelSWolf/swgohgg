@@ -136,11 +136,7 @@ export default {
           bottom: [117510000, 268600000, 335750000]
         }
       },
-      pointsMade: [
-        { day: "1", zone: "phase1.top", value: 42475000 },
-        { day: "1", zone: "phase1.top", value: 42475000 },
-        { day: "2", zone: "phase1.top", value: 90000000 }
-      ],
+      pointsMade: [],
       formPoints: {
         show: false,
         day: 1,
@@ -148,6 +144,15 @@ export default {
         value: 0
       }
     };
+  },
+  watch: {
+    pointsMade(newVal) {
+      localStorage.setItem("pointsMadeLS", JSON.stringify(newVal));
+    }
+  },
+  mounted() {
+    if (localStorage.pointsMadeLS)
+      this.pointsMade = JSON.parse(localStorage.getItem("pointsMadeLS"));
   },
   methods: {
     cancelModal: function() {
