@@ -162,7 +162,7 @@ export default {
       this.pointsMade.push({
         day: this.formPoints.day,
         zone: this.formPoints.zone,
-        value: parseInt(this.formPoints.value)
+        value: parseInt(this.formPoints.value) * 1000000
       });
       this.cancelModal();
     },
