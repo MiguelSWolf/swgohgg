@@ -30,7 +30,14 @@
                       :class="{ 'is-info': n == formPoints.day }"
                       @click.prevent="formPoints.day = n"
                     >
-                      <span>{{ n }}º Day</span>
+                      <span
+                        >{{
+                          `${n}${n == 1 ? "st" : ""}${n == 2 ? "nd" : ""}${
+                            n == 3 ? "rd" : ""
+                          }${n == 4 ? "th" : ""}`
+                        }}
+                        Day</span
+                      >
                     </button>
                   </p>
                 </div>
