@@ -1,13 +1,5 @@
 <template>
   <div class="progress">
-    <div
-      v-for="(step, index) in pointsNeeded"
-      :key="index"
-      class="step"
-      :style="{ width: `${(step / total) * 100}%` }"
-    >
-      <!-- {{ step }} -->
-    </div>
     <div class="fill-bar">
       <div
         v-for="n in 4"
@@ -15,6 +7,14 @@
         :class="`days day${n}`"
         :style="{ width: `${(pointsMadeInZone[n - 1] / total) * 100}%` }"
       ></div>
+    </div>
+    <div
+      v-for="(step, index) in pointsNeeded"
+      :key="index"
+      class="step"
+      :style="{ width: `${(step / total) * 100}%` }"
+    >
+      <!-- {{ step }} -->
     </div>
   </div>
 </template>
@@ -69,16 +69,16 @@ export default {
     .days {
       height: 100%;
       &.day1 {
-        background-color: red;
+        background-color: #ed553b;
       }
       &.day2 {
-        background-color: blue;
+        background-color: #f6d55c;
       }
       &.day3 {
-        background-color: green;
+        background-color: #3caea3;
       }
       &.day4 {
-        background-color: purple;
+        background-color: #20639b;
       }
     }
   }

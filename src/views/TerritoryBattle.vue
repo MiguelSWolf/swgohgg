@@ -81,7 +81,7 @@
                   </div>
                   <div class="control">
                     <a class="button is-large is-static">
-                      000.000
+                      in millions
                     </a>
                   </div>
                 </div>
@@ -111,11 +111,16 @@
             :pointsNeeded="tb['phase' + n][zone]"
             :pointsMade="pointsMade"
             :name="`phase${n}.${zone}`"
+            :style="{
+              width: `${(tb['phase' + n].total[zone] /
+                tb['phase' + n].total.max) *
+                100}%`
+            }"
           />
           <div class="text">
             <p v-for="(points, index) in tb['phase' + n][zone]" :key="points">
               {{ formatNumber(points) }} to
-              <span v-for="n in index + 1" :key="n">*</span>
+              <span class="star" v-for="n in index + 1" :key="n"></span>
             </p>
           </div>
         </div>
@@ -133,22 +138,46 @@ export default {
         phase1: {
           top: [42475000, 84950000, 141580000],
           middle: [110240000, 166640000, 256370000],
-          bottom: [86275000, 120425000, 179740000]
+          bottom: [86275000, 120425000, 179740000],
+          total: {
+            top: 0,
+            middle: 0,
+            bottom: 0,
+            max: 0
+          }
         },
         phase2: {
           top: [71075000, 133535000, 215380000],
           middle: [96220000, 174235000, 260055000],
-          bottom: [121030000, 217235000, 310335000]
+          bottom: [121030000, 217235000, 310335000],
+          total: {
+            top: 0,
+            middle: 0,
+            bottom: 0,
+            max: 0
+          }
         },
         phase3: {
           top: [91395000, 152325000, 217610000],
           middle: [132310000, 257065000, 378035000],
-          bottom: [110615000, 165925000, 221230000]
+          bottom: [110615000, 165925000, 221230000],
+          total: {
+            top: 0,
+            middle: 0,
+            bottom: 0,
+            max: 0
+          }
         },
         phase4: {
           top: [122490000, 340255000, 453670000],
           middle: [152945000, 270930000, 436980000],
-          bottom: [117510000, 268600000, 335750000]
+          bottom: [117510000, 268600000, 335750000],
+          total: {
+            top: 0,
+            middle: 0,
+            bottom: 0,
+            max: 0
+          }
         }
       },
       pointsMade: [],
@@ -168,6 +197,32 @@ export default {
   mounted() {
     if (localStorage.pointsMadeLS)
       this.pointsMade = JSON.parse(localStorage.getItem("pointsMadeLS"));
+    for (const index in this.tb) {
+      const phase = this.tb[index];
+      let max = 0;
+      this.tb[index].total.top = phase.top.reduce(
+        (accumulator, currentValue) => {
+          accumulator += currentValue;
+          if (max < accumulator) max = accumulator;
+          return accumulator;
+        }
+      );
+      this.tb[index].total.middle = phase.middle.reduce(
+        (accumulator, currentValue) => {
+          accumulator += currentValue;
+          if (max < accumulator) max = accumulator;
+          return accumulator;
+        }
+      );
+      this.tb[index].total.bottom = phase.bottom.reduce(
+        (accumulator, currentValue) => {
+          accumulator += currentValue;
+          if (max < accumulator) max = accumulator;
+          return accumulator;
+        }
+      );
+      this.tb[index].total.max = max;
+    }
   },
   methods: {
     formatNumber(number) {
@@ -193,37 +248,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-.map {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  & > div {
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    & > div {
-      border: none;
-      border-bottom: 1px solid #ccc;
-      height: 200px;
-      width: 24vw;
-      padding: 5px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      flex-direction: column;
-      &:last-child {
-        border-bottom: none;
-      }
-    }
-  }
-}
-.modal {
-  &:before {
-    display: none;
-  }
-}
-.label {
-  color: #333;
-}
-</style>
