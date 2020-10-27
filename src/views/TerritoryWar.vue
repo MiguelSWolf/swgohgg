@@ -1,16 +1,6 @@
 <template>
   <div class="territorywar">
     <section class="section">
-      <!-- <div class="tabs is-large">
-        <ul>
-          <li :class="{ 'is-active': !showTabMatchmaker }">
-            <a @click.prevent="showTabMatchmaker = false">Counters</a>
-          </li>
-          <li :class="{ 'is-active': showTabMatchmaker }">
-            <a @click.prevent="showTabMatchmaker = true">MatchMaker</a>
-          </li>
-        </ul>
-      </div> -->
       <div class="container">
         <table
           class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
@@ -20,16 +10,24 @@
             <th v-for="team in teams" :key="team.name">
               {{ team.name }} ({{ team.count }}/50)
             </th>
+            <th>Del</th>
           </tr>
-          <tr v-for="row in resultTeams" :key="row.name">
+          <tr v-for="row in orderTeams" :key="row.name">
             <td>
-              <a target="_blank" :href="row.url">{{ row.name }}</a>
+              <a target="_blank" :href="row.url">{{ row.name }} </a>
             </td>
             <td v-for="team in teams" :key="team.name">
               <div class="has-text-success icon" v-if="row[team.name]">
                 <iconCheck />
               </div>
               <div class="has-text-danger icon" v-else><iconCross /></div>
+            </td>
+            <td>
+              <a @click="removePlayer(row.name)" class="button is-small">
+                <span class="icon is-small">
+                  <iconTrash />
+                </span>
+              </a>
             </td>
           </tr>
         </table>
@@ -58,17 +56,20 @@
 import guild from "../assets/7545.json";
 import iconCheck from "../components/checkIcon";
 import iconCross from "../components/crossIcon";
+import iconTrash from "../components/trashIcon";
 
 export default {
   name: "Home",
-  components: { iconCheck, iconCross },
+  components: { iconCheck, iconCross, iconTrash },
   data() {
     return {
       guildCode: 7545,
+      guildData: {
+        players: []
+      },
       teams: [
         {
           name: "DR",
-          count: 0,
           lead: "DARTHREVAN",
           mandatoryUnits: {
             DARTHREVAN: { gear: 12 },
@@ -83,7 +84,6 @@ export default {
         },
         {
           name: "GG",
-          count: 0,
           lead: "GRIEVOUS",
           mandatoryUnits: {
             GRIEVOUS: { gear: 13 },
@@ -96,7 +96,6 @@ export default {
         },
         {
           name: "Padme",
-          count: 0,
           lead: "PADMEAMIDALA",
           mandatoryUnits: {
             PADMEAMIDALA: { gear: 13 },
@@ -112,7 +111,6 @@ export default {
         },
         {
           name: "JKR",
-          count: 0,
           lead: "JEDIKNIGHTREVAN",
           mandatoryUnits: {
             JEDIKNIGHTREVAN: { gear: 12 },
@@ -129,7 +127,6 @@ export default {
         },
         {
           name: "GAS",
-          count: 0,
           lead: "GENERALSKYWALKER",
           mandatoryUnits: {
             GENERALSKYWALKER: { gear: 13 },
@@ -149,9 +146,9 @@ export default {
     formatNumber(number) {
       return new Intl.NumberFormat().format(number);
     },
-    mountTeams: function(data) {
-      this.fillDefaultValue(data);
-      data.players.forEach(player => {
+    mountTeams: function() {
+      this.fillDefaultValue();
+      this.guildData.players.forEach(player => {
         this.teams.forEach(team => {
           const IndexPlayer = this.resultTeams.findIndex(
             row => row.name === player.data.name
@@ -172,8 +169,8 @@ export default {
               }
             }
             if (optionalUnitsReady >= countUnits) {
-              team.count++;
               this.resultTeams[IndexPlayer][team.name] = true;
+              this.resultTeams[IndexPlayer].teamsReady++;
             }
           }
         });
@@ -192,10 +189,18 @@ export default {
       });
       return unit !== undefined ? unit.data : false;
     },
-    fillDefaultValue: function(data) {
-      data.players.forEach(player => {
+    removePlayer: function(name) {
+      const index = this.resultTeams.findIndex(row => {
+        return row.name === name;
+      });
+      this.resultTeams[index].show = false;
+    },
+    fillDefaultValue: function() {
+      this.guildData.players.forEach(player => {
         let defaultObject = {
+          show: true,
           name: player.data.name,
+          teamsReady: 0,
           url: `https://swgoh.gg${player.data.url}characters/`
         };
         this.teams.forEach(team => {
@@ -209,7 +214,8 @@ export default {
       this.$http
         .get(`guild/${this.guildCode}/`)
         .then(response => {
-          this.mountTeams(response.body);
+          this.guildData = response.body;
+          this.mountTeams();
           this.loading = false;
         })
         .catch(err => {
@@ -222,12 +228,22 @@ export default {
   computed: {
     isDev() {
       return Window.isDev || false;
+    },
+    orderTeams() {
+      let cloneArray = this.resultTeams.slice(0);
+      cloneArray = cloneArray.filter(row => {
+        return row.show;
+      });
+      return cloneArray.sort(function(a, b) {
+        return a.teamsReady < b.teamsReady;
+      });
     }
   },
   mounted() {
     if (this.isDev) {
       console.log("Version dev");
-      this.mountTeams(guild);
+      this.guildData = guild;
+      this.mountTeams();
     } else {
       console.log("Version prod");
       this.getGuild();
