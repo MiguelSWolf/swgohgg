@@ -23,7 +23,7 @@
           </tr>
           <tr v-for="row in resultTeams" :key="row.name">
             <td>
-              <a :href="row.url">{{ row.name }}</a>
+              <a target="_blank" :href="row.url">{{ row.name }}</a>
             </td>
             <td v-for="team in teams" :key="team.name">
               <div class="has-text-success icon" v-if="row[team.name]">
@@ -196,7 +196,7 @@ export default {
       data.players.forEach(player => {
         let defaultObject = {
           name: player.data.name,
-          url: `https://swgoh.gg/${player.data.url}characters/`
+          url: `https://swgoh.gg${player.data.url}characters/`
         };
         this.teams.forEach(team => {
           defaultObject[team.name] = false;
