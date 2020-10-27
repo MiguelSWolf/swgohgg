@@ -206,11 +206,11 @@ export default {
     },
     getGuild: function() {
       this.loading = true;
-      this.showTeams = false;
       this.$http
         .get(`guild/${this.guildCode}/`)
         .then(response => {
           this.mountTeams(response.body);
+          this.loading = true;
         })
         .catch(err => {
           console.error(err);
