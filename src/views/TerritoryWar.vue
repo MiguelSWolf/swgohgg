@@ -210,7 +210,7 @@ export default {
         .get(`guild/${this.guildCode}/`)
         .then(response => {
           this.mountTeams(response.body);
-          this.loading = true;
+          this.loading = false;
         })
         .catch(err => {
           console.error(err);
