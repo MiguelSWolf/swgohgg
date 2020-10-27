@@ -139,7 +139,8 @@ export default {
         }
       ],
       resultTeams: [],
-      loading: false
+      loading: false,
+      teamsReady: false
     };
   },
   methods: {
@@ -175,6 +176,7 @@ export default {
           }
         });
       });
+      this.teamsReady = true;
     },
     unitIsReady: function(player, idUnit, unitRequirements) {
       const unit = this.findUnit(player, idUnit);
@@ -230,6 +232,7 @@ export default {
       return Window.isDev || false;
     },
     orderTeams() {
+      if (!this.teamsReady) return [];
       let cloneArray = this.resultTeams.slice(0);
       cloneArray = cloneArray.filter(row => {
         return row.show;
