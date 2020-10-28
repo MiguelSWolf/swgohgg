@@ -67,6 +67,7 @@ export default {
       guildData: {
         players: []
       },
+      countTeams: null,
       teams: [
         {
           name: "DR",
@@ -134,6 +135,30 @@ export default {
             CT210408: { gear: 13 },
             CT7567: { gear: 13 },
             ARCTROOPER501ST: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "SLKR",
+          lead: "SUPREMELEADERKYLOREN",
+          mandatoryUnits: {
+            SUPREMELEADERKYLOREN: { gear: 13 },
+            KYLOREN: { gear: 13 },
+            KYLORENUNMASKED: { gear: 13 },
+            FIRSTORDEREXECUTIONER: { gear: 13 },
+            FIRSTORDERTROOPER: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "REY",
+          lead: "GLREY",
+          mandatoryUnits: {
+            GLREY: { gear: 13 },
+            REYJEDITRAINING: { gear: 13 },
+            REY: { gear: 13 },
+            BB8: { gear: 13 },
+            EPIXFINN: { gear: 13 }
           },
           optionalUnits: {}
         }
