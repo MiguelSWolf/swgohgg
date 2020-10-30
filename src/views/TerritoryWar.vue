@@ -7,8 +7,8 @@
         >
           <tr>
             <th>Name</th>
-            <th v-for="team in teams" :key="team.name">
-              {{ team.name }} ({{ team.count }}/50)
+            <th v-for="(team, index) in teams" :key="team.name">
+              {{ team.name }} ({{ countTeams[index] }}/50)
             </th>
             <th>Del</th>
           </tr>
@@ -67,7 +67,6 @@ export default {
       guildData: {
         players: []
       },
-      countTeams: null,
       teams: [
         {
           name: "DR",
@@ -199,11 +198,11 @@ export default {
         //     C3POLEGENDARY: { gear: 2 }
         //   }
         // },
-        // {
+        // ,{
         //   name: "Nute",
-        //   lead: "NUTEGUNRAY",
+        //   lead: "MONMOTHMA",
         //   mandatoryUnits: {
-        //     NUTEGUNRAY: { gear: 12 }
+        //     MONMOTHMA: { gear: 12 }
         //   },
         //   optionalUnits: {
         //     GLREY: { gear: 2 },
@@ -327,6 +326,18 @@ export default {
     }
   },
   computed: {
+    countTeams() {
+      let count = [];
+      this.teams.forEach(() => {
+        count.push(0);
+      });
+      this.orderTeams.forEach(row => {
+        this.teams.forEach((team, index) => {
+          if (row[team.name]) count[index]++;
+        });
+      });
+      return count;
+    },
     isDev() {
       return Window.isDev || false;
     },
