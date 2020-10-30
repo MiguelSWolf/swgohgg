@@ -162,6 +162,80 @@ export default {
           },
           optionalUnits: {}
         }
+        // {
+        //   name: "Enfys",
+        //   lead: "ENFYSNEST",
+        //   mandatoryUnits: {
+        //     ENFYSNEST: { gear: 13 }
+        //   },
+        //   optionalUnits: {
+        //     GLREY: { gear: 2 },
+        //     REYJEDITRAINING: { gear: 2 },
+        //     REY: { gear: 2 },
+        //     BB8: { gear: 2 },
+        //     EPIXFINN: { gear: 2 },
+        //     SUPREMELEADERKYLOREN: { gear: 2 },
+        //     KYLOREN: { gear: 2 },
+        //     KYLORENUNMASKED: { gear: 2 },
+        //     FIRSTORDEREXECUTIONER: { gear: 2 },
+        //     FIRSTORDERTROOPER: { gear: 2 },
+        //     GENERALSKYWALKER: { gear: 2 },
+        //     CT5555: { gear: 2 },
+        //     CT210408: { gear: 2 },
+        //     CT7567: { gear: 2 },
+        //     ARCTROOPER501ST: { gear: 2 },
+        //     OLDBENKENOBI: { gear: 2 },
+        //     HERMITYODA: { gear: 2 },
+        //     EZRABRIDGERS3: { gear: 2 },
+        //     GENERALKENOBI: { gear: 2 },
+        //     JEDIKNIGHTREVAN: { gear: 2 },
+        //     GRANDMASTERYODA: { gear: 2 },
+        //     JOLEEBINDO: { gear: 2 },
+        //     BASTILASHAN: { gear: 2 },
+        //     AHSOKATANO: { gear: 2 },
+        //     SHAAKTI: { gear: 2 },
+        //     BARRISSOFFEE: { gear: 2 },
+        //     ANAKINKNIGHT: { gear: 2 },
+        //     C3POLEGENDARY: { gear: 2 }
+        //   }
+        // },
+        // {
+        //   name: "Nute",
+        //   lead: "NUTEGUNRAY",
+        //   mandatoryUnits: {
+        //     NUTEGUNRAY: { gear: 12 }
+        //   },
+        //   optionalUnits: {
+        //     GLREY: { gear: 2 },
+        //     REYJEDITRAINING: { gear: 2 },
+        //     REY: { gear: 2 },
+        //     BB8: { gear: 2 },
+        //     EPIXFINN: { gear: 2 },
+        //     SUPREMELEADERKYLOREN: { gear: 2 },
+        //     KYLOREN: { gear: 2 },
+        //     KYLORENUNMASKED: { gear: 2 },
+        //     FIRSTORDEREXECUTIONER: { gear: 2 },
+        //     FIRSTORDERTROOPER: { gear: 2 },
+        //     GENERALSKYWALKER: { gear: 2 },
+        //     CT5555: { gear: 2 },
+        //     CT210408: { gear: 2 },
+        //     CT7567: { gear: 2 },
+        //     ARCTROOPER501ST: { gear: 2 },
+        //     OLDBENKENOBI: { gear: 2 },
+        //     HERMITYODA: { gear: 2 },
+        //     EZRABRIDGERS3: { gear: 2 },
+        //     GENERALKENOBI: { gear: 2 },
+        //     JEDIKNIGHTREVAN: { gear: 2 },
+        //     GRANDMASTERYODA: { gear: 2 },
+        //     JOLEEBINDO: { gear: 2 },
+        //     BASTILASHAN: { gear: 2 },
+        //     AHSOKATANO: { gear: 2 },
+        //     SHAAKTI: { gear: 2 },
+        //     BARRISSOFFEE: { gear: 2 },
+        //     ANAKINKNIGHT: { gear: 2 },
+        //     C3POLEGENDARY: { gear: 2 }
+        //   }
+        // }
       ],
       resultTeams: [],
       loading: false,
@@ -263,7 +337,7 @@ export default {
         return row.show;
       });
       return cloneArray.sort(function(a, b) {
-        return a.teamsReady < b.teamsReady;
+        return b.teamsReady - a.teamsReady;
       });
     }
   },
