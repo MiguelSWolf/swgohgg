@@ -16,8 +16,13 @@
             <td>
               <a target="_blank" :href="row.url">{{ row.name }} </a>
             </td>
-            <td v-for="team in teams" :key="team.name">
-              <div class="has-text-success icon" v-if="row[team.name]">
+            <td
+              v-for="team in teams"
+              :key="team.name"
+              :class="classCell(row[team.name].marked)"
+              @click="marked(team.name, row.name)"
+            >
+              <div class="has-text-success icon" v-if="row[team.name].ready">
                 <iconCheck />
               </div>
               <div class="has-text-danger icon" v-else><iconCross /></div>
@@ -245,6 +250,19 @@ export default {
     formatNumber(number) {
       return new Intl.NumberFormat().format(number);
     },
+    marked(team, player) {
+      const indexPlayer = this.resultTeams.findIndex(row => {
+        return row.name === player;
+      });
+      let value = this.resultTeams[indexPlayer][team].marked;
+      value++;
+      if (value > 2) value = 0;
+      this.resultTeams[indexPlayer][team].marked = value;
+      this.save();
+    },
+    classCell(marked) {
+      return { "is-blue": marked == 1, "is-yellow": marked == 2 };
+    },
     mountTeams: function() {
       this.fillDefaultValue();
       this.guildData.players.forEach(player => {
@@ -268,7 +286,7 @@ export default {
               }
             }
             if (optionalUnitsReady >= countUnits) {
-              this.resultTeams[IndexPlayer][team.name] = true;
+              this.resultTeams[IndexPlayer][team.name].ready = true;
               this.resultTeams[IndexPlayer].teamsReady++;
             }
           }
@@ -294,6 +312,7 @@ export default {
         return row.name === name;
       });
       this.resultTeams[index].show = false;
+      this.save();
     },
     fillDefaultValue: function() {
       this.guildData.players.forEach(player => {
@@ -304,7 +323,10 @@ export default {
           url: `https://swgoh.gg${player.data.url}characters/`
         };
         this.teams.forEach(team => {
-          defaultObject[team.name] = false;
+          defaultObject[team.name] = {
+            ready: false,
+            marked: 0
+          };
         });
         this.resultTeams.push(defaultObject);
       });
@@ -317,12 +339,19 @@ export default {
           this.guildData = response.body;
           this.mountTeams();
           this.loading = false;
+          this.save();
         })
         .catch(err => {
           console.error(err);
           alert("error!");
           this.loading = false;
         });
+    },
+    save() {
+      localStorage.setItem(
+        "territoryWarTeams",
+        JSON.stringify(this.resultTeams)
+      );
     }
   },
   computed: {
@@ -358,25 +387,44 @@ export default {
       this.guildData = guild;
       this.mountTeams();
     } else {
+      console.log(guild);
       console.log("Version prod");
-      this.getGuild();
+      if (localStorage.territoryWarTeams) {
+        this.resultTeams = JSON.parse(
+          localStorage.getItem("territoryWarTeams")
+        );
+        this.teamsReady = true;
+      } else {
+        this.getGuild();
+      }
     }
   }
 };
 </script>
 <style lang="scss">
-.list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+th {
+  text-align: center;
 }
-.listTeams {
-  .options {
+td {
+  div.icon {
+    width: 100%;
+    height: 100%;
     display: flex;
-    .unit {
-      transform: scale(0.85);
+    justify-content: center;
+    align-items: center;
+    svg {
+      width: 24px;
+      height: 24px;
     }
   }
+}
+.is-blue {
+  background: #e3ecfa;
+  color: #2160c4;
+}
+.is-yellow {
+  background: #fff8de;
+  color: #947600;
 }
 .loading {
   position: fixed;
