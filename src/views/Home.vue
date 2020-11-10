@@ -3,17 +3,14 @@
     <section class="hero">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <h1 class="title is-4">
             <div class="columns is-tablet">
               <div class="column is-3">
                 <div class="field">
                   Your Ally Code
                 </div>
                 <div class="field">
-                  <input
-                    class="input is-fullwidth is-large"
-                    v-model.trim="attackCode"
-                  />
+                  <input class="input is-fullwidth" v-model.trim="attackCode" />
                 </div>
                 <div class="field">
                   {{ attack.name }}<br />
@@ -34,7 +31,7 @@
                 </div>
                 <div class="field">
                   <input
-                    class="input is-fullwidth is-large"
+                    class="input is-fullwidth"
                     v-model.trim="defenceCode"
                   />
                 </div>
@@ -48,7 +45,7 @@
               <div class="column is-3">
                 <div class="field">Actions</div>
                 <input
-                  class="button is-info is-large is-fullwidth"
+                  class="button is-info is-fullwidth"
                   value="Search"
                   type="submit"
                   @click="getPlayers"

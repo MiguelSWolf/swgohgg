@@ -2,29 +2,17 @@
   <div class="team">
     <div class="card">
       <div class="card-content">
-        <div class="media">
-          <div class="media-left"></div>
-          <div class="media-content" style="overflow-x: initial">
-            <p class="title is-1">{{ team.title }}</p>
-            <!-- <p class="subtitle is-5">
-              Total Power: {{ formatNumber(team.power) }}
-            </p>
-            <p class="subtitle is-5">AVG Power: {{ formatNumber(team.avg) }}</p>
-            <p class="subtitle is-5">
-              Count Units: {{ formatNumber(team.count) }}
-            </p> -->
-          </div>
-        </div>
+        <p class="title is-3">{{ team.title }}</p>
         <div class="content">
           <div class="columns is-mobile is-multiline">
             <div class="column is-3">
-              <p class="title is-2">Opponent Team</p>
+              <p class="title is-4">Opponent Team</p>
               <div class="squad">
                 <card-unit :name="team.lead" />
               </div>
             </div>
             <div class="column is-9">
-              <p class="title is-2">Your Counters</p>
+              <p class="title is-4">Your Counters</p>
               <div class="pick-counters">
                 <div
                   @click.prevent="team.chosenCounter = index"

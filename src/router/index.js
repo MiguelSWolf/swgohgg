@@ -9,7 +9,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/tb",
-    name: "tb",
+    name: "tbls",
+    component: TerritoryBattle
+  },
+  {
+    path: "/tb",
+    name: "tbds",
     component: TerritoryBattle
   },
   {
@@ -19,7 +24,7 @@ const routes = [
   },
   {
     path: "/",
-    name: "Home",
+    name: "counters",
     component: Home
   }
 ];

@@ -2,6 +2,30 @@
   <div class="territorywar">
     <section class="section">
       <div class="container">
+        <form @submit.prevent="getGuild()">
+          <div class="field is-grouped is-grouped-right">
+            <p class="control">
+              <input
+                class="input"
+                type="text"
+                placeholder="Your Guild ID"
+                v-model="guildCode"
+              />
+            </p>
+            <p class="control">
+              <input type="submit" class="button is-info" value="Search" />
+            </p>
+            <p class="control">
+              <a class="button is-danger" @click.prevent="clearCache">
+                Reset
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
         <table
           class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
         >
@@ -64,11 +88,10 @@ import iconCross from "../components/crossIcon";
 import iconTrash from "../components/trashIcon";
 
 export default {
-  name: "Home",
   components: { iconCheck, iconCross, iconTrash },
   data() {
     return {
-      guildCode: 7545,
+      guildCode: "",
       guildData: {
         players: []
       },
@@ -352,6 +375,17 @@ export default {
         "territoryWarTeams",
         JSON.stringify(this.resultTeams)
       );
+      localStorage.setItem(
+        "territoryWarGuildCode",
+        JSON.stringify(this.guildCode)
+      );
+    },
+    clearCache() {
+      this.guildCode = "";
+      this.teamsReady = false;
+      this.resultTeams = [];
+      localStorage.setItem("territoryWarTeams", undefined);
+      localStorage.setItem("territoryWarGuildCode", undefined);
     }
   },
   computed: {
@@ -389,13 +423,16 @@ export default {
     } else {
       console.log(guild);
       console.log("Version prod");
+      if (localStorage.territoryWarGuildCode) {
+        this.guildCode = JSON.parse(
+          localStorage.getItem("territoryWarGuildCode")
+        );
+      }
       if (localStorage.territoryWarTeams) {
         this.resultTeams = JSON.parse(
           localStorage.getItem("territoryWarTeams")
         );
         this.teamsReady = true;
-      } else {
-        this.getGuild();
       }
     }
   }
