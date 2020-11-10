@@ -7,11 +7,11 @@
         </a>
 
         <a
+          @click="menuActive = !menuActive"
           role="button"
           class="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
-          data-target="navbarBasicExample"
         >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -19,7 +19,7 @@
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu is-active">
+      <div class="navbar-menu" :class="{ 'is-active': menuActive }">
         <div class="navbar-start">
           <router-link :to="{ name: 'counters' }" class="navbar-item">
             Grand Arena
@@ -76,18 +76,21 @@
     </footer>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      menuActive: false
+    };
+  }
+};
+</script>
 <style lang="scss">
 @import "assets/style/index";
 .navbar-brand {
-  width: 100px;
   .navbar-item {
-    position: relative;
     padding: 0;
     img {
-      /* position: absolute; */
-      /* top: 50%;
-      left: 50%; */
       max-height: 100%;
       height: 52px;
     }

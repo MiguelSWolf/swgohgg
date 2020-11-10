@@ -4,7 +4,7 @@
       <div class="container">
         <form @submit.prevent="getGuild()">
           <div class="field is-grouped is-grouped-right">
-            <p class="control">
+            <p class="control is-expanded">
               <input
                 class="input"
                 type="text"
@@ -25,7 +25,7 @@
       </div>
     </section>
     <section class="section">
-      <div class="container">
+      <div class="table-container">
         <table
           class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
         >
