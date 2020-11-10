@@ -396,7 +396,7 @@ export default {
       });
       this.orderTeams.forEach(row => {
         this.teams.forEach((team, index) => {
-          if (row[team.name]) count[index]++;
+          if (row[team.name].ready) count[index]++;
         });
       });
       return count;
