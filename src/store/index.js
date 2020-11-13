@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    showLoading: false,
     players: [],
     playerIndexAttack: 0,
     playerIndexDefence: 1,
@@ -201,6 +202,12 @@ export default new Vuex.Store({
     },
     clearPlayers(state) {
       state.players = [];
+    },
+    startLoading(state) {
+      state.showLoading = true;
+    },
+    endLoading(state) {
+      state.showLoading = false;
     }
   },
   actions: {
@@ -218,6 +225,12 @@ export default new Vuex.Store({
     },
     clearPlayers(context) {
       context.commit("clearPlayers");
+    },
+    startLoading(context) {
+      context.commit("startLoading");
+    },
+    endLoading(context) {
+      context.commit("endLoading");
     }
   },
   modules: {}
