@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import TerritoryBattle from "../views/TerritoryBattle.vue";
 import TerritoryWar from "../views/TerritoryWar.vue";
+import ModsMap from "../views/ModsMap.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/tw",
     name: "tw",
     component: TerritoryWar
+  },
+  {
+    path: "/mods",
+    name: "mods",
+    component: ModsMap
   },
   {
     path: "/",
