@@ -116,10 +116,14 @@ export default {
       }
     },
     showSpeed(stats) {
+      let value = "-";
       stats.forEach(stat => {
-        if (stat.unitStat == 5) return stat.value;
+        if (stat.unitStat == 5) {
+          console.log(stat);
+          value = stat.value;
+        }
       });
-      return "-";
+      return value;
     }
   },
   mounted() {
