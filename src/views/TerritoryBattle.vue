@@ -106,11 +106,13 @@
         </footer>
       </div>
     </form>
+    <br />
     <div class="control">
       <div class="button is-large is-primary" @click="openModal">
         Input Points
       </div>
     </div>
+    <br />
     <div class="map">
       <div v-for="n in 4" :key="n">
         <div v-for="zone in ['top', 'middle', 'bottom']" :key="zone">
@@ -133,6 +135,8 @@
         </div>
       </div>
     </div>
+    <br />
+    <br />
   </div>
 </template>
 <script>

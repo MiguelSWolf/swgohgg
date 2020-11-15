@@ -421,29 +421,3 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-th {
-  text-align: center;
-}
-td {
-  div.icon {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-  }
-}
-.is-blue {
-  background: #e3ecfa;
-  color: #2160c4;
-}
-.is-yellow {
-  background: #fff8de;
-  color: #947600;
-}
-</style>

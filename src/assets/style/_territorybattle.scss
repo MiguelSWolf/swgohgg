@@ -1,0 +1,50 @@
+.territory-battle {
+    .map {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      & > div {
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        & > div {
+          border: none;
+          border-bottom: 1px solid #ccc;
+          height: 200px;
+          width: 24vw;
+          padding: 5px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex-direction: column;
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+    .modal {
+      &:before {
+        display: none;
+      }
+    }
+    .label {
+      color: #333;
+    }
+    .text {
+      p {
+        margin-bottom: 0;
+        display: flex;
+      }
+      .star {
+        width:15px;
+        height:15px;
+        color:#000;
+        background:center 0 transparent url(https://swgoh.gg/static/img/star.png) no-repeat;
+        background-size:100%;
+        position: static;
+        margin-left: 3px;
+      }
+    }
+  }
+  
