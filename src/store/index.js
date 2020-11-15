@@ -6,6 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     showLoading: false,
+    showMenu: false,
+    darkMode: false,
     players: [],
     playerIndexAttack: 0,
     playerIndexDefence: 1,
@@ -208,6 +210,16 @@ export default new Vuex.Store({
     },
     endLoading(state) {
       state.showLoading = false;
+    },
+    setDarkMode(state) {
+      state.darkMode = true;
+      localStorage.setItem("darkMode", "true");
+      document.body.classList.add("dark");
+    },
+    setLightMode(state) {
+      state.darkMode = false;
+      localStorage.setItem("darkMode", "false");
+      document.body.classList.remove("dark");
     }
   },
   actions: {
@@ -231,6 +243,12 @@ export default new Vuex.Store({
     },
     endLoading(context) {
       context.commit("endLoading");
+    },
+    setDarkMode(context) {
+      context.commit("setDarkMode");
+    },
+    setLightMode(context) {
+      context.commit("setLightMode");
     }
   },
   modules: {}

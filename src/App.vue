@@ -57,11 +57,19 @@
               <a class="navbar-item">
                 Report an issue
               </a>
+              <hr class="navbar-divider" />
+              <a class="navbar-item" @click="setDarkMode" v-if="!darkMode">
+                Dark mode
+              </a>
+              <a class="navbar-item" @click="setLightMode" v-else>
+                Light mode
+              </a>
             </div>
           </div>
         </div>
       </div>
     </nav>
+
     <router-view />
 
     <div class="loading" v-if="showLoading">
@@ -99,22 +107,29 @@ export default {
       menuActive: false
     };
   },
+  methods: {
+    setDarkMode: function() {
+      this.$store.dispatch("setDarkMode");
+    },
+    setLightMode: function() {
+      this.$store.dispatch("setLightMode");
+    }
+  },
   computed: {
     showLoading() {
       return this.$store.state.showLoading;
+    },
+    darkMode() {
+      return this.$store.state.darkMode;
+    }
+  },
+  mounted() {
+    if (localStorage.darkMode && localStorage.getItem("darkMode") == "true") {
+      this.setDarkMode();
     }
   }
 };
 </script>
 <style lang="scss">
 @import "assets/style/index";
-.navbar-brand {
-  .navbar-item {
-    padding: 0;
-    img {
-      max-height: 100%;
-      height: 52px;
-    }
-  }
-}
 </style>

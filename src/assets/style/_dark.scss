@@ -1,0 +1,49 @@
+body.dark {
+    background: $dark;
+    color: $light;
+    
+    .table,
+    .table th {
+        background-color: $dark;
+        color: $light;
+    }
+    .navbar.is-dark {
+        background-color: $black-bis;
+    }
+    .footer {
+        background-color: $black-ter;
+        color: $light;
+        border-top: 1px solid $light;
+    }
+    .button,
+    .button.is-info,
+    .button.is-danger,
+    .button.is-primary,
+    .button.is-success {
+        color: $light;
+        background: $dark;
+        border: 1px solid $light;
+        &:hover {
+            color: $light;
+            background: $black-ter;
+            border: 1px solid $light;
+        }
+    }
+    .input {
+        background: $dark;
+        color: $light 
+    }
+    .title {
+        color: $light;
+    }
+    .has-text-success,
+    .has-text-danger {
+        color: $light !important;
+    }
+    .territorywar {
+        td a {
+            font-weight: 700;
+            color: $light;
+        }
+    }
+}
