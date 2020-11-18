@@ -5,13 +5,13 @@
         <p class="title is-3">{{ team.title }}</p>
         <div class="content">
           <div class="columns is-mobile is-multiline">
-            <div class="column is-3">
+            <div class="column is-3-tablet is-6-mobile">
               <p class="title is-4">Opponent Team</p>
               <div class="squad">
                 <card-unit :name="team.lead" />
               </div>
             </div>
-            <div class="column is-9">
+            <div class="column is-9-tablet is-6-mobile">
               <p class="title is-4">Your Counters</p>
               <div class="pick-counters">
                 <div

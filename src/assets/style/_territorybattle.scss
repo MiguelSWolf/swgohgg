@@ -1,50 +1,89 @@
 .territory-battle {
-    .map {
+  font-size: 12px;
+  .map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    & > div {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
+      width: 100%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
       & > div {
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        & > div {
-          border: none;
-          border-bottom: 1px solid #ccc;
-          height: 200px;
-          width: 24vw;
-          padding: 5px;
-          display: flex;
-          align-items: flex-start;
-          justify-content: center;
-          flex-direction: column;
-          &:last-child {
-            border-bottom: none;
+        flex: 1 1 33%;
+        border: none;
+        border-right: 1px solid #ccc;
+        height: 200px;
+        width: 24vw;
+        padding: 5px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        &:last-child {
+          border-right: none;
+        }
+        &.map-title {
+          flex: 0 0 20px;
+          font-size: 22px;
+          font-weight: 700;
+          line-height: 22px;
+          word-break: break-word;
+          span {
+            padding-top: 10px;
           }
         }
       }
     }
-    .modal {
-      &:before {
-        display: none;
-      }
+  }
+  .modal {
+    &:before {
+      display: none;
     }
-    .label {
-      color: #333;
+  }
+  .label {
+    color: #333;
+  }
+  .text {
+    p {
+      margin-bottom: 0;
+      display: flex;
     }
-    .text {
-      p {
-        margin-bottom: 0;
-        display: flex;
-      }
-      .star {
-        width:15px;
-        height:15px;
-        color:#000;
-        background:center 0 transparent url(https://swgoh.gg/static/img/star.png) no-repeat;
-        background-size:100%;
-        position: static;
-        margin-left: 3px;
+    .star {
+      width:10px;
+      height:10px;
+      color:#000;
+      background:center 0 transparent url(https://swgoh.gg/static/img/star.png) no-repeat;
+      background-size:100%;
+      position: static;
+      margin-left: 1px;
+    }
+  }
+  @include tablet {
+    font-size: 16px;
+    .map {
+      flex-direction: row;
+      & > div {
+        display: block;
+        width: auto;
+        & > div {
+          border: none;
+          border-bottom: 1px solid #ccc;
+          &:last-child {
+            border-bottom: none;
+          }
+          &.map-title {
+            height: 40px;
+            flex-direction: row;
+            span {
+              padding-top: 0px;
+              padding-left: 10px;
+            }
+          }
+        }
       }
     }
   }
-  
+}

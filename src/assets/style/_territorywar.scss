@@ -1,4 +1,4 @@
-.territory-war {
+.territorywar {
     th {
         text-align: center;
     }
@@ -14,13 +14,13 @@
                 height: 24px;
             }
         }
+        &.is-blue {
+            background: #e3ecfa !important;
+            color: #2160c4 !important;
+        }
+        &.is-yellow {
+            background: #fff8de !important;
+            color: #947600 !important;
+        }  
     }
-    .is-blue {
-        background: #e3ecfa;
-        color: #2160c4;
-    }
-    .is-yellow {
-        background: #fff8de;
-        color: #947600;
-    }  
 }

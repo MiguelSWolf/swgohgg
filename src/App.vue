@@ -38,9 +38,9 @@
               <router-link :to="{ name: 'tbls' }" class="navbar-item">
                 Light side
               </router-link>
-              <router-link :to="{ name: 'tbds' }" class="navbar-item">
+              <!-- <router-link :to="{ name: 'tbds' }" class="navbar-item">
                 Dark side
-              </router-link>
+              </router-link> -->
             </div>
           </div>
 

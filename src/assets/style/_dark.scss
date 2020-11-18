@@ -40,10 +40,26 @@ body.dark {
     .has-text-danger {
         color: $light !important;
     }
+    .is-blue,
+    .is-yellow {
+        border: 3px solid currentColor;
+        .has-text-success,
+        .has-text-danger {
+            color: $dark !important;
+        }
+    }
     .territorywar {
         td a {
             font-weight: 700;
             color: $light;
+        }
+    }
+    .card {
+        background: $grey;
+        border: 1px solid $light;
+        color: $light;
+        .collection-char-name-link {
+            color: inherit
         }
     }
 }

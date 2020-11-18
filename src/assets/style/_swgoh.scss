@@ -981,6 +981,9 @@ img {
 	text-align: center;
 	font-weight: 700;
 	width: 100%;
+	@include mobile {
+		font-size: 14px;
+	}
 }
 .collection-char-name-link {
 	color: #333;

@@ -115,6 +115,9 @@
     <br />
     <div class="map">
       <div v-for="n in 4" :key="n">
+        <div class="map-title">
+          Phase <span>{{ n }}</span>
+        </div>
         <div v-for="zone in ['top', 'middle', 'bottom']" :key="zone">
           <progressBar
             :pointsNeeded="tb['phase' + n][zone]"
@@ -237,7 +240,8 @@ export default {
   },
   methods: {
     formatNumber(number) {
-      return new Intl.NumberFormat().format(number);
+      let str = new Intl.NumberFormat().format(number / 1000) + "K";
+      return str;
     },
     cancelModal: function() {
       this.formPoints.show = false;

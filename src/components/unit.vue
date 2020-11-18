@@ -170,33 +170,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.collection-char {
-  position: relative;
-  width: 104px;
-  padding: 10px;
-}
-.unit {
-  display: flex;
-  .unit-stats {
-    padding: 10px 0;
-    margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-  &.is-full {
-    justify-content: flex-end;
-  }
-  &.is-counter {
-    flex-direction: row-reverse;
-    .unit-stats {
-      align-items: flex-end;
-      margin-left: 0px;
-      margin-right: 10px;
-    }
-  }
-}
-</style>
