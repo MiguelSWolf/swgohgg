@@ -34,6 +34,7 @@
             <th v-for="(team, index) in teams" :key="team.name">
               {{ team.name }} ({{ countTeams[index] }}/{{ orderTeams.length }})
             </th>
+            <th>Bag Ratio</th>
             <th>Del</th>
           </tr>
           <tr v-for="row in orderTeams" :key="row.name">
@@ -51,6 +52,7 @@
               </div>
               <div class="has-text-danger icon" v-else><iconCross /></div>
             </td>
+            <td>{{ formatNumber(row.ratio) }}</td>
             <td>
               <a @click="removePlayer(row.name)" class="button is-small">
                 <span class="icon is-small">
@@ -83,6 +85,7 @@ export default {
         {
           name: "DR",
           lead: "DARTHREVAN",
+          weight: 1,
           mandatoryUnits: {
             DARTHREVAN: { gear: 12 },
             DARTHMALAK: { gear: 12 },
@@ -97,6 +100,7 @@ export default {
         {
           name: "GG",
           lead: "GRIEVOUS",
+          weight: 1,
           mandatoryUnits: {
             GRIEVOUS: { gear: 13 },
             B1BATTLEDROIDV2: { gear: 12 },
@@ -109,6 +113,7 @@ export default {
         {
           name: "Padme",
           lead: "PADMEAMIDALA",
+          weight: 1,
           mandatoryUnits: {
             PADMEAMIDALA: { gear: 13 },
             GENERALKENOBI: { gear: 13 },
@@ -124,6 +129,7 @@ export default {
         {
           name: "JKR",
           lead: "JEDIKNIGHTREVAN",
+          weight: 1,
           mandatoryUnits: {
             JEDIKNIGHTREVAN: { gear: 12 },
             GRANDMASTERYODA: { gear: 12 },
@@ -140,6 +146,7 @@ export default {
         {
           name: "GAS",
           lead: "GENERALSKYWALKER",
+          weight: 1,
           mandatoryUnits: {
             GENERALSKYWALKER: { gear: 13 },
             CT5555: { gear: 13 },
@@ -152,6 +159,7 @@ export default {
         {
           name: "SLKR",
           lead: "SUPREMELEADERKYLOREN",
+          weight: 2,
           mandatoryUnits: {
             SUPREMELEADERKYLOREN: { gear: 13 },
             KYLOREN: { gear: 13 },
@@ -164,6 +172,7 @@ export default {
         {
           name: "REY",
           lead: "GLREY",
+          weight: 2,
           mandatoryUnits: {
             GLREY: { gear: 13 },
             REYJEDITRAINING: { gear: 13 },
@@ -172,44 +181,33 @@ export default {
             EPIXFINN: { gear: 13 }
           },
           optionalUnits: {}
+        },
+        {
+          name: "JML",
+          lead: "GRANDMASTERLUKE",
+          weight: 2,
+          mandatoryUnits: {
+            GRANDMASTERLUKE: { gear: 13 },
+            MONMOTHMA: { gear: 13 },
+            JEDIKNIGHTLUKE: { gear: 13 },
+            REYJEDITRAINING: { gear: 13 },
+            C3POLEGENDARY: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "SEE",
+          lead: "SITHPALPATINE",
+          weight: 2,
+          mandatoryUnits: {
+            SITHPALPATINE: { gear: 13 },
+            EMPERORPALPATINE: { gear: 13 },
+            ADMIRALPIETT: { gear: 13 },
+            VADER: { gear: 13 },
+            COUNTDOOKU: { gear: 13 }
+          },
+          optionalUnits: {}
         }
-        // {
-        //   name: "Enfys",
-        //   lead: "ENFYSNEST",
-        //   mandatoryUnits: {
-        //     ENFYSNEST: { gear: 13 }
-        //   },
-        //   optionalUnits: {
-        //     GLREY: { gear: 2 },
-        //     REYJEDITRAINING: { gear: 2 },
-        //     REY: { gear: 2 },
-        //     BB8: { gear: 2 },
-        //     EPIXFINN: { gear: 2 },
-        //     SUPREMELEADERKYLOREN: { gear: 2 },
-        //     KYLOREN: { gear: 2 },
-        //     KYLORENUNMASKED: { gear: 2 },
-        //     FIRSTORDEREXECUTIONER: { gear: 2 },
-        //     FIRSTORDERTROOPER: { gear: 2 },
-        //     GENERALSKYWALKER: { gear: 2 },
-        //     CT5555: { gear: 2 },
-        //     CT210408: { gear: 2 },
-        //     CT7567: { gear: 2 },
-        //     ARCTROOPER501ST: { gear: 2 },
-        //     OLDBENKENOBI: { gear: 2 },
-        //     HERMITYODA: { gear: 2 },
-        //     EZRABRIDGERS3: { gear: 2 },
-        //     GENERALKENOBI: { gear: 2 },
-        //     JEDIKNIGHTREVAN: { gear: 2 },
-        //     GRANDMASTERYODA: { gear: 2 },
-        //     JOLEEBINDO: { gear: 2 },
-        //     BASTILASHAN: { gear: 2 },
-        //     AHSOKATANO: { gear: 2 },
-        //     SHAAKTI: { gear: 2 },
-        //     BARRISSOFFEE: { gear: 2 },
-        //     ANAKINKNIGHT: { gear: 2 },
-        //     C3POLEGENDARY: { gear: 2 }
-        //   }
-        // },
         // ,{
         //   name: "Nute",
         //   lead: "MONMOTHMA",
@@ -293,7 +291,7 @@ export default {
             }
             if (optionalUnitsReady >= countUnits) {
               this.resultTeams[IndexPlayer][team.name].ready = true;
-              this.resultTeams[IndexPlayer].teamsReady++;
+              this.resultTeams[IndexPlayer].teamsReady += team.weight;
             }
           }
         });
@@ -326,6 +324,8 @@ export default {
           show: true,
           name: player.data.name,
           teamsReady: 0,
+          power: player.data.galactic_power,
+          ratio: 0,
           url: `https://swgoh.gg${player.data.url}characters/`
         };
         this.teams.forEach(team => {
@@ -393,8 +393,11 @@ export default {
       cloneArray = cloneArray.filter(row => {
         return row.show;
       });
+      cloneArray.forEach(team => {
+        team.ratio = (team.teamsReady * 1000000) / team.power;
+      });
       return cloneArray.sort(function(a, b) {
-        return b.teamsReady - a.teamsReady;
+        return b.ratio - a.ratio;
       });
     }
   },
