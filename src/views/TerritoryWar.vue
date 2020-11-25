@@ -32,7 +32,7 @@
           <tr>
             <th>Name</th>
             <th v-for="(team, index) in teams" :key="team.name">
-              {{ team.name }} ({{ countTeams[index] }}/50)
+              {{ team.name }} ({{ countTeams[index] }}/{{ orderTeams.length }})
             </th>
             <th>Del</th>
           </tr>
