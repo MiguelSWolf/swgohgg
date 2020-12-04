@@ -30,65 +30,24 @@
     <section class="section">
       <div class="table-container">
         <h2>Units</h2>
-        <table
-          class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
-        >
-          <tr>
-            <th>Name</th>
-            <th>Your</th>
-            <th>Opponent</th>
-            <th>Balance</th>
-          </tr>
-          <tr v-for="row in resumeToons" :key="row.name">
-            <th>{{ row.name }}</th>
-            <td>{{ row.your }}</td>
-            <td>{{ row.opponent }}</td>
-            <td>{{ row.balance }}</td>
-          </tr>
-        </table>
+        <table-balance :data="resumeToons" />
 
         <h2>Mods</h2>
-        <table
-          class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
-        >
-          <tr>
-            <th>Name</th>
-            <th>Your</th>
-            <th>Opponent</th>
-            <th>Balance</th>
-          </tr>
-          <tr v-for="row in resumeMods" :key="row.name">
-            <th>{{ row.name }}</th>
-            <td>{{ row.your }}</td>
-            <td>{{ row.opponent }}</td>
-            <td>{{ row.balance }}</td>
-          </tr>
-        </table>
+        <table-balance :data="resumeMods" />
 
         <h2>Gears</h2>
-        <table
-          class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
-        >
-          <tr>
-            <th>Name</th>
-            <th>Your</th>
-            <th>Opponent</th>
-            <th>Balance</th>
-          </tr>
-          <tr v-for="row in resumeGears" :key="row.name">
-            <th>{{ row.name }}</th>
-            <td>{{ row.your }}</td>
-            <td>{{ row.opponent }}</td>
-            <td>{{ row.balance }}</td>
-          </tr>
-        </table>
+        <table-balance :data="resumeGears" />
       </div>
     </section>
   </div>
 </template>
 
 <script>
+import TableBalance from "../components/tablaBalance";
 export default {
+  components: {
+    TableBalance
+  },
   data() {
     return {
       yourGuild: {
@@ -206,6 +165,7 @@ export default {
     getGuild() {
       const apiYour = `/api/guild/${this.yourGuild.code}`;
       const apiOpponent = `/api/guild/${this.opponentGuild.code}`;
+      this.$store.dispatch("startLoading");
       this.$http.get(apiYour).then(responseYour => {
         this.yourGuild.players = responseYour.body.players;
         this.yourGuild.mods = responseYour.body.mods;
@@ -213,6 +173,7 @@ export default {
           this.opponentGuild.players = responseOpponent.body.players;
           this.opponentGuild.mods = responseOpponent.body.mods;
           this.countResumeToons();
+          this.$store.dispatch("endLoading");
         });
       });
     }
@@ -277,7 +238,7 @@ export default {
     this.fillResumeGears();
     if (this.isDev) {
       console.log("Version dev");
-      this.$http.get(`/api/guild/568739525`).then(({ body }) => {
+      this.$http.get(`/api/guild/1`).then(({ body }) => {
         this.yourGuild.players = body.players;
         this.opponentGuild.players = body.players;
         this.yourGuild.mods = body.mods;

@@ -8,7 +8,7 @@ const swapi = new ApiSwgohHelp({
   dump: true
 });
 const getAllPlayersIds = async id => {
-  if (process.env.NODE_ENV == "development") return;
+  if (id == "1") return "development";
   const payload = { allycodes: [id] };
   let { result, error } = await swapi.fetchGuild(payload);
   if (error) {
@@ -23,7 +23,7 @@ const getAllPlayersIds = async id => {
 };
 
 const getInfoPlayers = async members => {
-  if (process.env.NODE_ENV == "development") {
+  if (members == "development") {
     return staticData.return;
   }
   let { result, error } = await swapi.fetchPlayer({ allycodes: members });
