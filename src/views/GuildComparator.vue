@@ -92,13 +92,13 @@ export default {
   data() {
     return {
       yourGuild: {
-        code: "",
+        code: "724522764",
         name: "",
         players: [],
         mods: []
       },
       opponentGuild: {
-        code: "",
+        code: "568739525",
         name: "",
         players: [],
         mods: []
@@ -189,7 +189,7 @@ export default {
               indexToon = this.countToons.length;
               this.countToons.push(this.fillToon(unit.id));
             }
-            this.countToons[indexToon].your[unit.gear]++;
+            this.countToons[indexToon][index][unit.gear]++;
             this.countGear(unit.gear, unit.relic, index);
           });
         });
@@ -202,6 +202,19 @@ export default {
       this.resumeGears.push({ name: "Tier 0~2", ...this.balanceFill });
       this.resumeGears.push({ name: "Tier 3~5", ...this.balanceFill });
       this.resumeGears.push({ name: "Tier 6~7", ...this.balanceFill });
+    },
+    getGuild() {
+      const apiYour = `/api/guild/${this.yourGuild.code}`;
+      const apiOpponent = `/api/guild/${this.opponentGuild.code}`;
+      this.$http.get(apiYour).then(responseYour => {
+        this.yourGuild.players = responseYour.body.players;
+        this.yourGuild.mods = responseYour.body.mods;
+        this.$http.get(apiOpponent).then(responseOpponent => {
+          this.opponentGuild.players = responseOpponent.body.players;
+          this.opponentGuild.mods = responseOpponent.body.mods;
+          this.countResumeToons();
+        });
+      });
     }
   },
   computed: {
@@ -217,12 +230,10 @@ export default {
           opponent: 0,
           balance: 0
         };
-        console.log(configRow.toon);
         let unit = this.countToons.find(unit => {
           return unit.toon == configRow.toon;
         });
         if (unit) {
-          console.log(unit);
           for (let i = configRow.gear; i < 23; i++) {
             row.your += unit.your[i];
             row.opponent += unit.opponent[i];
@@ -252,7 +263,7 @@ export default {
       }
       resume.push(obj);
 
-      obj = { name: "20+ speed mods", ...this.balanceFill };
+      obj = { name: "25+ speed mods", ...this.balanceFill };
       for (; i < 32; i++) {
         obj.your += this.yourGuild.mods[i] || 0;
         obj.opponent += this.opponentGuild.mods[i] || 0;
@@ -266,7 +277,7 @@ export default {
     this.fillResumeGears();
     if (this.isDev) {
       console.log("Version dev");
-      this.$http.get("/api/guild/568739525").then(({ body }) => {
+      this.$http.get(`/api/guild/568739525`).then(({ body }) => {
         this.yourGuild.players = body.players;
         this.opponentGuild.players = body.players;
         this.yourGuild.mods = body.mods;
