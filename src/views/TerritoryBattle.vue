@@ -26,7 +26,7 @@
                   <p class="control" v-for="n in 4" :key="n">
                     <button
                       type="button"
-                      class="button is-large"
+                      class="button"
                       :class="{ 'is-info': n == formPoints.day }"
                       @click.prevent="formPoints.day = n"
                     >
@@ -51,7 +51,7 @@
             </div>
             <div class="field-body">
               <div class="control">
-                <div class="select is-large">
+                <div class="select">
                   <select v-model="formPoints.zone">
                     <option value="phase1.top">Phase 1 - Top</option>
                     <option value="phase1.middle">Phase 1 - Middle</option>
@@ -80,14 +80,14 @@
                 <div class="field has-addons">
                   <div class="control">
                     <input
-                      class="input is-large"
+                      class="input"
                       v-model="formPoints.value"
                       type="number"
                       placeholder="Text input"
                     />
                   </div>
                   <div class="control">
-                    <a class="button is-large is-static">
+                    <a class="button is-static">
                       in millions
                     </a>
                   </div>
@@ -97,12 +97,8 @@
           </div>
         </section>
         <footer class="modal-card-foot">
-          <input
-            type="submit"
-            class="button is-success is-large"
-            value="Save changes"
-          />
-          <button class="button is-large" @click="cancelModal">Cancel</button>
+          <input type="submit" class="button is-success" value="Save changes" />
+          <button class="button" @click="cancelModal">Cancel</button>
         </footer>
       </div>
     </form>
