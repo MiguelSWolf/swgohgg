@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import players from "../assets/swgohhelp-166159449.json";
+import players from "../assets/swgohhelp-182564917.json";
 export default {
   data() {
     return {
