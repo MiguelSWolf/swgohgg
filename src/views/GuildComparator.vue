@@ -238,13 +238,13 @@ export default {
     this.fillResumeGears();
     if (this.isDev) {
       console.log("Version dev");
-      this.$http.get(`/api/guild/1`).then(({ body }) => {
-        this.yourGuild.players = body.players;
-        this.opponentGuild.players = body.players;
-        this.yourGuild.mods = body.mods;
-        this.opponentGuild.mods = body.mods;
-        this.countResumeToons();
-      });
+      // this.$http.get(`/api/guild/1`).then(({ body }) => {
+      //   this.yourGuild.players = body.players;
+      //   this.opponentGuild.players = body.players;
+      //   this.yourGuild.mods = body.mods;
+      //   this.opponentGuild.mods = body.mods;
+      //   this.countResumeToons();
+      // });
     } else {
       console.log("Version prod");
     }

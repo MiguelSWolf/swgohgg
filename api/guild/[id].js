@@ -26,11 +26,40 @@ const getInfoPlayers = async members => {
   if (members == "development") {
     return staticData.return;
   }
-  let { result, error } = await swapi.fetchPlayer({ allycodes: members });
-  if (error) {
-    throw error;
-  }
-  return result;
+  console.log("Primeiros 10");
+  let antes = Date.now();
+  let query1 = await swapi.fetchPlayer({ allycodes: members.slice(0, 10) });
+  let duracao = Date.now() - antes;
+  console.log("levou " + duracao / 1000 + " s");
+  console.log("Do 10 ao 20");
+  antes = Date.now();
+  let query2 = await swapi.fetchPlayer({ allycodes: members.slice(10, 20) });
+  duracao = Date.now() - antes;
+  console.log("levou " + duracao / 1000 + " s");
+  console.log("Do 20 ao 30");
+  antes = Date.now();
+  let query3 = await swapi.fetchPlayer({ allycodes: members.slice(20, 30) });
+  duracao = Date.now() - antes;
+  console.log("levou " + duracao / 1000 + " s");
+  console.log("Do 30 ao 40");
+  antes = Date.now();
+  let query4 = await swapi.fetchPlayer({ allycodes: members.slice(30, 40) });
+  duracao = Date.now() - antes;
+  console.log("levou " + duracao / 1000 + " s");
+  console.log("Ultimos 10");
+  antes = Date.now();
+  let query5 = await swapi.fetchPlayer({ allycodes: members.slice(40) });
+  duracao = Date.now() - antes;
+  console.log("levou " + duracao / 1000 + " s");
+  // if (error) {
+  //   throw error;
+  // }
+  return query1.result.concat(
+    query2.result,
+    query3.result,
+    query4.result,
+    query5.result
+  );
 };
 
 const countMods = mods => {
@@ -63,10 +92,14 @@ const sanatizeToon = toonRaw => {
 };
 
 export default async (request, response) => {
+  console.log("========================");
   await swapi.connect();
   const { id } = request.query;
   const membersId = await getAllPlayersIds(id);
   const players = await getInfoPlayers(membersId);
+  // console.log(players);
+
+  console.log("Começou a calcular");
   let playersSanitize = [];
   players.forEach(playerRaw => {
     let player = {
@@ -91,6 +124,7 @@ export default async (request, response) => {
 
     playersSanitize.push(player);
   });
+  console.log("acabou");
   response.statusCode = 200;
   response.setHeader("Content-Type", `application/json`);
   response.end(

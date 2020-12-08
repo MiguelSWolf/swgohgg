@@ -21,9 +21,3 @@ export default {
   props: ["data"]
 };
 </script>
-<style lang="scss" scope="this api replaced by slot-scope in 2.5.0+">
-th,
-td {
-  width: 25%;
-}
-</style>
