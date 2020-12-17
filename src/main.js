@@ -8,6 +8,11 @@ import VueExcel from "vue-excel-export";
 Vue.use(VueResource);
 Vue.use(VueExcel);
 
+Vue.filter("formatNumber", function(number) {
+  if (!number) number = 0;
+  return new Intl.NumberFormat().format(number);
+});
+
 Vue.http.options.root =
   "https://cors-anywhere.herokuapp.com/https://swgoh.gg/api/";
 Vue.http.headers.common["Access-Control-Allow-Origin"] = "*";

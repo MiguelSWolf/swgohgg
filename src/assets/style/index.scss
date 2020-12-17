@@ -64,5 +64,11 @@ svg {
   }
 }
 
+.table.is-resume {
+  td, th {
+    width: 25%;
+  }
+}
+
 @import 'dark';
 
