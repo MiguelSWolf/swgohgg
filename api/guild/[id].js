@@ -15,11 +15,20 @@ const getAllPlayersIds = async id => {
     throw error;
   }
 
-  const members = [];
+  const membersId = [];
   result[0].roster.forEach(member => {
-    members.push(member.allyCode);
+    membersId.push(member.allyCode);
   });
-  return members;
+  const guild = {
+    name: result[0].name,
+    updated: result[0].updated,
+    power: result[0].gp,
+    members: result[0].members
+  };
+  console.log(`Dados obtidos da guilda ${guild.name}`);
+  console.log(`Players obtidos: ${membersId.length}`);
+  console.log("------------------------");
+  return { membersId, guild };
 };
 
 const getInfoPlayers = async members => {
@@ -92,14 +101,21 @@ const sanatizeToon = toonRaw => {
 };
 
 export default async (request, response) => {
-  console.log("========================");
+  console.log(
+    "========================\n\
+========================\n\
+========================"
+  );
+  console.log("Começou a processar");
+  console.log("------------------------");
   await swapi.connect();
   const { id } = request.query;
-  const membersId = await getAllPlayersIds(id);
+  const { membersId, guild } = await getAllPlayersIds(id);
   const players = await getInfoPlayers(membersId);
   // console.log(players);
 
   console.log("Começou a calcular");
+  console.log("------------------------");
   let playersSanitize = [];
   players.forEach(playerRaw => {
     let player = {
@@ -107,8 +123,29 @@ export default async (request, response) => {
       allyCode: playerRaw.allyCode,
       ships: [],
       characters: [],
-      others: []
+      others: [],
+      arena: {
+        lead: "",
+        squad: [],
+        rank: 0
+      }
     };
+    try {
+      player.arena.rank = playerRaw.arena.char.rank;
+      for (const key in playerRaw.arena.char.squad) {
+        const toon = playerRaw.arena.char.squad[key];
+        if (toon.squadUnitType === 2) {
+          player.arena.lead = toon.defId;
+        } else {
+          player.arena.squad.push(toon.defId);
+        }
+      }
+    } catch (e) {
+      console.log("----------------------");
+      console.log(`Problema na arena do player ${playerRaw.name}`);
+      console.log(e.message);
+      console.log(playerRaw.arena.char);
+    }
     try {
       playerRaw.roster.forEach(unitRaw => {
         let unit = sanatizeToon(unitRaw);
@@ -121,7 +158,6 @@ export default async (request, response) => {
       console.log("==================");
       console.log(playerRaw.name);
     }
-
     playersSanitize.push(player);
   });
   console.log("acabou");
@@ -130,6 +166,7 @@ export default async (request, response) => {
   response.end(
     JSON.stringify({
       message: "sended!",
+      guild: guild,
       players: playersSanitize,
       mods: resumeMods
     })
