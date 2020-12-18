@@ -45,6 +45,8 @@
         :yourGuild="yourGuild"
         :opponentGuild="opponentGuild"
       />
+      <teams v-if="tabIsActive('Your Teams')" :guild="yourGuild" />
+      <teams v-if="tabIsActive('Opponent Teams')" :guild="opponentGuild" />
     </section>
   </div>
 </template>
@@ -53,9 +55,11 @@
 import yourGuild from "../assets/Despertar.json";
 import opponentGuild from "../assets/Ascendancy-Usk.json";
 import ResumeTab from "../components/comparator/resume";
+import Teams from "../components/comparator/teams";
 export default {
   components: {
-    ResumeTab
+    ResumeTab,
+    Teams
   },
   data() {
     return {
@@ -79,7 +83,8 @@ export default {
       },
       tabs: [
         { name: "Resume", active: false },
-        { name: "Teams", active: false }
+        { name: "Your Teams", active: true },
+        { name: "Opponent Teams", active: false }
       ]
     };
   },

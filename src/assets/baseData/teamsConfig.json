@@ -1,0 +1,19 @@
+{
+  "teams": [
+    {
+      "name": "GG",
+      "lead": "GRIEVOUS",
+      "squad": [
+        "B1BATTLEDROIDV2",
+        "B2SUPERBATTLEDROID",
+        "MAGNAGUARD"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["DROIDEKA", "BB8", "WATTAMBOR"]
+        }
+      ]
+    }
+  ]
+}
