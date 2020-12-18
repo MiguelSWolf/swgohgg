@@ -14,6 +14,81 @@
           "squad": ["DROIDEKA", "BB8", "WATTAMBOR"]
         }
       ]
+    },
+    {
+      "name": "Nute",
+      "lead": "NUTEGUNRAY",
+      "squad": [
+        "COUNTDOOKU",
+        "JANGOFETT",
+        "DROIDEKA",
+        "ENFYSNEST"
+      ]
+    },
+    {
+      "name": "DR",
+      "lead": "DARTHREVAN",
+      "squad": [
+        "DARTHMALAK",
+        "BASTILASHANDARK",
+        "HK47"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["SITHMARAUDER", "SITHTROOPER"]
+        }
+      ]
+    },
+    {
+      "name": "JKR",
+      "lead": "JEDIKNIGHTREVAN",
+      "squad": [
+        "JOLEEBINDO",
+        "BASTILASHAN",
+        "GRANDMASTERYODA"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["OLDBENKENOBI", "HERMITYODA", "EZRABRIDGERS3"]
+        }
+      ]
+    },
+    {
+      "name": "Padme",
+      "lead": "PADMEAMIDALA",
+      "squad": [
+        "ANAKINKNIGHT",
+        "GENERALKENOBI",
+        "C3POLEGENDARY"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["AHSOKATANO", "SHAAKTI", "BARRISSOFFEE"]
+        }
+      ]
+    },
+    {
+      "name": "Cls",
+      "lead": "COMMANDERLUKESKYWALKER",
+      "squad": [
+        "HANSOLO",
+        "CHEWBACCALEGENDARY",
+        "C3POCHEWBACCA",
+        "C3POLEGENDARY"
+      ]
+    },
+    {
+      "name": "Bossk",
+      "lead": "BOSSK",
+      "squad": [
+        "BOBAFETT",
+        "THEMANDALORIAN",
+        "GREEFKARGA",
+        "DENGAR"
+      ]
     }
   ]
 }
