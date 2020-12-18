@@ -1,24 +1,44 @@
 <template>
   <div>
-    <div class="card" v-for="(team, indexTeam) in teams" :key="indexTeam">
-      <h1>{{ team.name }}</h1>
-      <table class="table is-bordered is-fullwidth">
-        <tr v-for="player in team.players" :key="player.name">
-          <td>
-            <strong>{{ player.name }}</strong>
-            <br />
-            Power: {{ player.power | formatNumber }}
-          </td>
-          <template v-for="n in 5">
-            <td :key="n">
-              <template v-for="(option, aux) in player[`position${n}`].options">
-                <unit :unitData="option" :key="aux" />
+    <div
+      class="card"
+      style="margin-bottom: 20px"
+      v-for="(team, indexTeam) in teams"
+      :key="indexTeam"
+    >
+      <header class="card-header">
+        <p class="card-header-title" @click="teamOpen = team.name">
+          {{ team.name }}
+        </p>
+        <a href="#" class="card-header-icon" aria-label="more options">
+          <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </a>
+      </header>
+      <div class="card-content" v-if="team.name == teamOpen">
+        <div class="content">
+          <table class="table is-bordered is-fullwidth">
+            <tr v-for="player in team.players" :key="player.name">
+              <td>
+                <strong>{{ player.name }}</strong>
+                <br />
+                Power: {{ player.power | formatNumber }}
+              </td>
+              <template v-for="n in 5">
+                <td :key="n">
+                  <template
+                    v-for="(option, aux) in player[`position${n}`].options"
+                  >
+                    <unit :unitData="option" :key="aux" />
+                  </template>
+                  Power: {{ player[`position${n}`].power | formatNumber }}
+                </td>
               </template>
-              Power: {{ player[`position${n}`].power | formatNumber }}
-            </td>
-          </template>
-        </tr>
-      </table>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +50,8 @@ export default {
   components: { unit },
   data() {
     return {
-      teamsConfig: []
+      teamsConfig: [],
+      teamOpen: ""
     };
   },
   methods: {
@@ -115,8 +136,7 @@ export default {
         const index = teams.length;
         teams.push({
           name: team.name,
-          players: [],
-          open: false
+          players: []
         });
         this.guild.players.forEach(player => {
           teams[index].players.push(this.mountTeam(player, team));
