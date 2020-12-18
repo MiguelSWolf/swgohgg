@@ -56,9 +56,7 @@ export default {
       return this.unit.zeta && this.unit.zeta > 0;
     },
     baseUnit() {
-      console.log("chegou");
       if (this.unitData && this.unitData.id) {
-        console.log("entrou");
         return this.$store.getters.getUnitById(this.unitData.id);
       }
       return {};

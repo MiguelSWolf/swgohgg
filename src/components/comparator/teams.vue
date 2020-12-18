@@ -7,8 +7,9 @@
           <th>{{ player.name }}</th>
           <template v-for="index in 5">
             <td :key="index">
-              <unit :unitData="player[`position${index}`].options[0]" />
-              <!-- {{ player[`position${index}`] }} -->
+              <template v-for="option in player[`position${index}`].options">
+                <unit :unitData="option" :key="option" />
+              </template>
             </td>
           </template>
         </tr>
@@ -70,6 +71,16 @@ export default {
         );
         index++;
       });
+      if (teamConfig.optional) {
+        teamConfig.optional.forEach(optional => {
+          optional.squad.forEach(unit => {
+            team[`position${index}`].options.push(
+              this.mountUnit(player.characters, unit)
+            );
+          });
+          index += optional.spaces;
+        });
+      }
       return team;
     }
   },
