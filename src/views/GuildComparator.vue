@@ -140,10 +140,10 @@ export default {
     }
   },
   mounted() {
+    this.setGuild(yourGuild, "your");
+    this.setGuild(opponentGuild, "opponent");
     if (this.isDev) {
       console.log("Version dev");
-      this.setGuild(yourGuild, "your");
-      this.setGuild(opponentGuild, "opponent");
     } else {
       console.log("Version prod");
     }
