@@ -100,14 +100,14 @@ export default {
           rarity: 7
         },
         {
-          name: "NEGO [6*]",
-          toon: "CAPITALNEGOTIATOR",
-          rarity: 6
-        },
-        {
           name: "MALE [7*]",
           toon: "CAPITALMALEVOLENCE",
           rarity: 7
+        },
+        {
+          name: "NEGO [6*]",
+          toon: "CAPITALNEGOTIATOR",
+          rarity: 6
         },
         {
           name: "MALE [6*]",
