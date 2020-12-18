@@ -7,14 +7,15 @@
       :key="indexTeam"
     >
       <header class="card-header">
-        <p class="card-header-title" @click="teamOpen = team.name">
+        <p
+          class="card-header-title"
+          @click="
+            teamOpen = '';
+            teamOpen = team.name;
+          "
+        >
           {{ team.name }}
         </p>
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
       </header>
       <div class="card-content" v-if="team.name == teamOpen">
         <div class="content">
