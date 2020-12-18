@@ -53,7 +53,7 @@
 
 <script>
 import yourGuild from "../assets/Despertar.json";
-import opponentGuild from "../assets/Ascendancy-Usk.json";
+import opponentGuild from "../assets/Dying Light.json";
 import ResumeTab from "../components/comparator/resume";
 import Teams from "../components/comparator/teams";
 export default {
