@@ -45,8 +45,10 @@
         :yourGuild="yourGuild"
         :opponentGuild="opponentGuild"
       />
-      <teams v-if="tabIsActive('Your Teams')" :guild="yourGuild" />
-      <teams v-if="tabIsActive('Opponent Teams')" :guild="opponentGuild" />
+      <teams-tab v-if="tabIsActive('Your Teams')" :guild="yourGuild" />
+      <teams-tab v-if="tabIsActive('Opponent Teams')" :guild="opponentGuild" />
+      <arena-tab v-if="tabIsActive('Your Arena')" :guild="yourGuild" />
+      <arena-tab v-if="tabIsActive('Opponent Arena')" :guild="opponentGuild" />
     </section>
   </div>
 </template>
@@ -55,11 +57,13 @@
 import yourGuild from "../assets/Despertar.json";
 import opponentGuild from "../assets/Dying Light.json";
 import ResumeTab from "../components/comparator/resume";
-import Teams from "../components/comparator/teams";
+import TeamsTab from "../components/comparator/teams";
+import ArenaTab from "../components/comparator/arena";
 export default {
   components: {
     ResumeTab,
-    Teams
+    TeamsTab,
+    ArenaTab
   },
   data() {
     return {
@@ -83,8 +87,10 @@ export default {
       },
       tabs: [
         { name: "Resume", active: false },
-        { name: "Your Teams", active: true },
-        { name: "Opponent Teams", active: false }
+        { name: "Your Teams", active: false },
+        { name: "Opponent Teams", active: false },
+        { name: "Your Arena", active: true },
+        { name: "Opponent Arena", active: false }
       ]
     };
   },
