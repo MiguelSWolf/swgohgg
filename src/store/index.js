@@ -1,9 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import units from "../assets/baseData/characters.json";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     showLoading: false,
     showMenu: false,
@@ -253,3 +254,7 @@ export default new Vuex.Store({
   },
   modules: {}
 });
+
+store.dispatch("setUnits", units);
+
+export default store;

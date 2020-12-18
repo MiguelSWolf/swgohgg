@@ -84,7 +84,6 @@ import cardTeam from "../components/team";
 import cardMatchmaker from "../components/matchmaker";
 // import abilities from "../assets/baseData/abilities.json";
 import counters from "../assets/baseData/counters.json";
-import units from "../assets/baseData/characters.json";
 import { mapState } from "vuex";
 
 import player166159449 from "../assets/166159449.json";
@@ -109,7 +108,6 @@ export default {
       return new Intl.NumberFormat().format(number);
     },
     getBaseInfos: function() {
-      this.$store.dispatch("setUnits", units);
       // this.$store.dispatch("setAbilities", abilities);
       this.$store.dispatch("setTeams", counters);
     },
