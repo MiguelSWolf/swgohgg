@@ -84,6 +84,7 @@ const countMods = mods => {
 const sanatizeToon = toonRaw => {
   let toon = {
     id: toonRaw.defId,
+    power: toonRaw.gp,
     isCharacter: toonRaw.combatType == 1,
     isShip: toonRaw.combatType == 2,
     rarity: toonRaw.rarity
