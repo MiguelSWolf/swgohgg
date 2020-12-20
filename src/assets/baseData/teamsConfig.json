@@ -1,7 +1,7 @@
 {
   "teams": [
     {
-      "name": "GG",
+      "name": "Meta GG",
       "lead": "GRIEVOUS",
       "squad": [
         "B1BATTLEDROIDV2",
@@ -16,17 +16,22 @@
       ]
     },
     {
-      "name": "Nute",
-      "lead": "NUTEGUNRAY",
+      "name": "Meta Padme",
+      "lead": "PADMEAMIDALA",
       "squad": [
-        "COUNTDOOKU",
-        "JANGOFETT",
-        "DROIDEKA",
-        "ENFYSNEST"
+        "GENERALKENOBI",
+        "ANAKINKNIGHT",
+        "C3POLEGENDARY"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["AHSOKATANO", "SHAAKTI", "BARRISSOFFEE"]
+        }
       ]
     },
     {
-      "name": "DR",
+      "name": "Meta DR",
       "lead": "DARTHREVAN",
       "squad": [
         "DARTHMALAK",
@@ -38,6 +43,60 @@
           "spaces": 1,
           "squad": ["SITHMARAUDER", "SITHTROOPER"]
         }
+      ]
+    },
+    {
+      "name": "Meta GAS",
+      "lead": "GENERALSKYWALKER",
+      "squad": [
+        "CT5555",
+        "CT210408",
+        "CT7567",
+        "ARCTROOPER501ST"
+      ]
+    },
+    {
+      "name": "Counter Rey - Com Vader",
+      "lead": "VADER",
+      "squad": [
+        "GRANDADMIRALTHRAWN"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["BASTILASHANDARK", "ADMIRALPIETT"]
+        },
+        {
+          "spaces": 1,
+          "squad": ["WATTAMBOR", "MOFFGIDEONS1"]
+        },
+        {
+          "spaces": 1,
+          "squad": ["SITHTROOPER", "SHORETROOPER", "KYLORENUNMASKED"]
+        }
+      ]
+    },
+    
+    
+    
+    
+
+
+    
+
+
+
+
+
+
+    {
+      "name": "Nute",
+      "lead": "NUTEGUNRAY",
+      "squad": [
+        "COUNTDOOKU",
+        "JANGOFETT",
+        "DROIDEKA",
+        "ENFYSNEST"
       ]
     },
     {

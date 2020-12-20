@@ -113,6 +113,16 @@ export default {
           name: "MALE [6*]",
           toon: "CAPITALMALEVOLENCE",
           rarity: 6
+        },
+        {
+          name: "NEGO [5*]",
+          toon: "CAPITALNEGOTIATOR",
+          rarity: 5
+        },
+        {
+          name: "MALE [5*]",
+          toon: "CAPITALMALEVOLENCE",
+          rarity: 5
         }
       ],
       resumeGears: []
