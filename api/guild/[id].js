@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import staticData from "./../../src/assets/guild-568739525.json";
 
 const ApiSwgohHelp = require("api-swgoh-help");
@@ -35,40 +36,21 @@ const getInfoPlayers = async members => {
   if (members == "development") {
     return staticData.return;
   }
-  console.log("Primeiros 10");
-  let antes = Date.now();
-  let query1 = await swapi.fetchPlayer({ allycodes: members.slice(0, 10) });
-  let duracao = Date.now() - antes;
-  console.log("levou " + duracao / 1000 + " s");
-  console.log("Do 10 ao 20");
-  antes = Date.now();
-  let query2 = await swapi.fetchPlayer({ allycodes: members.slice(10, 20) });
-  duracao = Date.now() - antes;
-  console.log("levou " + duracao / 1000 + " s");
-  console.log("Do 20 ao 30");
-  antes = Date.now();
-  let query3 = await swapi.fetchPlayer({ allycodes: members.slice(20, 30) });
-  duracao = Date.now() - antes;
-  console.log("levou " + duracao / 1000 + " s");
-  console.log("Do 30 ao 40");
-  antes = Date.now();
-  let query4 = await swapi.fetchPlayer({ allycodes: members.slice(30, 40) });
-  duracao = Date.now() - antes;
-  console.log("levou " + duracao / 1000 + " s");
-  console.log("Ultimos 10");
-  antes = Date.now();
-  let query5 = await swapi.fetchPlayer({ allycodes: members.slice(40) });
-  duracao = Date.now() - antes;
-  console.log("levou " + duracao / 1000 + " s");
-  // if (error) {
-  //   throw error;
-  // }
-  return query1.result.concat(
-    query2.result,
-    query3.result,
-    query4.result,
-    query5.result
-  );
+  let players = [];
+  let antesTotal = Date.now();
+  for (const member of members) {
+    console.log(`------------------------------------`);
+    console.log(`Buscando ${players.length + 1}/${members.length}`);
+    let antes = Date.now();
+    let query = await swapi.fetchPlayer({ allycodes: [member] });
+    players.push(query.result[0]);
+    let duracao = Date.now() - antes;
+    console.log(`Concluida busca de ${query.result[0].name}`);
+    console.log(`No tempo de: ${duracao / 1000}`);
+  }
+  let duracaoTotal = Date.now() - antesTotal;
+  console.log(`Todas as buscas levaram o tempo de: ${duracaoTotal / 1000}`);
+  return players;
 };
 
 const countMods = mods => {
