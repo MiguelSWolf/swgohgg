@@ -19,6 +19,7 @@
       </header>
       <div class="card-content" v-if="team.name == teamOpen">
         <div class="content">
+          <div v-if="team.name == 'Personalizado'"></div>
           <table class="table is-bordered is-fullwidth">
             <tr v-for="player in team.players" :key="player.name">
               <td>
@@ -99,7 +100,12 @@ export default {
     },
     mountTeam: function(player, teamConfig) {
       let team = {
-        name: player.name
+        name: player.name,
+        position1: {},
+        position2: {},
+        position3: {},
+        position4: {},
+        position5: {}
       };
       team.position1 = this.mountPosition(player.characters, [teamConfig.lead]);
 
