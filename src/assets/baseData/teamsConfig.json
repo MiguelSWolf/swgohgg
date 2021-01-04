@@ -1,6 +1,12 @@
 {
   "teams": [
     {
+      "name": "Personalizado",
+      "lead": "",
+      "squad": [ ],
+      "optional": [ ]
+    },
+    {
       "name": "Meta GG",
       "lead": "GRIEVOUS",
       "squad": [
@@ -77,13 +83,30 @@
       ]
     },
     {
+      "name": "IT",
+      "lead": "VEERS",
+      "squad": [
+        "COLONELSTARCK", "ADMIRALPIETT"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["SHORETROOPER", "RANGETROOPER"]
+        },
+        {
+          "spaces": 1,
+          "squad": ["DEATHTROOPER", "SNOWTROOPER"]
+        }
+      ]
+    },
+    {
       "name": "MM",
       "lead": "MONMOTHMA",
       "squad": [
-        "BAZEMALBUS",
-        "CHIRRUTIMWE",
-        "BIGGSDARKLIGHTER",
-        "WEDGEANTILLES"
+        "CASSIANANDOR",
+        "CARADUNE",
+        "HOTHREBELSCOUT",
+        "PAO"
       ]
     },
     {

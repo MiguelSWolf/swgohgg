@@ -91,6 +91,21 @@ export default {
           name: "GG [G13]",
           toon: "GRIEVOUS",
           gear: 13
+        },
+        {
+          name: "Mochila [G11+]",
+          toon: "C3POCHEWBACCA",
+          gear: 11
+        },
+        {
+          name: "JKL [G12+]",
+          toon: "JEDIKNIGHTLUKE",
+          gear: 12
+        },
+        {
+          name: "Piett [G11+]",
+          toon: "ADMIRALPIETT",
+          gear: 11
         }
       ],
       configShips: [
@@ -123,6 +138,11 @@ export default {
           name: "MALE [5*]",
           toon: "CAPITALMALEVOLENCE",
           rarity: 5
+        },
+        {
+          name: "Y-Wing rebelde [7*]",
+          toon: "YWINGREBEL",
+          rarity: 7
         }
       ],
       resumeGears: []
@@ -166,7 +186,8 @@ export default {
           player.ships.forEach(ship => {
             if (
               ship.id == "CAPITALNEGOTIATOR" ||
-              ship.id == "CAPITALMALEVOLENCE"
+              ship.id == "CAPITALMALEVOLENCE" ||
+              ship.id == "YWINGREBEL"
             ) {
               let indexShip = this.countShips.findIndex(row => {
                 return ship.id == row.toon;
