@@ -1,6 +1,6 @@
 <template>
   <div class="comparator">
-    <section class="section">
+    <!-- <section class="section">
       <div class="container">
         <form @submit.prevent="getGuild()">
           <div class="field is-grouped is-grouped-right">
@@ -26,7 +26,7 @@
           </div>
         </form>
       </div>
-    </section>
+    </section> -->
     <section class="section">
       <div class="tabs">
         <ul>
