@@ -28,6 +28,9 @@
           <router-link :to="{ name: 'tw' }" class="navbar-item">
             Territory War
           </router-link>
+          <router-link :to="{ name: 'twdefence' }" class="navbar-item">
+            Territory War - Defence
+          </router-link>
 
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
