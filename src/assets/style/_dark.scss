@@ -36,10 +36,10 @@ body.dark {
     .title {
         color: $light;
     }
-    .has-text-success,
-    .has-text-danger {
-        color: $light !important;
-    }
+    // .has-text-success,
+    // .has-text-danger {
+    //     color: $light !important;
+    // }
     .is-blue,
     .is-yellow {
         border: 3px solid currentColor;
