@@ -159,7 +159,7 @@ export default {
         {
           name: "SLKR",
           lead: "SUPREMELEADERKYLOREN",
-          weight: 2,
+          weight: 1.5,
           mandatoryUnits: {
             SUPREMELEADERKYLOREN: { gear: 13 },
             KYLOREN: { gear: 13 },
@@ -172,7 +172,7 @@ export default {
         {
           name: "REY",
           lead: "GLREY",
-          weight: 2,
+          weight: 1.5,
           mandatoryUnits: {
             GLREY: { gear: 13 },
             REYJEDITRAINING: { gear: 13 },
@@ -185,7 +185,7 @@ export default {
         {
           name: "JML",
           lead: "GRANDMASTERLUKE",
-          weight: 2,
+          weight: 1.5,
           mandatoryUnits: {
             GRANDMASTERLUKE: { gear: 13 },
             MONMOTHMA: { gear: 13 },
@@ -198,7 +198,7 @@ export default {
         {
           name: "SEE",
           lead: "SITHPALPATINE",
-          weight: 2,
+          weight: 1.5,
           mandatoryUnits: {
             SITHPALPATINE: { gear: 13 },
             EMPERORPALPATINE: { gear: 13 },
