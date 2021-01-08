@@ -55,7 +55,7 @@
 
 <script>
 import yourGuild from "../assets/Despertar.json";
-import opponentGuild from "../assets/TEP_Yavin IV.json";
+import opponentGuild from "../assets/Ventress Knights.json";
 import ResumeTab from "../components/comparator/resume";
 import TeamsTab from "../components/comparator/teams";
 import ArenaTab from "../components/comparator/arena";
