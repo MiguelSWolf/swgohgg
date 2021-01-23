@@ -1,7 +1,10 @@
+import Vue from "vue";
 import Vuex from "vuex";
 import units from "../assets/baseData/characters.json";
 
-const store = Vuex.createStore({
+Vue.use(Vuex);
+
+const store = new Vuex.Store({
   state: {
     showLoading: false,
     showMenu: false,
