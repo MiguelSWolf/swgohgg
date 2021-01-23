@@ -8,6 +8,7 @@
     },
     {
       "name": "Meta GG",
+      "categories": [],
       "lead": "GRIEVOUS",
       "squad": [
         "B1BATTLEDROIDV2",
@@ -167,6 +168,16 @@
         "THEMANDALORIAN",
         "GREEFKARGA",
         "DENGAR"
+      ]
+    },
+    {
+      "name": "GEO",
+      "lead": "GEONOSIANBROODALPHA",
+      "squad": [
+        "SUNFAC",
+        "GEONOSIANSOLDIER",
+        "GEONOSIANSPY",
+        "POGGLETHELESSER"
       ]
     }
   ]
