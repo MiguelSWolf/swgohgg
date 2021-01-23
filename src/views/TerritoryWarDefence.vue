@@ -147,11 +147,11 @@ export default {
           lead: "COMMANDERLUKESKYWALKER",
           weight: 1,
           mandatoryUnits: {
-            COMMANDERLUKESKYWALKER: { gear: 12 },
+            COMMANDERLUKESKYWALKER: { gear: 13 },
             HANSOLO: { gear: 12 },
             CHEWBACCALEGENDARY: { gear: 12 },
             C3POLEGENDARY: { gear: 11 },
-            C3POCHEWBACCA: { gear: 11 }
+            C3POCHEWBACCA: { gear: 10 }
           },
           optionalUnits: {}
         },
