@@ -168,6 +168,16 @@
         "GREEFKARGA",
         "DENGAR"
       ]
+    },
+    {
+      "name": "GEO",
+      "lead": "GEONOSIANBROODALPHA",
+      "squad": [
+        "SUNFAC",
+        "GEONOSIANSOLDIER",
+        "GEONOSIANSPY",
+        "POGGLETHELESSER"
+      ]
     }
   ]
 }
