@@ -7,6 +7,16 @@
       "optional": [ ]
     },
     {
+      "name": "RANCOR - VADER",
+      "lead": "VADER",
+      "squad": [
+        "BB8",
+        "WATTAMBOR",
+        "KYLORENUNMASKED",
+        "C3POLEGENDARY"
+      ]
+    },
+    {
       "name": "Meta GG",
       "lead": "GRIEVOUS",
       "squad": [
@@ -150,16 +160,6 @@
       ]
     },
     {
-      "name": "Cls",
-      "lead": "COMMANDERLUKESKYWALKER",
-      "squad": [
-        "HANSOLO",
-        "CHEWBACCALEGENDARY",
-        "C3POCHEWBACCA",
-        "C3POLEGENDARY"
-      ]
-    },
-    {
       "name": "Bossk",
       "lead": "BOSSK",
       "squad": [
@@ -170,13 +170,119 @@
       ]
     },
     {
-      "name": "GEO",
+      "name": "TW DEFENCE - GEO",
       "lead": "GEONOSIANBROODALPHA",
+      "message": "*Geos (mínimo de dois geos G13, o resto G12)<br />*OBS:*<br />A ordem importa, colocar nesta ordem: Alpha, Sun fac, Soldado, Spy e Poggle.",
       "squad": [
         "SUNFAC",
         "GEONOSIANSOLDIER",
         "GEONOSIANSPY",
         "POGGLETHELESSER"
+      ],
+      "requirements": {
+        "team": {
+          "count": 2,
+          "gear": 13
+        } 
+      }
+    },
+    {
+      "name": "TW DEFENCE - CLS",
+      "lead": "COMMANDERLUKESKYWALKER",
+      "message": "<strong>*CLS Com/ mochila*</strong><br />CLS G12+, Han G12+, Threepio&Chewie 6* G10+, Chewbacca G12+, C3PO G11+  <strong>*(a ordem importa não colocar o mochila depois do chewbacca)*</strong>",
+      "squad": [
+        "HANSOLO",
+        "CHEWBACCALEGENDARY",
+        "C3POCHEWBACCA",
+        "C3POLEGENDARY"
+      ],
+      "requirements": {
+        "units": {
+          "COMMANDERLUKESKYWALKER": { "gear": 12},
+          "HANSOLO": { "gear": 12},
+          "CHEWBACCALEGENDARY": { "gear": 12},
+          "C3POCHEWBACCA": { "gear": 10, "rarity": 6},
+          "C3POLEGENDARY": { "gear": 11}
+        } 
+      }
+    },
+    {
+      "name": "KYLO - RANCOR - PHASE 1",
+      "lead": "SUPREMELEADERKYLOREN",
+      "squad": [
+        "KYLORENUNMASKED",
+        "GENERALHUX",
+        "GRANDADMIRALTHRAWN",
+        "WATTAMBOR"
+      ]
+    },
+    {
+      "name": "REY + CLONES - RANCOR - PHASE 1",
+      "lead": "GLREY",
+      "squad": [
+        "CT7567",
+        "CT5555",
+        "C3POLEGENDARY",
+        "HERMITYODA"
+      ]
+    },
+    {
+      "name": "REY + JAWAS - RANCOR - PHASE 1",
+      "lead": "GLREY",
+      "squad": [
+        "CHIEFNEBIT",
+        "JAWAENGINEER",
+        "JAWASCAVENGER",
+        "WATTAMBOR"
+      ]
+    },
+    {
+      "name": "KYLO + NS - RANCOR - PHASE 1",
+      "lead": "SUPREMELEADERKYLOREN",
+      "squad": [
+        "NIGHTSISTERZOMBIE",
+        "DAKA",
+        "GENERALHUX","GRANDADMIRALTHRAWN","WATTAMBOR"
+      ]
+    },
+    {
+      "name": "KYLO + NS - RANCOR - PHASE 1",
+      "lead": "SUPREMELEADERKYLOREN",
+      "squad": [
+        "NIGHTSISTERZOMBIE",
+        "DAKA",
+        "HERMITYODA",
+        "GENERALHUX"
+      ]
+    },
+    {
+      "name": "GAS - RANCOR - PHASE 1",
+      "lead": "gas",
+      "squad": [
+        "CT210408",
+        "CT7567",
+        "ARCTROOPER501ST",
+        "CT5555"
+      ]
+    },
+    {
+      "name": "PADME - RANCOR - PHASE 1",
+      "lead": "padme",
+      "squad": [
+        "AHSOKATANO",
+        "ANAKINKNIGHT",
+        "GENERALKENOBI",
+        "C3POLEGENDARY","GRANDMASTERYODA","R2D2_LEGENDARY"
+      ]
+    },
+    {
+      "name": "SEE - RANCOR - PHASE 1",
+      "lead": "see",
+      "squad": [
+        "DARTHTRAYA",
+        "DARTHSION",
+        "SITHTROOPER",
+        "DARTHSIDIOUS", "DARTHNIHILUS"
       ]
     }
   ]

@@ -91,6 +91,11 @@ export default {
           name: "GG [G13]",
           toon: "GRIEVOUS",
           gear: 13
+        },
+        {
+          name: "JKL [G13]",
+          toon: "JEDIKNIGHTLUKE",
+          gear: 13
         }
       ],
       configShips: [

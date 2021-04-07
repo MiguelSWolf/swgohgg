@@ -19,16 +19,38 @@
       </header>
       <div class="card-content" v-if="team.name == teamOpen">
         <div class="content">
-          <div v-if="team.name == 'Personalizado'"></div>
-          <table class="table is-bordered is-fullwidth">
-            <tr v-for="player in team.players" :key="player.name">
+          <div v-if="team.name == 'Personalizado'">
+            <select-toon v-model="teamsConfig[0].lead" label="lead" />
+            <select-toon v-model="teamsConfig[0].squad[0]" label="position 2" />
+            <select-toon v-model="teamsConfig[0].squad[1]" label="position 3" />
+            <select-toon v-model="teamsConfig[0].squad[2]" label="position 4" />
+            <select-toon v-model="teamsConfig[0].squad[3]" label="position 5" />
+          </div>
+          <div v-if="team.message">
+            <span v-html="team.message"></span><br />
+            <br />
+            <span v-html="callList(indexTeam)"></span>
+          </div>
+          <table class="table is-bordered">
+            <tr>
+              <th>Player</th>
+              <th>Power</th>
+              <th colspan="5">Positions</th>
+              <th>Action</th>
+            </tr>
+            <tr
+              v-for="(player, indexPlayer) in team.players"
+              :key="player.name"
+              :class="{ 'selected-player': player.selected }"
+            >
               <td>
                 <strong>{{ player.name }}</strong>
-                <br />
-                Power: {{ player.power | formatNumber }}
+              </td>
+              <td>
+                {{ player.power | formatNumber }}
               </td>
               <template v-for="n in 5">
-                <td :key="n">
+                <td :key="n" style="width: 170px">
                   <template
                     v-for="(option, aux) in player[`position${n}`].options"
                   >
@@ -37,6 +59,14 @@
                   Power: {{ player[`position${n}`].power | formatNumber }}
                 </td>
               </template>
+              <td>
+                <button
+                  class="button is-primary"
+                  @click.prevent="selectTeam(indexPlayer, indexTeam)"
+                >
+                  {{ player.selected ? "Unselect" : "Select" }}
+                </button>
+              </td>
             </tr>
           </table>
         </div>
@@ -46,17 +76,37 @@
 </template>
 <script>
 import teamsConfig from "../../assets/baseData/teamsConfig.json";
+import SelectToon from "./selectToon.vue";
 import unit from "./unit";
 export default {
   props: ["guild"],
-  components: { unit },
+  components: { unit, SelectToon },
   data() {
     return {
       teamsConfig: [],
-      teamOpen: ""
+      teamOpen: "Personalizado",
+      teams: []
     };
   },
   methods: {
+    callList: function(indexTeam) {
+      let html = "";
+      let players = [];
+      this.teams[indexTeam].players.forEach(player => {
+        if (player.selected) {
+          players.push(player.name);
+        }
+      });
+      if (players.length > 0) {
+        html = "<strong>*Atenção a chamada*</strong><br />";
+        html += players.join("<br />");
+      }
+      return html;
+    },
+    selectTeam: function(player, team) {
+      const selected = this.teams[team].players[player].selected;
+      this.teams[team].players[player].selected = !selected;
+    },
     basePosition: function() {
       return {
         quantity: 1,
@@ -101,6 +151,7 @@ export default {
     mountTeam: function(player, teamConfig) {
       let team = {
         name: player.name,
+        selected: false,
         position1: {},
         position2: {},
         position3: {},
@@ -134,16 +185,15 @@ export default {
       }
       team.power = power;
       return team;
-    }
-  },
-  computed: {
-    teams() {
+    },
+    mountTeams: function() {
       let teams = [];
       this.teamsConfig.forEach(team => {
         const index = teams.length;
         teams.push({
           name: team.name,
-          players: []
+          players: [],
+          message: team.message
         });
         this.guild.players.forEach(player => {
           teams[index].players.push(this.mountTeam(player, team));
@@ -152,11 +202,35 @@ export default {
           return b.power - a.power;
         });
       });
-      return teams;
+      this.teams = teams;
+    }
+  },
+  watch: {
+    teamsConfig: {
+      handler: function() {
+        this.mountTeams();
+      },
+      deep: true
     }
   },
   mounted() {
     this.teamsConfig = teamsConfig.teams;
+    this.mountTeams();
   }
 };
 </script>
+<style lang="scss" scope="this api replaced by slot-scope in 2.5.0+">
+.content table {
+  width: auto;
+}
+.content table td {
+  text-align: center;
+}
+.content table td > div {
+  display: flex;
+  justify-content: center;
+}
+.selected-player {
+  background: rgb(127, 255, 127, 0.25);
+}
+</style>

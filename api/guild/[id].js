@@ -13,6 +13,7 @@ const getAllPlayersIds = async id => {
   const payload = { allycodes: [id] };
   let { result, error } = await swapi.fetchGuild(payload);
   if (error) {
+    console.error("Deu pau na API");
     throw error;
   }
 
@@ -42,8 +43,20 @@ const getInfoPlayers = async members => {
     console.log(`------------------------------------`);
     console.log(`Buscando ${players.length + 1}/${members.length}`);
     let antes = Date.now();
-    let query = await swapi.fetchPlayer({ allycodes: [member] });
-    players.push(query.result[0]);
+    let query = null;
+    let hasResults;
+    do {
+      hasResults = false;
+      query = await swapi.fetchPlayer({ allycodes: [member] });
+      if (query.result && query.result.length > 0) {
+        hasResults = true;
+        console.log(`Buscando por ${member} - achado: ${query.result.length}`);
+        players.push(query.result[0]);
+      } else {
+        console.log("Falha na API");
+        console.log("Tentando novamente...");
+      }
+    } while (!hasResults);
     let duracao = Date.now() - antes;
     console.log(`Concluida busca de ${query.result[0].name}`);
     console.log(`No tempo de: ${duracao / 1000}`);

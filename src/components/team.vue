@@ -14,11 +14,7 @@
             <div class="column is-9-tablet is-6-mobile">
               <p class="title is-4">Your Counters</p>
               <div class="pick-counters">
-                <div
-                  @click.prevent="team.chosenCounter = index"
-                  v-for="(counter, index) in team.counters"
-                  :key="index"
-                >
+                <div v-for="(counter, index) in team.counters" :key="index">
                   <card-unit :name="counter.lead" :isCounter="true" />
                 </div>
               </div>

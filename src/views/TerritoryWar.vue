@@ -207,6 +207,19 @@ export default {
             COUNTDOOKU: { gear: 13 }
           },
           optionalUnits: {}
+        },
+        {
+          name: "VADER - RANCOR",
+          lead: "VADER",
+          weight: 1.5,
+          mandatoryUnits: {
+            VADER: { gear: 13 },
+            BB8: { gear: 13 },
+            WATTAMBOR: { gear: 13 },
+            KYLORENUNMASKED: { gear: 13 },
+            C3POLEGENDARY: { gear: 13 }
+          },
+          optionalUnits: {}
         }
         // ,{
         //   name: "Nute",
