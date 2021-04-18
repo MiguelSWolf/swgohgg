@@ -123,11 +123,11 @@ export default {
       this.showTeams = false;
       this.$store.dispatch("clearPlayers");
       this.$http
-        .get(`player/${this.attackCode}/`)
+        .get(`player/${this.attackCode}`)
         .then(responseAttack => {
           this.$store.dispatch("setPlayer", responseAttack.body);
           this.$http
-            .get(`player/${this.defenceCode}/`)
+            .get(`player/${this.defenceCode}`)
             .then(responseDefence => {
               this.$store.dispatch("setPlayer", responseDefence.body);
               this.$store.dispatch("endLoading");

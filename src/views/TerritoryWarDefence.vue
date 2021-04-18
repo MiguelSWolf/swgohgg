@@ -294,7 +294,7 @@ export default {
     getGuild: function() {
       this.$store.dispatch("startLoading");
       this.$http
-        .get(`guild/${this.guildCode}/`)
+        .get(`guild2/${this.guildCode}`)
         .then(response => {
           this.guildData = response.body;
           this.mountTeams();

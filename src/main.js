@@ -13,8 +13,7 @@ Vue.filter("formatNumber", function(number) {
   return new Intl.NumberFormat().format(number);
 });
 
-Vue.http.options.root =
-  "https://cors-anywhere.herokuapp.com/https://swgoh.gg/api/";
+Vue.http.options.root = "/api/";
 Vue.http.headers.common["Access-Control-Allow-Origin"] = "*";
 Vue.http.headers.common["Access-Control-Allow-Methods"] =
   "POST, GET, PUT, OPTIONS, DELETE";
