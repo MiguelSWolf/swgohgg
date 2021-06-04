@@ -4,7 +4,12 @@
       "name": "Personalizado",
       "lead": "",
       "squad": [ ],
-      "optional": [ ]
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": []
+        }
+      ]
     },
     {
       "name": "RANCOR - VADER",

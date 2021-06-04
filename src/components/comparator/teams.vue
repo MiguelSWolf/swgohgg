@@ -21,10 +21,28 @@
         <div class="content">
           <div v-if="team.name == 'Personalizado'">
             <select-toon v-model="teamsConfig[0].lead" label="lead" />
-            <select-toon v-model="teamsConfig[0].squad[0]" label="position 2" />
-            <select-toon v-model="teamsConfig[0].squad[1]" label="position 3" />
-            <select-toon v-model="teamsConfig[0].squad[2]" label="position 4" />
-            <select-toon v-model="teamsConfig[0].squad[3]" label="position 5" />
+            <div>
+              <select-toon
+                v-for="count in squad"
+                :key="count"
+                v-model="teamsConfig[0].squad[count - 1]"
+                :label="`Position ${count + 1}`"
+              />
+              <button class="button is-info" @click="squad++">
+                Add Unit required
+              </button>
+            </div>
+            <div>
+              <select-toon
+                v-for="count in options"
+                :key="count"
+                v-model="teamsConfig[0].optional[0].squad[count - 1]"
+                :label="`Position ${squad + 2} - Optional`"
+              />
+              <button class="button is-info" @click="options++">
+                Add Unit optional
+              </button>
+            </div>
           </div>
           <div v-if="team.message">
             <span v-html="team.message"></span><br />
@@ -85,7 +103,9 @@ export default {
     return {
       teamsConfig: [],
       teamOpen: "Personalizado",
-      teams: []
+      teams: [],
+      squad: 1,
+      options: 1
     };
   },
   methods: {
