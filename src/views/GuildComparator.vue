@@ -55,7 +55,7 @@
 
 <script>
 import yourGuild from "../assets/Boteco.json";
-import opponentGuild from "../assets/魔都帝国.json";
+import opponentGuild from "../assets/KøR Galactic Battalion.json";
 import ResumeTab from "../components/comparator/resume";
 import TeamsTab from "../components/comparator/teams";
 import ArenaTab from "../components/comparator/arena";
