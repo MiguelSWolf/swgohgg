@@ -1,5 +1,36 @@
 <template>
   <div class="comparator">
+    <!-- <section class="section">
+      <div class="columns">
+        <div class="column">
+          <div class="select">
+            <select v-model="date1">
+              <option
+                v-for="(option, index) in options"
+                :key="index"
+                :value="option"
+              >
+                {{ timeConverter(option) }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="select">
+            <select v-model="date2">
+              <option
+                v-for="(option, index) in options"
+                :key="index"
+                :value="option"
+              >
+                {{ timeConverter(option) }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section> -->
     <section class="section">
       <!-- <resume-tab
         v-if="tabIsActive('Resume')"
@@ -46,13 +77,20 @@
 </template>
 
 <script>
-import current from "../assets/boteco/1623541062549.json";
+import current from "../assets/boteco/1624828176956.json";
 import pass from "../assets/boteco/1623089386989.json";
 import unit from "../components/comparator/unit";
 export default {
   components: { unit },
   data() {
     return {
+      options: [
+        1623089386989,
+        1623541062549,
+        1624050995303,
+        1624385314610,
+        1624828176956
+      ],
       currentGuild: {
         code: "",
         name: "",
@@ -68,7 +106,9 @@ export default {
         power: "",
         totalPlayers: "",
         players: []
-      }
+      },
+      date1: null,
+      date2: null
     };
   },
   methods: {
@@ -79,6 +119,32 @@ export default {
       this[`${index}Guild`].totalPlayers = data.guild.members;
       this[`${index}Guild`].players = data.players;
       this[`${index}Guild`].mods = data.mods;
+    },
+    timeConverter(UNIX_timestamp) {
+      var a = new Date(UNIX_timestamp);
+      var months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ];
+      var year = a.getFullYear();
+      var month = months[a.getMonth()];
+      var date = a.getDate();
+      var hour = a.getHours();
+      var min = a.getMinutes();
+      var sec = a.getSeconds();
+      var time =
+        date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
+      return time;
     }
   },
   computed: {
@@ -142,11 +208,19 @@ export default {
       });
       // this.current
       return players;
-    },
-    diffPlayer() {
-      return this.diffPlayers["166159449"] || [];
     }
+    // diffPlayer() {
+    //   return this.diffPlayers["166159449"] || [];
+    // }
   },
+  // watch: {
+  //   date1: function(newVal) {
+  //     this.setGuild(newVal, "current");
+  //   },
+  //   date2: function(newVal) {
+  //     this.setGuild(newVal, "pass");
+  //   }
+  // },
   mounted() {
     this.setGuild(current, "current");
     this.setGuild(pass, "pass");
