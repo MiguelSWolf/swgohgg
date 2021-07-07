@@ -77,8 +77,8 @@
 </template>
 
 <script>
-import current from "../assets/boteco/1624828176956.json";
-import pass from "../assets/boteco/1623089386989.json";
+import current from "../assets/boteco/1625682588603.json";
+import pass from "../assets/boteco/1624828176956.json";
 import unit from "../components/comparator/unit";
 export default {
   components: { unit },

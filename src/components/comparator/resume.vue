@@ -63,6 +63,11 @@ export default {
           gear: 13
         },
         {
+          name: "JMK [G13]",
+          toon: "JEDIMASTERKENOBI",
+          gear: 13
+        },
+        {
           name: "GAS [G13]",
           toon: "GENERALSKYWALKER",
           gear: 13
@@ -71,6 +76,11 @@ export default {
           name: "Malak [G12+]",
           toon: "DARTHMALAK",
           gear: 12
+        },
+        {
+          name: "KAM [G13]",
+          toon: "KIADIMUNDI",
+          gear: 13
         },
         {
           name: "DR [G12+]",
