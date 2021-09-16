@@ -1,32 +1,5 @@
 <template>
   <div class="comparator">
-    <!-- <section class="section">
-      <div class="container">
-        <form @submit.prevent="getGuild()">
-          <div class="field is-grouped is-grouped-right">
-            <p class="control is-expanded">
-              <input
-                class="input"
-                type="text"
-                placeholder="Your"
-                v-model="yourGuild.code"
-              />
-            </p>
-            <p class="control is-expanded">
-              <input
-                class="input"
-                type="text"
-                placeholder="Opponent"
-                v-model="opponentGuild.code"
-              />
-            </p>
-            <p class="control">
-              <input type="submit" class="button is-info" value="Search" />
-            </p>
-          </div>
-        </form>
-      </div>
-    </section> -->
     <section class="section">
       <div class="tabs">
         <ul>
@@ -54,8 +27,8 @@
 </template>
 
 <script>
-import yourGuild from "../assets/boteco/1631827213139.json";
-import opponentGuild from "../assets/LassDenWookieGewinnen.json";
+import yourGuild from "../assets/BordelJawa.json";
+import opponentGuild from "../assets/UPA.json";
 import ResumeTab from "../components/comparator/resume";
 import TeamsTab from "../components/comparator/teams";
 import ArenaTab from "../components/comparator/arena";

@@ -106,6 +106,11 @@ export default {
           name: "JKL [G13]",
           toon: "JEDIKNIGHTLUKE",
           gear: 13
+        },
+        {
+          name: "CAT [G13]",
+          toon: "COMMANDERAHSOKA",
+          gear: 13
         }
       ],
       configShips: [
@@ -118,6 +123,26 @@ export default {
           name: "MALE [7*]",
           toon: "CAPITALMALEVOLENCE",
           rarity: 7
+        },
+        {
+          name: "EXECUTOR [7*]",
+          toon: "CAPITALEXECUTOR",
+          rarity: 7
+        },
+        {
+          name: "EXECUTOR [6*]",
+          toon: "CAPITALEXECUTOR",
+          rarity: 6
+        },
+        {
+          name: "EXECUTOR [5*]",
+          toon: "CAPITALEXECUTOR",
+          rarity: 5
+        },
+        {
+          name: "EXECUTOR [4*]",
+          toon: "CAPITALEXECUTOR",
+          rarity: 4
         }
       ],
       resumeGears: []
@@ -161,7 +186,8 @@ export default {
           player.ships.forEach(ship => {
             if (
               ship.id == "CAPITALNEGOTIATOR" ||
-              ship.id == "CAPITALMALEVOLENCE"
+              ship.id == "CAPITALMALEVOLENCE" ||
+              ship.id == "CAPITALEXECUTOR"
             ) {
               let indexShip = this.countShips.findIndex(row => {
                 return ship.id == row.toon;

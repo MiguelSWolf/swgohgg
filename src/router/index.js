@@ -7,6 +7,7 @@ import TerritoryWarDefence from "../views/TerritoryWarDefence.vue";
 import ModsMap from "../views/ModsMap.vue";
 import Contact from "../views/Contact.vue";
 import GuildComparator from "../views/GuildComparator.vue";
+import GuildComparatorBordel from "../views/GuildComparatorBordel.vue";
 import GuildHistory from "../views/GuildHistory.vue";
 
 Vue.use(VueRouter);
@@ -21,6 +22,11 @@ const routes = [
     path: "/comparator",
     name: "comparator",
     component: GuildComparator
+  },
+  {
+    path: "/comparator-bordel",
+    name: "comparatorbordel",
+    component: GuildComparatorBordel
   },
   {
     path: "/history",

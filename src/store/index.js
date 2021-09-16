@@ -150,7 +150,7 @@ const store = new Vuex.Store({
             const aux = {
               id: abilitie.base_id,
               name: abilitie.name,
-              image: `https://swgoh.gg/${abilitie.image}`,
+              image: `${abilitie.image}`,
               isOmega: abilitie.is_omega,
               isZeta: abilitie.is_zeta,
               tierMax: abilitie.tier_max
@@ -167,7 +167,7 @@ const store = new Vuex.Store({
         const aux = {
           id: unit.base_id,
           name: unit.name,
-          image: `https://swgoh.gg/${unit.image}`,
+          image: `${unit.image}`,
           url: unit.url,
           // maxPower: unit.gp,
           isLight: unit.alignment == "Light Side",

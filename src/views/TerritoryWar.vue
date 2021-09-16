@@ -31,6 +31,7 @@
         >
           <tr>
             <th>Name</th>
+            <th>Power</th>
             <th v-for="(team, index) in teams" :key="team.name">
               {{ team.name }} ({{ countTeams[index] }}/{{ orderTeams.length }})
             </th>
@@ -41,6 +42,7 @@
             <td>
               <a target="_blank" :href="row.url">{{ row.name }} </a>
             </td>
+            <td>{{ row.power }}</td>
             <td
               v-for="team in teams"
               :key="team.name"
@@ -48,9 +50,13 @@
               @click="marked(team.name, row.name)"
             >
               <div class="has-text-success icon" v-if="row[team.name].ready">
-                <iconCheck />
+                Sim
+                <!-- <iconCheck /> -->
               </div>
-              <div class="has-text-danger icon" v-else><iconCross /></div>
+              <div class="has-text-danger icon" v-else>
+                Nao
+                <!-- <iconCross /> -->
+              </div>
             </td>
             <td>{{ formatNumber(row.ratio) }}</td>
             <td>
@@ -69,12 +75,12 @@
 
 <script>
 import guild from "../assets/7545.json";
-import iconCheck from "../components/checkIcon";
-import iconCross from "../components/crossIcon";
+// import iconCheck from "../components/checkIcon";
+// import iconCross from "../components/crossIcon";
 import iconTrash from "../components/trashIcon";
 
 export default {
-  components: { iconCheck, iconCross, iconTrash },
+  components: { iconTrash },
   data() {
     return {
       guildCode: "",
@@ -87,29 +93,41 @@ export default {
           lead: "DARTHREVAN",
           weight: 1,
           mandatoryUnits: {
-            DARTHREVAN: { gear: 12 },
-            DARTHMALAK: { gear: 12 },
-            BASTILASHANDARK: { gear: 12 },
-            HK47: { gear: 12 }
+            DARTHREVAN: { gear: 13 },
+            DARTHMALAK: { gear: 13 },
+            BASTILASHANDARK: { gear: 13 }
           },
           optionalUnits: {
+            HK47: { gear: 12 },
             SITHMARAUDER: { gear: 12 },
             SITHTROOPER: { gear: 12 }
           }
         },
         {
-          name: "GG",
-          lead: "GRIEVOUS",
+          name: "CLS",
+          lead: "COMMANDERLUKESKYWALKER",
           weight: 1,
           mandatoryUnits: {
-            GRIEVOUS: { gear: 13 },
-            B1BATTLEDROIDV2: { gear: 12 },
-            B2SUPERBATTLEDROID: { gear: 12 },
-            DROIDEKA: { gear: 12 },
-            MAGNAGUARD: { gear: 12 }
-          },
-          optionalUnits: {}
+            COMMANDERLUKESKYWALKER: { gear: 13 },
+            HANSOLO: { gear: 13 },
+            CHEWBACCALEGENDARY: { gear: 13 },
+            C3POLEGENDARY: { gear: 12 },
+            C3POCHEWBACCA: { gear: 13 }
+          }
         },
+        // {
+        //   name: "GG",
+        //   lead: "GRIEVOUS",
+        //   weight: 1,
+        //   mandatoryUnits: {
+        //     GRIEVOUS: { gear: 13 },
+        //     B1BATTLEDROIDV2: { gear: 12 },
+        //     B2SUPERBATTLEDROID: { gear: 12 },
+        //     DROIDEKA: { gear: 12 },
+        //     MAGNAGUARD: { gear: 12 }
+        //   },
+        //   optionalUnits: {}
+        // },
         {
           name: "Padme",
           lead: "PADMEAMIDALA",
@@ -117,11 +135,11 @@ export default {
           mandatoryUnits: {
             PADMEAMIDALA: { gear: 13 },
             GENERALKENOBI: { gear: 13 },
-            ANAKINKNIGHT: { gear: 13 },
-            C3POLEGENDARY: { gear: 11 }
+            ANAKINKNIGHT: { gear: 13 }
           },
           optionalUnits: {
             AHSOKATANO: { gear: 12 },
+            R2D2_LEGENDARY: { gear: 12 },
             SHAAKTI: { gear: 12 },
             BARRISSOFFEE: { gear: 12 }
           }
@@ -131,16 +149,16 @@ export default {
           lead: "JEDIKNIGHTREVAN",
           weight: 1,
           mandatoryUnits: {
-            JEDIKNIGHTREVAN: { gear: 12 },
-            GRANDMASTERYODA: { gear: 12 },
-            JOLEEBINDO: { gear: 12 },
-            BASTILASHAN: { gear: 12 }
+            JEDIKNIGHTREVAN: { gear: 13 },
+            GRANDMASTERYODA: { gear: 13 },
+            JOLEEBINDO: { gear: 13 }
           },
           optionalUnits: {
+            BASTILASHAN: { gear: 12 },
             OLDBENKENOBI: { gear: 12 },
             HERMITYODA: { gear: 12 },
             EZRABRIDGERS3: { gear: 12 },
-            GENERALKENOBI: { gear: 12 }
+            BARRISSOFFEE: { gear: 12 }
           }
         },
         {
@@ -149,6 +167,19 @@ export default {
           weight: 1,
           mandatoryUnits: {
             GENERALSKYWALKER: { gear: 13 },
+            CT5555: { gear: 13 },
+            CT210408: { gear: 13 },
+            CT7567: { gear: 13 },
+            ARCTROOPER501ST: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "KAM",
+          lead: "SHAAKTI",
+          weight: 1,
+          mandatoryUnits: {
+            SHAAKTI: { gear: 13 },
             CT5555: { gear: 13 },
             CT210408: { gear: 13 },
             CT7567: { gear: 13 },
@@ -207,20 +238,20 @@ export default {
             COUNTDOOKU: { gear: 13 }
           },
           optionalUnits: {}
-        },
-        {
-          name: "VADER - RANCOR",
-          lead: "VADER",
-          weight: 1.5,
-          mandatoryUnits: {
-            VADER: { gear: 13 },
-            BB8: { gear: 13 },
-            WATTAMBOR: { gear: 13 },
-            KYLORENUNMASKED: { gear: 13 },
-            C3POLEGENDARY: { gear: 13 }
-          },
-          optionalUnits: {}
         }
+        // {
+        //   name: "VADER - RANCOR",
+        //   lead: "VADER",
+        //   weight: 1.5,
+        //   mandatoryUnits: {
+        //     VADER: { gear: 13 },
+        //     BB8: { gear: 13 },
+        //     WATTAMBOR: { gear: 13 },
+        //     KYLORENUNMASKED: { gear: 13 },
+        //     C3POLEGENDARY: { gear: 13 }
+        //   },
+        //   optionalUnits: {}
+        // }
         // ,{
         //   name: "Nute",
         //   lead: "MONMOTHMA",
