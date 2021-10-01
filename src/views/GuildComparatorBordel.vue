@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import yourGuild from "../assets/BordelJawa.json";
-import opponentGuild from "../assets/UPA.json";
+import yourGuild from "../assets/Kyber Sacrifício de Bnar.json";
+import opponentGuild from "../assets/ΗΑ MandaIore.json";
 import ResumeTab from "../components/comparator/resume";
 import TeamsTab from "../components/comparator/teams";
 import ArenaTab from "../components/comparator/arena";
