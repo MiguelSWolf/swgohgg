@@ -68,6 +68,11 @@ export default {
           gear: 13
         },
         {
+          name: "LOVE [G13]",
+          toon: "LORDVADER",
+          gear: 13
+        },
+        {
           name: "GAS [G13]",
           toon: "GENERALSKYWALKER",
           gear: 13
