@@ -1,18 +1,12 @@
 <template>
-  <div class="field">
-    <label class="label">{{ label }}</label>
-    <div class="control">
-      <div class="select">
-        <select v-model="mutableValue">
-          <option value="">-- Select Unit --</option>
-          <option
-            v-for="(unit, index) in units"
-            :key="index"
-            :value="unit.id"
-            >{{ unit.name }}</option
-          >
-        </select>
-      </div>
+  <div class="control" style="min-width: 100px; max-width: 16vw">
+    <div class="select">
+      <select v-model="mutableValue">
+        <option value="">-- Select Unit --</option>
+        <option v-for="(unit, index) in units" :key="index" :value="unit.id">{{
+          unit.name
+        }}</option>
+      </select>
     </div>
   </div>
 </template>
