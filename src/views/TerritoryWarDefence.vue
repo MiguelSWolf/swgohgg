@@ -83,63 +83,34 @@ export default {
       },
       teams: [
         {
-          name: "DR",
-          lead: "DARTHREVAN",
+          name: "JMK",
+          lead: "JEDIMASTERKENOBI",
           weight: 1,
           mandatoryUnits: {
-            DARTHREVAN: { gear: 13 },
-            DARTHMALAK: { gear: 13 },
-            BASTILASHANDARK: { gear: 13 },
-            HK47: { gear: 12 }
-          },
-          optionalUnits: {
-            SITHMARAUDER: { gear: 12 },
-            SITHTROOPER: { gear: 12 }
-          }
-        },
-        {
-          name: "GG",
-          lead: "GRIEVOUS",
-          weight: 1,
-          mandatoryUnits: {
-            GRIEVOUS: { gear: 13 },
-            B1BATTLEDROIDV2: { gear: 12 },
-            B2SUPERBATTLEDROID: { gear: 12 },
-            DROIDEKA: { gear: 12 },
-            MAGNAGUARD: { gear: 12 }
-          },
-          optionalUnits: {}
-        },
-        {
-          name: "Padme",
-          lead: "PADMEAMIDALA",
-          weight: 1,
-          mandatoryUnits: {
-            PADMEAMIDALA: { gear: 13 },
+            JEDIMASTERKENOBI: { gear: 13 },
+            ANAKINKNIGHT: { gear: 13 },
             GENERALKENOBI: { gear: 13 },
-            ANAKINKNIGHT: { gear: 13 }
+            AHSOKATANO: { gear: 13 }
           },
           optionalUnits: {
-            AHSOKATANO: { gear: 12 },
-            SHAAKTI: { gear: 12 },
-            BARRISSOFFEE: { gear: 12 }
+            PADMEAMIDALA: { gear: 13 },
+            COMMANDERAHSOKA: { gear: 13 }
           }
         },
         {
-          name: "NS",
-          lead: "ASAJVENTRESS",
+          name: "BH",
+          lead: "BOSSK",
           weight: 1,
           mandatoryUnits: {
-            ASAJVENTRESS: { gear: 12 },
-            MOTHERTALZIN: { gear: 12 },
-            NIGHTSISTERZOMBIE: { gear: 12 },
-            DAKA: { gear: 12 }
+            BOSSK: { gear: 13 }
           },
           optionalUnits: {
-            NIGHTSISTERACOLYTE: { gear: 12 },
-            TALIA: { gear: 12 },
-            NIGHTSISTERSPIRIT: { gear: 12 },
-            ENFYSNEST: { gear: 12 }
+            BOBAFETT: { gear: 13 },
+            THEMANDALORIAN: { gear: 13 },
+            GREEFKARGA: { gear: 12 },
+            DENGAR: { gear: 13 },
+            ZAMWESELL: { gear: 13 },
+            CADBANE: { gear: 13 }
           }
         },
         {
@@ -148,55 +119,70 @@ export default {
           weight: 1,
           mandatoryUnits: {
             COMMANDERLUKESKYWALKER: { gear: 13 },
-            HANSOLO: { gear: 12 },
-            CHEWBACCALEGENDARY: { gear: 12 },
-            C3POLEGENDARY: { gear: 11 },
-            C3POCHEWBACCA: { gear: 10 }
+            HANSOLO: { gear: 13 },
+            CHEWBACCALEGENDARY: { gear: 13 },
+            C3POCHEWBACCA: { gear: 12 },
+            C3POLEGENDARY: { gear: 13 }
           },
           optionalUnits: {}
         },
         {
-          name: "GEO",
+          name: "Geo",
           lead: "GEONOSIANBROODALPHA",
           weight: 1,
           mandatoryUnits: {
             GEONOSIANBROODALPHA: { gear: 13 },
-            GEONOSIANSPY: { gear: 13 },
+            SUNFAC: { gear: 12 },
             GEONOSIANSOLDIER: { gear: 12 },
-            POGGLETHELESSER: { gear: 12 },
-            SUNFAC: { gear: 12 }
+            GEONOSIANSPY: { gear: 12 },
+            POGGLETHELESSER: { gear: 12 }
           },
           optionalUnits: {}
         },
         {
-          name: "FO",
-          lead: "PHASMA",
+          name: "MM",
+          lead: "MONMOTHMA",
           weight: 1,
           mandatoryUnits: {
-            PHASMA: { gear: 13 }
+            MONMOTHMA: { gear: 13 },
+            BIGGSDARKLIGHTER: { gear: 13 },
+            WEDGEANTILLES: { gear: 13 },
+            ADMINISTRATORLANDO: { gear: 13 }
           },
           optionalUnits: {
-            FIRSTORDEREXECUTIONER: { gear: 13 },
-            FIRSTORDEROFFICERMALE: { gear: 13 },
-            FIRSTORDERSPECIALFORCESPILOT: { gear: 13 },
-            FIRSTORDERTROOPER: { gear: 13 },
-            FIRSTORDERTIEPILOT: { gear: 13 },
-            GENERALHUX: { gear: 13 },
-            FOSITHTROOPER: { gear: 13 },
-            KYLORENUNMASKED: { gear: 13 },
-            KYLOREN: { gear: 13 }
+            CHIRRUTIMWE: { gear: 12 },
+            PAO: { gear: 12 },
+            CARADUNE: { gear: 12 },
+            K2SO: { gear: 12 }
           }
         },
         {
-          name: "Resistência",
-          lead: "REYJEDITRAINING",
+          name: "Rey",
+          lead: "GLREY",
           weight: 1,
           mandatoryUnits: {
-            REYJEDITRAINING: { gear: 13 },
-            REY: { gear: 13 },
-            BB8: { gear: 13 },
-            FINN: { gear: 13 },
-            RESISTANCETROOPER: { gear: 13 }
+            GLREY: { gear: 13 },
+            EPIXPOE: { gear: 13 },
+            EPIXFINN: { gear: 13 },
+            AMILYNHOLDO: { gear: 13 }
+          },
+          optionalUnits: {
+            COMMANDERAHSOKA: { gear: 13 },
+            BB8: { gear: 13 }
+          }
+        },
+        {
+          name: "Conde",
+          lead: "COUNTDOOKU",
+          weight: 1,
+          mandatoryUnits: {
+            COUNTDOOKU: { gear: 13 }
+          },
+          optionalUnits: {
+            ZAALBAR: { gear: 12 },
+            ENFYSNEST: { gear: 12 },
+            DROIDEKA: { gear: 12 },
+            WATTAMBOR: { gear: 12 }
           }
         }
       ],

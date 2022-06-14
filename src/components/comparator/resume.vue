@@ -2,6 +2,12 @@
   <div class="table-container">
     <h2>Units</h2>
     <table-balance
+      :data="resumeGLs"
+      :your="yourGuild.name"
+      :opponent="opponentGuild.name"
+    />
+
+    <table-balance
       :data="resumeToons"
       :your="yourGuild.name"
       :opponent="opponentGuild.name"
@@ -41,7 +47,7 @@ export default {
     return {
       countToons: [],
       countShips: [],
-      configResume: [
+      configGL: [
         {
           name: "SLKR [G13]",
           toon: "SUPREMELEADERKYLOREN",
@@ -71,6 +77,28 @@ export default {
           name: "LOVE [G13]",
           toon: "LORDVADER",
           gear: 13
+        }
+      ],
+      configResume: [
+        {
+          name: "MAUL [G13]",
+          toon: "MAULS7",
+          gear: 13
+        },
+        {
+          name: "KK [G13]",
+          toon: "KYLEKATARN",
+          gear: 13
+        },
+        {
+          name: "CAT [G13]",
+          toon: "COMMANDERAHSOKA",
+          gear: 13
+        },
+        {
+          name: "BOBAFAT [G13]",
+          toon: "BOBAFETTSCION",
+          gear: 13
         },
         {
           name: "GAS [G13]",
@@ -87,34 +115,29 @@ export default {
           toon: "KIADIMUNDI",
           gear: 13
         },
-        {
-          name: "DR [G12+]",
-          toon: "DARTHREVAN",
-          gear: 12
-        },
-        {
-          name: "Padme [G13]",
-          toon: "PADMEAMIDALA",
-          gear: 13
-        },
-        {
-          name: "JKR [G12+]",
-          toon: "JEDIKNIGHTREVAN",
-          gear: 12
-        },
-        {
-          name: "GG [G13]",
-          toon: "GRIEVOUS",
-          gear: 13
-        },
+        // {
+        //   name: "DR [G12+]",
+        //   toon: "DARTHREVAN",
+        //   gear: 12
+        // },
+        // {
+        //   name: "Padme [G13]",
+        //   toon: "PADMEAMIDALA",
+        //   gear: 13
+        // },
+        // {
+        //   name: "JKR [G12+]",
+        //   toon: "JEDIKNIGHTREVAN",
+        //   gear: 12
+        // },
+        // {
+        //   name: "GG [G13]",
+        //   toon: "GRIEVOUS",
+        //   gear: 13
+        // },
         {
           name: "JKL [G13]",
           toon: "JEDIKNIGHTLUKE",
-          gear: 13
-        },
-        {
-          name: "CAT [G13]",
-          toon: "COMMANDERAHSOKA",
           gear: 13
         }
       ],
@@ -148,6 +171,16 @@ export default {
           name: "EXECUTOR [4*]",
           toon: "CAPITALEXECUTOR",
           rarity: 4
+        },
+        {
+          name: "VULTURE [7*]",
+          toon: "VULTUREDROID",
+          rarity: 7
+        },
+        {
+          name: "HYENA [7*]",
+          toon: "HYENABOMBER",
+          rarity: 7
         }
       ],
       resumeGears: []
@@ -192,7 +225,9 @@ export default {
             if (
               ship.id == "CAPITALNEGOTIATOR" ||
               ship.id == "CAPITALMALEVOLENCE" ||
-              ship.id == "CAPITALEXECUTOR"
+              ship.id == "CAPITALEXECUTOR" ||
+              ship.id == "VULTUREDROID" ||
+              ship.id == "HYENABOMBER"
             ) {
               let indexShip = this.countShips.findIndex(row => {
                 return ship.id == row.toon;
@@ -217,8 +252,40 @@ export default {
     }
   },
   computed: {
+    resumeGLs() {
+      let resume = [];
+      let your = 0;
+      let opponent = 0;
+      this.configGL.forEach(configRow => {
+        let row = {
+          name: configRow.name,
+          your: 0,
+          opponent: 0
+        };
+        let unit = this.countToons.find(unit => {
+          return unit.toon == configRow.toon;
+        });
+        if (unit) {
+          for (let i = configRow.gear; i < 23; i++) {
+            row.your += unit.your[i];
+            row.opponent += unit.opponent[i];
+          }
+        }
+        resume.push(row);
+        your += row.your;
+        opponent += row.opponent;
+      });
+      resume.push({
+        name: "Total",
+        your,
+        opponent
+      });
+      return resume;
+    },
     resumeToons() {
       let resume = [];
+      let your = 0;
+      let opponent = 0;
       this.configResume.forEach(configRow => {
         let row = {
           name: configRow.name,
@@ -235,6 +302,13 @@ export default {
           }
         }
         resume.push(row);
+        your += row.your;
+        opponent += row.opponent;
+      });
+      resume.push({
+        name: "Total",
+        your,
+        opponent
       });
       return resume;
     },
@@ -269,6 +343,8 @@ export default {
     },
     resumeShips() {
       let resume = [];
+      let your = 0;
+      let opponent = 0;
       this.configShips.forEach(configRow => {
         let row = {
           name: configRow.name,
@@ -283,6 +359,13 @@ export default {
           row.opponent += ship.opponent[configRow.rarity];
         }
         resume.push(row);
+        your += row.your;
+        opponent += row.opponent;
+      });
+      resume.push({
+        name: "Total",
+        your,
+        opponent
       });
       return resume;
     }

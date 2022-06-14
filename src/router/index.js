@@ -9,6 +9,7 @@ import Contact from "../views/Contact.vue";
 import GuildComparator from "../views/GuildComparator.vue";
 import GuildComparatorBordel from "../views/GuildComparatorBordel.vue";
 import GuildHistory from "../views/GuildHistory.vue";
+import TeamsConfig from "../views/TeamsConfig.vue";
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,11 @@ const routes = [
     path: "/tb",
     name: "tbls",
     component: TerritoryBattle
+  },
+  {
+    path: "/teams",
+    name: "teams",
+    component: TeamsConfig
   },
   {
     path: "/comparator",

@@ -54,8 +54,8 @@
 </template>
 
 <script>
-import yourGuild from "../assets/boteco/1634751838833.json";
-import opponentGuild from "../assets/THE 1 FORCE.json";
+import yourGuild from "../assets/boteco/1654905731058.json";
+import opponentGuild from "../assets/True Spartans.json";
 import ResumeTab from "../components/comparator/resume";
 import TeamsTab from "../components/comparator/teams";
 import ArenaTab from "../components/comparator/arena";

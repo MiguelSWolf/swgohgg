@@ -89,118 +89,6 @@ export default {
       },
       teams: [
         {
-          name: "DR",
-          lead: "DARTHREVAN",
-          weight: 1,
-          mandatoryUnits: {
-            DARTHREVAN: { gear: 13 },
-            DARTHMALAK: { gear: 13 },
-            BASTILASHANDARK: { gear: 13 }
-          },
-          optionalUnits: {
-            HK47: { gear: 12 },
-            SITHMARAUDER: { gear: 12 },
-            SITHTROOPER: { gear: 12 }
-          }
-        },
-        {
-          name: "CLS",
-          lead: "COMMANDERLUKESKYWALKER",
-          weight: 1,
-          mandatoryUnits: {
-            COMMANDERLUKESKYWALKER: { gear: 13 },
-            HANSOLO: { gear: 13 },
-            CHEWBACCALEGENDARY: { gear: 13 },
-            C3POLEGENDARY: { gear: 12 },
-            C3POCHEWBACCA: { gear: 13 }
-          }
-        },
-        // {
-        //   name: "GG",
-        //   lead: "GRIEVOUS",
-        //   weight: 1,
-        //   mandatoryUnits: {
-        //     GRIEVOUS: { gear: 13 },
-        //     B1BATTLEDROIDV2: { gear: 12 },
-        //     B2SUPERBATTLEDROID: { gear: 12 },
-        //     DROIDEKA: { gear: 12 },
-        //     MAGNAGUARD: { gear: 12 }
-        //   },
-        //   optionalUnits: {}
-        // },
-        {
-          name: "Padme",
-          lead: "PADMEAMIDALA",
-          weight: 1,
-          mandatoryUnits: {
-            PADMEAMIDALA: { gear: 13 },
-            GENERALKENOBI: { gear: 13 },
-            ANAKINKNIGHT: { gear: 13 }
-          },
-          optionalUnits: {
-            AHSOKATANO: { gear: 12 },
-            R2D2_LEGENDARY: { gear: 12 },
-            SHAAKTI: { gear: 12 },
-            BARRISSOFFEE: { gear: 12 }
-          }
-        },
-        {
-          name: "JKR",
-          lead: "JEDIKNIGHTREVAN",
-          weight: 1,
-          mandatoryUnits: {
-            JEDIKNIGHTREVAN: { gear: 13 },
-            GRANDMASTERYODA: { gear: 13 },
-            JOLEEBINDO: { gear: 13 }
-          },
-          optionalUnits: {
-            BASTILASHAN: { gear: 12 },
-            OLDBENKENOBI: { gear: 12 },
-            HERMITYODA: { gear: 12 },
-            EZRABRIDGERS3: { gear: 12 },
-            BARRISSOFFEE: { gear: 12 }
-          }
-        },
-        {
-          name: "GAS",
-          lead: "GENERALSKYWALKER",
-          weight: 1,
-          mandatoryUnits: {
-            GENERALSKYWALKER: { gear: 13 },
-            CT5555: { gear: 13 },
-            CT210408: { gear: 13 },
-            CT7567: { gear: 13 },
-            ARCTROOPER501ST: { gear: 13 }
-          },
-          optionalUnits: {}
-        },
-        {
-          name: "KAM",
-          lead: "SHAAKTI",
-          weight: 1,
-          mandatoryUnits: {
-            SHAAKTI: { gear: 13 },
-            CT5555: { gear: 13 },
-            CT210408: { gear: 13 },
-            CT7567: { gear: 13 },
-            ARCTROOPER501ST: { gear: 13 }
-          },
-          optionalUnits: {}
-        },
-        {
-          name: "SLKR",
-          lead: "SUPREMELEADERKYLOREN",
-          weight: 1.5,
-          mandatoryUnits: {
-            SUPREMELEADERKYLOREN: { gear: 13 },
-            KYLOREN: { gear: 13 },
-            KYLORENUNMASKED: { gear: 13 },
-            FIRSTORDEREXECUTIONER: { gear: 13 },
-            FIRSTORDERTROOPER: { gear: 13 }
-          },
-          optionalUnits: {}
-        },
-        {
           name: "REY",
           lead: "GLREY",
           weight: 1.5,
@@ -227,15 +115,15 @@ export default {
           optionalUnits: {}
         },
         {
-          name: "SEE",
-          lead: "SITHPALPATINE",
+          name: "JMK",
+          lead: "JEDIMASTERKENOBI",
           weight: 1.5,
           mandatoryUnits: {
-            SITHPALPATINE: { gear: 13 },
-            EMPERORPALPATINE: { gear: 13 },
-            ADMIRALPIETT: { gear: 13 },
-            VADER: { gear: 13 },
-            COUNTDOOKU: { gear: 13 }
+            JEDIMASTERKENOBI: { gear: 1 },
+            ANAKINKNIGHT: { gear: 1 },
+            GENERALKENOBI: { gear: 1 },
+            AHSOKATANO: { gear: 1 },
+            C3POLEGENDARY: { gear: 1 }
           },
           optionalUnits: {}
         }

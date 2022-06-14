@@ -1,5 +1,6 @@
 <template>
   <table
+    style="width: 600px"
     class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth is-resume"
   >
     <tr>
