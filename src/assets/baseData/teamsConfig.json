@@ -12,283 +12,181 @@
       ]
     },
     {
-      "name": "RANCOR - VADER",
-      "lead": "VADER",
-      "squad": [
-        "BB8",
-        "WATTAMBOR",
-        "KYLORENUNMASKED",
-        "C3POLEGENDARY"
-      ]
-    },
-    {
-      "name": "Meta GG",
-      "lead": "GRIEVOUS",
-      "squad": [
-        "B1BATTLEDROIDV2",
-        "B2SUPERBATTLEDROID",
-        "MAGNAGUARD"
-      ],
-      "optional": [
-        {
-          "spaces": 1,
-          "squad": ["DROIDEKA", "BB8", "WATTAMBOR"]
-        }
-      ]
-    },
-    {
-      "name": "Meta Padme",
-      "lead": "PADMEAMIDALA",
-      "squad": [
-        "GENERALKENOBI",
-        "ANAKINKNIGHT",
-        "C3POLEGENDARY"
-      ],
-      "optional": [
-        {
-          "spaces": 1,
-          "squad": ["AHSOKATANO", "SHAAKTI", "BARRISSOFFEE"]
-        }
-      ]
-    },
-    {
-      "name": "Meta DR",
-      "lead": "DARTHREVAN",
-      "squad": [
-        "DARTHMALAK",
-        "BASTILASHANDARK",
-        "HK47"
-      ],
-      "optional": [
-        {
-          "spaces": 1,
-          "squad": ["SITHMARAUDER", "SITHTROOPER"]
-        }
-      ]
-    },
-    {
-      "name": "Meta GAS",
-      "lead": "GENERALSKYWALKER",
-      "squad": [
-        "CT5555",
-        "CT210408",
-        "CT7567",
-        "ARCTROOPER501ST"
-      ]
-    },
-    {
-      "name": "Counter Rey - Com Vader",
-      "lead": "VADER",
-      "squad": [
-        "GRANDADMIRALTHRAWN"
-      ],
-      "optional": [
-        {
-          "spaces": 1,
-          "squad": ["BASTILASHANDARK", "ADMIRALPIETT"]
-        },
-        {
-          "spaces": 1,
-          "squad": ["WATTAMBOR", "MOFFGIDEONS1"]
-        },
-        {
-          "spaces": 1,
-          "squad": ["SITHTROOPER", "SHORETROOPER", "KYLORENUNMASKED"]
-        }
-      ]
-    },
-    {
-      "name": "IT",
-      "lead": "VEERS",
-      "squad": [
-        "COLONELSTARCK", "ADMIRALPIETT"
-      ],
-      "optional": [
-        {
-          "spaces": 1,
-          "squad": ["SHORETROOPER", "RANGETROOPER"]
-        },
-        {
-          "spaces": 1,
-          "squad": ["DEATHTROOPER", "SNOWTROOPER"]
-        }
-      ]
-    },
-    {
-      "name": "MM",
-      "lead": "MONMOTHMA",
-      "squad": [
-        "CASSIANANDOR",
-        "CARADUNE",
-        "HOTHREBELSCOUT",
-        "PAO"
-      ]
-    },
-    {
-      "name": "Nute",
-      "lead": "NUTEGUNRAY",
-      "squad": [
-        "COUNTDOOKU",
-        "JANGOFETT",
-        "DROIDEKA",
-        "ENFYSNEST"
-      ]
-    },
-    {
-      "name": "JKR",
-      "lead": "JEDIKNIGHTREVAN",
-      "squad": [
-        "JOLEEBINDO",
-        "BASTILASHAN",
-        "GRANDMASTERYODA"
-      ],
-      "optional": [
-        {
-          "spaces": 1,
-          "squad": ["OLDBENKENOBI", "HERMITYODA", "EZRABRIDGERS3"]
-        }
-      ]
-    },
-    {
-      "name": "Padme",
-      "lead": "PADMEAMIDALA",
+      "name": "JMK",
+      "lead": "JEDIMASTERKENOBI",
       "squad": [
         "ANAKINKNIGHT",
         "GENERALKENOBI",
-        "C3POLEGENDARY"
+        "AHSOKATANO"
       ],
       "optional": [
         {
           "spaces": 1,
-          "squad": ["AHSOKATANO", "SHAAKTI", "BARRISSOFFEE"]
+          "squad": ["PADMEAMIDALA", "COMMANDERAHSOKA"]
         }
-      ]
+      ],
+      "message": "<strong>*CLS Com/ mochila*</strong><br />CLS G12+, Han G12+, Threepio&Chewie 6* G10+, Chewbacca G12+, C3PO G11+  <strong>*(a ordem importa não colocar o mochila depois do chewbacca)*</strong>",
+      "requirements": {
+        "units": {
+          "JEDIMASTERKENOBI": { "gear": 13},
+          "ANAKINKNIGHT": { "gear": 13},
+          "GENERALKENOBI": { "gear": 13},
+          "AHSOKATANO": { "gear": 13},
+          "PADMEAMIDALA": { "gear": 13},
+          "COMMANDERAHSOKA": { "gear": 13}
+        } 
+      }
     },
     {
       "name": "Bossk",
       "lead": "BOSSK",
       "squad": [
-        "BOBAFETT",
-        "THEMANDALORIAN",
-        "GREEFKARGA",
-        "DENGAR"
-      ]
-    },
-    {
-      "name": "TW DEFENCE - GEO",
-      "lead": "GEONOSIANBROODALPHA",
-      "message": "*Geos (mínimo de dois geos G13, o resto G12)<br />*OBS:*<br />A ordem importa, colocar nesta ordem: Alpha, Sun fac, Soldado, Spy e Poggle.",
-      "squad": [
-        "SUNFAC",
-        "GEONOSIANSOLDIER",
-        "GEONOSIANSPY",
-        "POGGLETHELESSER"
       ],
+      "optional": [
+        {
+          "spaces": 4,
+          "squad": [
+            "BOBAFETT",
+            "THEMANDALORIAN",
+            "GREEFKARGA",
+            "DENGAR",
+            "ZAMWESELL",
+            "CADBANE"
+          ]
+        }
+      ],
+      "message": "<strong>*CLS Com/ mochila*</strong><br />CLS G12+, Han G12+, Threepio&Chewie 6* G10+, Chewbacca G12+, C3PO G11+  <strong>*(a ordem importa não colocar o mochila depois do chewbacca)*</strong>",
       "requirements": {
-        "team": {
-          "count": 2,
-          "gear": 13
+        "units": {
+          "BOSSK": { "gear": 13},
+          "BOBAFETT": { "gear": 13},
+          "THEMANDALORIAN": { "gear": 13},
+          "GREEFKARGA": { "gear": 12},
+          "DENGAR": { "gear": 13},
+          "ZAMWESELL": { "gear": 13},
+          "CADBANE": { "gear": 13}
         } 
       }
     },
     {
-      "name": "TW DEFENCE - CLS",
+      "name": "CLS",
       "lead": "COMMANDERLUKESKYWALKER",
-      "message": "<strong>*CLS Com/ mochila*</strong><br />CLS G12+, Han G12+, Threepio&Chewie 6* G10+, Chewbacca G12+, C3PO G11+  <strong>*(a ordem importa não colocar o mochila depois do chewbacca)*</strong>",
       "squad": [
         "HANSOLO",
         "CHEWBACCALEGENDARY",
         "C3POCHEWBACCA",
         "C3POLEGENDARY"
       ],
+      "message": "<strong>*CLS Com/ mochila*</strong><br />CLS G12+, Han G12+, Threepio&Chewie 6* G10+, Chewbacca G12+, C3PO G11+  <strong>*(a ordem importa não colocar o mochila depois do chewbacca)*</strong>",
       "requirements": {
         "units": {
-          "COMMANDERLUKESKYWALKER": { "gear": 12},
-          "HANSOLO": { "gear": 12},
-          "CHEWBACCALEGENDARY": { "gear": 12},
-          "C3POCHEWBACCA": { "gear": 10, "rarity": 6},
-          "C3POLEGENDARY": { "gear": 11}
+          "COMMANDERLUKESKYWALKER": { "gear": 13},
+          "HANSOLO": { "gear": 13},
+          "CHEWBACCALEGENDARY": { "gear": 13},
+          "C3POCHEWBACCA": { "gear": 12},
+          "C3POLEGENDARY": { "gear": 13}
         } 
       }
     },
     {
-      "name": "KYLO - RANCOR - PHASE 1",
-      "lead": "SUPREMELEADERKYLOREN",
+      "name": "GEO",
+      "lead": "GEONOSIANBROODALPHA",
       "squad": [
-        "KYLORENUNMASKED",
-        "GENERALHUX",
-        "GRANDADMIRALTHRAWN",
-        "WATTAMBOR"
-      ]
+        "SUNFAC",
+        "GEONOSIANSOLDIER",
+        "GEONOSIANSPY",
+        "POGGLETHELESSER"
+      ],
+      "message": "*Geos (mínimo de dois geos G13, o resto G12)<br />*OBS:*<br />A ordem importa, colocar nesta ordem: Alpha, Sun fac, Soldado, Spy e Poggle.",
+      "requirements": {
+        "units": {
+          "GEONOSIANBROODALPHA": { "gear": 13},
+          "SUNFAC": { "gear": 12},
+          "GEONOSIANSOLDIER": { "gear": 12},
+          "GEONOSIANSPY": { "gear": 12},
+          "POGGLETHELESSER": { "gear": 12}
+        }
+      }
     },
     {
-      "name": "REY + CLONES - RANCOR - PHASE 1",
+      "name": "MM",
+      "lead": "MONMOTHMA",
+      "squad": [
+        "BIGGSDARKLIGHTER",
+        "WEDGEANTILLES",
+        "ADMINISTRATORLANDO"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["CHIRRUTIMWE", "PAO", "CARADUNE", "K2SO"]
+        }
+      ],
+      "message": "<strong>*CLS Com/ mochila*</strong><br />CLS G12+, Han G12+, Threepio&Chewie 6* G10+, Chewbacca G12+, C3PO G11+  <strong>*(a ordem importa não colocar o mochila depois do chewbacca)*</strong>",
+      "requirements": {
+        "units": {
+          "MONMOTHMA": { "gear": 13},
+          "BIGGSDARKLIGHTER": { "gear": 13},
+          "WEDGEANTILLES": { "gear": 13},
+          "ADMINISTRATORLANDO": { "gear": 13},
+          "CHIRRUTIMWE": { "gear": 12},
+          "PAO": { "gear": 12},
+          "CARADUNE": { "gear": 12},
+          "K2SO": { "gear": 12}
+        } 
+      }
+    },
+    {
+      "name": "REY",
       "lead": "GLREY",
       "squad": [
-        "CT7567",
-        "CT5555",
-        "C3POLEGENDARY",
-        "HERMITYODA"
-      ]
+        "EPIXPOE",
+        "EPIXFINN",
+        "AMILYNHOLDO"
+      ],
+      "optional": [
+        {
+          "spaces": 1,
+          "squad": ["COMMANDERAHSOKA", "BB8"]
+        }
+      ],
+      "message": "<strong>*CLS Com/ mochila*</strong><br />CLS G12+, Han G12+, Threepio&Chewie 6* G10+, Chewbacca G12+, C3PO G11+  <strong>*(a ordem importa não colocar o mochila depois do chewbacca)*</strong>",
+      "requirements": {
+        "units": {
+          "GLREY": { "gear": 13},
+          "EPIXPOE": { "gear": 13},
+          "EPIXFINN": { "gear": 13},
+          "AMILYNHOLDO": { "gear": 13},
+          "COMMANDERAHSOKA": { "gear": 13},
+          "BB8": { "gear": 13}
+        } 
+      }
     },
     {
-      "name": "REY + JAWAS - RANCOR - PHASE 1",
-      "lead": "GLREY",
-      "squad": [
-        "CHIEFNEBIT",
-        "JAWAENGINEER",
-        "JAWASCAVENGER",
-        "WATTAMBOR"
-      ]
-    },
-    {
-      "name": "KYLO + NS - RANCOR - PHASE 1",
-      "lead": "SUPREMELEADERKYLOREN",
-      "squad": [
-        "NIGHTSISTERZOMBIE",
-        "DAKA",
-        "GENERALHUX","GRANDADMIRALTHRAWN","WATTAMBOR"
-      ]
-    },
-    {
-      "name": "KYLO + NS - RANCOR - PHASE 1",
-      "lead": "SUPREMELEADERKYLOREN",
-      "squad": [
-        "NIGHTSISTERZOMBIE",
-        "DAKA",
-        "HERMITYODA",
-        "GENERALHUX"
-      ]
-    },
-    {
-      "name": "GAS - RANCOR - PHASE 1",
-      "lead": "gas",
-      "squad": [
-        "CT210408",
-        "CT7567",
-        "ARCTROOPER501ST",
-        "CT5555"
-      ]
-    },
-    {
-      "name": "PADME - RANCOR - PHASE 1",
-      "lead": "padme",
-      "squad": [
-        "AHSOKATANO",
-        "ANAKINKNIGHT",
-        "GENERALKENOBI",
-        "C3POLEGENDARY","GRANDMASTERYODA","R2D2_LEGENDARY"
-      ]
-    },
-    {
-      "name": "SEE - RANCOR - PHASE 1",
-      "lead": "see",
-      "squad": [
-        "DARTHTRAYA",
-        "DARTHSION",
-        "SITHTROOPER",
-        "DARTHSIDIOUS", "DARTHNIHILUS"
-      ]
+      "name": "CONDE",
+      "lead": "COUNTDOOKU",
+      "squad": [ ],
+      "optional": [
+        {
+          "spaces": 4,
+          "squad": [
+            "ZAALBAR",
+            "ENFYSNEST",
+            "DROIDEKA",
+            "WATTAMBOR"
+          ]
+        }
+      ],
+      "message": "<strong>*CLS Com/ mochila*</strong><br />CLS G12+, Han G12+, Threepio&Chewie 6* G10+, Chewbacca G12+, C3PO G11+  <strong>*(a ordem importa não colocar o mochila depois do chewbacca)*</strong>",
+      "requirements": {
+        "units": {
+          "COUNTDOOKU": { "gear": 13},
+          "ZAALBAR": { "gear": 12},
+          "ENFYSNEST": { "gear": 12},
+          "DROIDEKA": { "gear": 12},
+          "WATTAMBOR": { "gear": 12}
+        } 
+      }
     }
   ]
 }

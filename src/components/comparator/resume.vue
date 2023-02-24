@@ -49,6 +49,11 @@ export default {
       countShips: [],
       configGL: [
         {
+          name: "JABBA [G13]",
+          toon: "JABBATHEHUTT",
+          gear: 13
+        },
+        {
           name: "SLKR [G13]",
           toon: "SUPREMELEADERKYLOREN",
           gear: 13
@@ -81,9 +86,19 @@ export default {
       ],
       configResume: [
         {
+          name: "BEN [G13]",
+          toon: "BENSOLO",
+          gear: 13
+        },
+        {
           name: "MAUL [G13]",
           toon: "MAULS7",
           gear: 13
+        },
+        {
+          name: "MALGUS [G13]",
+          toon: "DARTHMALGUS",
+          gear: 1
         },
         {
           name: "KK [G13]",
@@ -95,11 +110,11 @@ export default {
           toon: "COMMANDERAHSOKA",
           gear: 13
         },
-        {
-          name: "BOBAFAT [G13]",
-          toon: "BOBAFETTSCION",
-          gear: 13
-        },
+        // {
+        //   name: "BOBAFAT [G13]",
+        //   toon: "BOBAFETTSCION",
+        //   gear: 13
+        // },
         {
           name: "GAS [G13]",
           toon: "GENERALSKYWALKER",
@@ -151,6 +166,26 @@ export default {
           name: "MALE [7*]",
           toon: "CAPITALMALEVOLENCE",
           rarity: 7
+        },
+        {
+          name: "PROFUNDITY [7*]",
+          toon: "CAPITALPROFUNDITY",
+          rarity: 7
+        },
+        {
+          name: "PROFUNDITY [6*]",
+          toon: "CAPITALPROFUNDITY",
+          rarity: 6
+        },
+        {
+          name: "PROFUNDITY [5*]",
+          toon: "CAPITALPROFUNDITY",
+          rarity: 5
+        },
+        {
+          name: "PROFUNDITY [4*]",
+          toon: "CAPITALPROFUNDITY",
+          rarity: 4
         },
         {
           name: "EXECUTOR [7*]",
@@ -226,6 +261,7 @@ export default {
               ship.id == "CAPITALNEGOTIATOR" ||
               ship.id == "CAPITALMALEVOLENCE" ||
               ship.id == "CAPITALEXECUTOR" ||
+              ship.id == "CAPITALPROFUNDITY" ||
               ship.id == "VULTUREDROID" ||
               ship.id == "HYENABOMBER"
             ) {

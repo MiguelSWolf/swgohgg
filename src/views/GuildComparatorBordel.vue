@@ -28,7 +28,7 @@
 
 <script>
 import yourGuild from "../assets/BordelJawa.json";
-import opponentGuild from "../assets/Belka i Strelka.json";
+import opponentGuild from "../assets/The imperials legion.json";
 import ResumeTab from "../components/comparator/resume";
 import TeamsTab from "../components/comparator/teams";
 import ArenaTab from "../components/comparator/arena";

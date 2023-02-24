@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import guild from "../assets/7545.json";
+import guild from "../assets/tripa.json";
 // import iconCheck from "../components/checkIcon";
 // import iconCross from "../components/crossIcon";
 import iconTrash from "../components/trashIcon";
@@ -89,12 +89,12 @@ export default {
       },
       teams: [
         {
-          name: "REY",
+          name: "P1 - REY",
           lead: "GLREY",
-          weight: 1.5,
+          weight: 1,
           mandatoryUnits: {
             GLREY: { gear: 13 },
-            REYJEDITRAINING: { gear: 13 },
+            CT7567: { gear: 13 },
             REY: { gear: 13 },
             BB8: { gear: 13 },
             EPIXFINN: { gear: 13 }
@@ -102,44 +102,101 @@ export default {
           optionalUnits: {}
         },
         {
-          name: "JML",
-          lead: "GRANDMASTERLUKE",
+          name: "P1 - SEE",
+          lead: "SITHPALPATINE",
+          weight: 1,
+          mandatoryUnits: {
+            SITHPALPATINE: { gear: 13 },
+            DARTHMALAK: { gear: 13 },
+            SITHMARAUDER: { gear: 13 },
+            MAUL: { gear: 13 },
+            ROYALGUARD: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "P1 - JMK",
+          lead: "JEDIMASTERKENOBI",
           weight: 1.5,
           mandatoryUnits: {
-            GRANDMASTERLUKE: { gear: 13 },
-            MONMOTHMA: { gear: 13 },
-            JEDIKNIGHTLUKE: { gear: 13 },
-            REYJEDITRAINING: { gear: 13 },
+            JEDIMASTERKENOBI: { gear: 13 },
+            SHAAKTI: { gear: 13 },
+            GENERALKENOBI: { gear: 13 },
+            COMMANDERAHSOKA: { gear: 13 },
             C3POLEGENDARY: { gear: 13 }
           },
           optionalUnits: {}
         },
         {
-          name: "JMK",
+          name: "P2/4 - JMK",
           lead: "JEDIMASTERKENOBI",
           weight: 1.5,
           mandatoryUnits: {
-            JEDIMASTERKENOBI: { gear: 1 },
-            ANAKINKNIGHT: { gear: 1 },
-            GENERALKENOBI: { gear: 1 },
-            AHSOKATANO: { gear: 1 },
-            C3POLEGENDARY: { gear: 1 }
+            JEDIMASTERKENOBI: { gear: 13 },
+            SHAAKTI: { gear: 13 },
+            GENERALKENOBI: { gear: 13 },
+            COMMANDERAHSOKA: { gear: 13 },
+            GENERALSKYWALKER: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "P1 - VADER",
+          lead: "VADER",
+          weight: 1,
+          mandatoryUnits: {
+            VADER: { gear: 13 },
+            BB8: { gear: 13 },
+            WATTAMBOR: { gear: 13 },
+            KYLORENUNMASKED: { gear: 13 },
+            C3POLEGENDARY: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "P2/3 - VADER",
+          lead: "VADER",
+          weight: 1,
+          mandatoryUnits: {
+            VADER: { gear: 13 },
+            NUTEGUNRAY: { gear: 13 },
+            WATTAMBOR: { gear: 13 },
+            GRANDADMIRALTHRAWN: { gear: 13 },
+            DARTHTRAYA: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "P1 - SLKR",
+          lead: "SUPREMELEADERKYLOREN",
+          weight: 1,
+          mandatoryUnits: {
+            SUPREMELEADERKYLOREN: { gear: 13 },
+            GENERALHUX: { gear: 13 },
+            WATTAMBOR: { gear: 13 },
+            GRANDADMIRALTHRAWN: { gear: 13 },
+            KYLORENUNMASKED: { gear: 13 }
+          },
+          optionalUnits: {}
+        },
+        {
+          name: "P2/4 - SHAAK",
+          lead: "SHAAKTI",
+          weight: 1,
+          mandatoryUnits: {
+            SHAAKTI: { gear: 13 },
+            CT5555: { gear: 13 },
+            CT210408: { gear: 13 },
+            CT7567: { gear: 13 },
+            ARCTROOPER501ST: { gear: 13 }
           },
           optionalUnits: {}
         }
-        // {
-        //   name: "VADER - RANCOR",
-        //   lead: "VADER",
-        //   weight: 1.5,
-        //   mandatoryUnits: {
-        //     VADER: { gear: 13 },
-        //     BB8: { gear: 13 },
-        //     WATTAMBOR: { gear: 13 },
-        //     KYLORENUNMASKED: { gear: 13 },
-        //     C3POLEGENDARY: { gear: 13 }
-        //   },
-        //   optionalUnits: {}
-        // }
+
+        //     GENERALSKYWALKER: { gear: 2 },
+        //     : { gear: 2 },
+        //     : { gear: 2 },
+        //     : { gear: 2 },
         // ,{
         //   name: "Nute",
         //   lead: "MONMOTHMA",
